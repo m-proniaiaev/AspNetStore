@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using MongoDB.Driver;
 using Store.Core.Interfaces;
 using Store.Core.Models;
 
@@ -7,18 +8,12 @@ namespace Store.Core.Services
 {
     public class RecordService : IRecordService
     {
-        public IEnumerable<Record> GetRecords()
+        private readonly IMongoCollection<Record> _records;
+        public RecordService(IDbClient client)
         {
-            return new List<Record>()
-            {
-                new Record
-                {
-                    Id = new Guid(),
-                    Name = "Asus",
-                    Price = 1700m,
-                    IsSold = false
-                }
-            };
+            _records = client.GetRecordsCollection();
         }
+        public IEnumerable<Record> GetRecords() => _records.Find(record => true).ToList();
+        
     }
 }

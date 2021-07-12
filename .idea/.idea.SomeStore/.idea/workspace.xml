@@ -5,35 +5,16 @@
     <projectFile>Source/SomeStore.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b15e2af-e90d-441c-aa5d-47f84236b42b" name="Default Changelist" comment="init commit">
-      <change afterPath="$PROJECT_DIR$/Source/Store.Core/Interfaces/IAuditable.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/Store.Core/Interfaces/IEntity.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/Store.Core/Interfaces/IRecordService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/Store.Core/Interfaces/ISellable.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/Store.Core/Models/Record.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/Store.Core/Services/RecordService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/Store.Core/Store.Core.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/Store/Controllers/StoreController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/Store/Program.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/Store/Properties/launchSettings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/Store/SomeStore.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/Store/Startup.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/Store/WeatherForecast.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/Store/appsettings.Development.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/Store/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SomeStore/.idea/indexLayout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SomeStore/.idea/projectSettingsUpdater.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SomeStore/.idea/vcs.xml" beforeDir="false" />
+    <list default="true" id="7b15e2af-e90d-441c-aa5d-47f84236b42b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Source/Store.Core/Database/DbClient.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/Store.Core/Database/RecordDbConfig.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/Store.Core/Interfaces/IDbClient.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SomeStore/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SomeStore/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SomeStore.sln" beforeDir="false" afterPath="$PROJECT_DIR$/SomeStore.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Controllers/WeatherForecastController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Program.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Properties/launchSettings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/SomeStore.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Startup.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/WeatherForecast.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/appsettings.Development.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/appsettings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Store.Core/Services/RecordService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Store.Core/Services/RecordService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Store.Core/Store.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Store.Core/Store.Core.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Store/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Store/Properties/launchSettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Store/SomeStore.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Store/SomeStore.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Store/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Store/Startup.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +29,13 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Source/Store/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Store.Core/Services/RecordService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Store.Core/Interfaces/IRecordService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Store/Controllers/RecordsController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Store/Properties/launchSettings.json" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/.gitignore" />
@@ -59,9 +47,16 @@
       <option value="$PROJECT_DIR$/Source/Store.Core/Interfaces/ISellable.cs" />
       <option value="$PROJECT_DIR$/Source/Store.Core/Models/Record.cs" />
       <option value="$PROJECT_DIR$/Source/Store.Core/Interfaces/IRecordService.cs" />
-      <option value="$PROJECT_DIR$/Source/Store.Core/Services/RecordService.cs" />
       <option value="$PROJECT_DIR$/Source/Store/Controllers/StoreController.cs" />
+      <option value="$PROJECT_DIR$/Source/Store/Controllers/RecordController.cs" />
+      <option value="$PROJECT_DIR$/Source/Store/Controllers/RecordsController.cs" />
+      <option value="$PROJECT_DIR$/Source/Store.Core/Database/RecordDBConfig.cs" />
+      <option value="$PROJECT_DIR$/Source/Store.Core/Interfaces/IDbClient.cs" />
+      <option value="$PROJECT_DIR$/Source/Store.Core/Database/DbClient.cs" />
+      <option value="$PROJECT_DIR$/Source/Store.Core/Services/RecordService.cs" />
       <option value="$PROJECT_DIR$/Source/Store/Startup.cs" />
+      <option value="$PROJECT_DIR$/Source/Store.Core/Database/RecordDbConfig.cs" />
+      <option value="$PROJECT_DIR$/Source/Store/Properties/launchSettings.json" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1v0AtqoZrBdw9yO1KnoRL1nnb2r" />
@@ -74,10 +69,12 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34994584" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C#" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.build" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.SomeStore">
@@ -144,7 +141,8 @@
       <option name="presentableId" value="Default" />
       <updated>1625688852821</updated>
       <workItem from="1625688858747" duration="648000" />
-      <workItem from="1625689541817" duration="2004000" />
+      <workItem from="1625689541817" duration="5401000" />
+      <workItem from="1626119425045" duration="2972000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <created>1625689692191</created>
@@ -153,12 +151,21 @@
       <option name="project" value="LOCAL" />
       <updated>1625689692191</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="rewrite to record and inject record service">
+      <created>1625692214879</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1625692214879</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -169,11 +176,13 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="init commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="init commit" />
+    <MESSAGE value="rewrite to record and inject record service" />
+    <option name="LAST_COMMIT_MESSAGE" value="rewrite to record and inject record service" />
   </component>
 </project>
