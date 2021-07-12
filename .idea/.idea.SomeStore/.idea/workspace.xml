@@ -5,15 +5,12 @@
     <projectFile>Source/SomeStore.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b15e2af-e90d-441c-aa5d-47f84236b42b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Source/Store.Core/Database/DbClient.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/Store.Core/Database/RecordDbConfig.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/Store.Core/Interfaces/IDbClient.cs" afterDir="false" />
+    <list default="true" id="7b15e2af-e90d-441c-aa5d-47f84236b42b" name="Default Changelist" comment="add db connection">
+      <change afterPath="$PROJECT_DIR$/Source/Store.Core/Services/RecordRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SomeStore/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SomeStore/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Store.Core/Services/RecordService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Store.Core/Services/RecordService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Store.Core/Store.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Store.Core/Store.Core.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Store/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Store/Properties/launchSettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Store/SomeStore.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Store/SomeStore.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Store.Core/Interfaces/IRecordService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Store.Core/Interfaces/IRecordRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Store.Core/Services/RecordService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Store/Controllers/RecordsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Store/Controllers/RecordsController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Store/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Store/Startup.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -31,8 +28,8 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Source/Store/Program.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Source/Store.Core/Services/RecordService.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Source/Store.Core/Interfaces/IRecordService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Store.Core/Services/RecordRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/Store.Core/Interfaces/IRecordRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Store/Controllers/RecordsController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Store/Properties/launchSettings.json" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -45,18 +42,21 @@
       <option value="$PROJECT_DIR$/Source/Store.Core/Interfaces/IEntity.cs" />
       <option value="$PROJECT_DIR$/Source/Store.Core/Interfaces/IAuditable.cs" />
       <option value="$PROJECT_DIR$/Source/Store.Core/Interfaces/ISellable.cs" />
-      <option value="$PROJECT_DIR$/Source/Store.Core/Models/Record.cs" />
-      <option value="$PROJECT_DIR$/Source/Store.Core/Interfaces/IRecordService.cs" />
       <option value="$PROJECT_DIR$/Source/Store/Controllers/StoreController.cs" />
       <option value="$PROJECT_DIR$/Source/Store/Controllers/RecordController.cs" />
-      <option value="$PROJECT_DIR$/Source/Store/Controllers/RecordsController.cs" />
       <option value="$PROJECT_DIR$/Source/Store.Core/Database/RecordDBConfig.cs" />
       <option value="$PROJECT_DIR$/Source/Store.Core/Interfaces/IDbClient.cs" />
       <option value="$PROJECT_DIR$/Source/Store.Core/Database/DbClient.cs" />
-      <option value="$PROJECT_DIR$/Source/Store.Core/Services/RecordService.cs" />
       <option value="$PROJECT_DIR$/Source/Store/Startup.cs" />
       <option value="$PROJECT_DIR$/Source/Store.Core/Database/RecordDbConfig.cs" />
       <option value="$PROJECT_DIR$/Source/Store/Properties/launchSettings.json" />
+      <option value="$PROJECT_DIR$/Source/Store/appsettings.json" />
+      <option value="$PROJECT_DIR$/Source/Store.Core/Models/Record.cs" />
+      <option value="$PROJECT_DIR$/Source/Store.Core/Interfaces/IRecordService.cs" />
+      <option value="$PROJECT_DIR$/Source/Store.Core/Services/RecordService.cs" />
+      <option value="$PROJECT_DIR$/Source/Store/Controllers/RecordsController.cs" />
+      <option value="$PROJECT_DIR$/Source/Store.Core/Interfaces/IRecordrepository.cs" />
+      <option value="$PROJECT_DIR$/Source/Store.Core/Interfaces/IRecordRepository.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1v0AtqoZrBdw9yO1KnoRL1nnb2r" />
@@ -74,6 +74,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="configurable.group.build" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -142,7 +143,7 @@
       <updated>1625688852821</updated>
       <workItem from="1625688858747" duration="648000" />
       <workItem from="1625689541817" duration="5401000" />
-      <workItem from="1626119425045" duration="2972000" />
+      <workItem from="1626119425045" duration="5820000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <created>1625689692191</created>
@@ -158,7 +159,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625692214879</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add db connection">
+      <created>1626122687014</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1626122687014</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,6 +191,7 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="init commit" />
     <MESSAGE value="rewrite to record and inject record service" />
-    <option name="LAST_COMMIT_MESSAGE" value="rewrite to record and inject record service" />
+    <MESSAGE value="add db connection" />
+    <option name="LAST_COMMIT_MESSAGE" value="add db connection" />
   </component>
 </project>
