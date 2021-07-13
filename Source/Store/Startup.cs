@@ -24,7 +24,7 @@ namespace SomeStore
         {
             services.AddSingleton<IDbClient, DbClient>();
             services.Configure<RecordDbConfig>(Configuration);
-            services.AddTransient<IRecordRepository, RecordRepository>(); //for dependency injection
+            services.AddTransient<IRecordService, RecordService>(); //for dependency injection
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

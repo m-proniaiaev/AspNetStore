@@ -6,10 +6,10 @@ using Store.Core.Models;
 
 namespace Store.Core.Services
 {
-    public class RecordRepository : IRecordRepository
+    public class RecordService : IRecordService
     {
         private readonly IMongoCollection<Record> _records;
-        public RecordRepository(IDbClient client)
+        public RecordService(IDbClient client)
         {
             _records = client.GetRecordsCollection();
         }
@@ -33,6 +33,19 @@ namespace Store.Core.Services
             _records.ReplaceOne(r => r.Id == record.Id, record);
             return record;
 
+        }
+
+        public void MarkRecordAsSold(Guid id)
+        {
+            var currentRecord = GetRecord(id);
+            if (currentRecord == null) throw new Exception("No such record!");
+            if (currentRecord.IsSold)
+                throw new Exception("This record already has been sold!");
+
+            var update = Builders<Record>.Update
+                .Set("IsSold", true)
+                .Set("SoldDate", DateTime.Now);
+            _records.UpdateOne(r => r.Id == id, update);
         }
     }
 }
