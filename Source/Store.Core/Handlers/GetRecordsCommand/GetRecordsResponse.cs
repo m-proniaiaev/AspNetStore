@@ -1,4 +1,4 @@
-using Store.Core.Models;
+using Store.Contracts.Models;
 
 namespace Store.Core.Handlers.GetRecordsCommand
 {

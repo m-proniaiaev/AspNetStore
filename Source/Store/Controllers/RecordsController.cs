@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Store.Contracts.Models;
 using Store.Core.Handlers.GetRecordsCommand;
 using Store.Core.Interfaces;
-using Store.Core.Models;
 
 namespace SomeStore.Controllers
 {

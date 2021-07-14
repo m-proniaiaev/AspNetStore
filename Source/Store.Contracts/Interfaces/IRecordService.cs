@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Store.Core.Models;
+using Store.Contracts.Models;
 
 namespace Store.Core.Interfaces
 {
