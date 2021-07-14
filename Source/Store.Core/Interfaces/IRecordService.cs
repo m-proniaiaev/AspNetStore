@@ -9,7 +9,7 @@ namespace Store.Core.Interfaces
     {
         List<Record> GetRecords();
         Task<Record> AddRecord(Record record);
-        Record GetRecord(Guid id);
+        Task<Record> GetRecord(Guid id);
         Task DeleteRecord(Guid id);
         Task<Record> UpdateRecord(Record record);
         Task MarkRecordAsSold(Guid id);

@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Store.Core;
 using Store.Core.Database;
 using Store.Core.Interfaces;
 using Store.Core.Services;
@@ -25,6 +26,7 @@ namespace SomeStore
             services.AddSingleton<IDbClient, DbClient>();
             services.Configure<RecordDbConfig>(Configuration);
             services.AddTransient<IRecordService, RecordService>(); //for dependency injection
+            services.AddCoreServices();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

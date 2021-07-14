@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Store.Core.Handlers.GetRecordsCommand;
 using Store.Core.Interfaces;
 using Store.Core.Models;
 
@@ -11,12 +14,12 @@ namespace SomeStore.Controllers
     [Route("api/[controller]")]
     public class RecordsController : ControllerBase
     {
-        private readonly ILogger<RecordsController> _logger;
+        private readonly IMediator _mediator;
         private readonly IRecordService _recordService;
 
-        public RecordsController(ILogger<RecordsController> logger, IRecordService service)
+        public RecordsController(IMediator mediator, IRecordService service)
         {
-            _logger = logger;
+            _mediator = mediator;
             _recordService = service;
         }
 
@@ -28,9 +31,10 @@ namespace SomeStore.Controllers
         }
 
         [HttpGet("getRecord/{id:guid}", Name = "GetRecord")]
-        public IActionResult GetRecord(Guid id)
+        public async Task<ActionResult<GetRecordsResponse>> GetRecord(Guid id, CancellationToken cts)
         {
-            var result = _recordService.GetRecord(id);
+            //var result = _recordService.GetRecord(id);
+            var result = await _mediator.Send(new GetRecordByIdCommand {Id = id}, cts);
             return Ok(result);
         }
 

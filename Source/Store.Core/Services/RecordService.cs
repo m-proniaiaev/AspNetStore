@@ -20,7 +20,7 @@ namespace Store.Core.Services
             await _records.InsertOneAsync(record);
             return record;
         }
-        public Record GetRecord(Guid id) => _records.Find(record => record.Id == id).FirstOrDefault();
+        public async Task<Record> GetRecord(Guid id) => await _records.Find(record => record.Id == id).FirstOrDefaultAsync();
         public async Task DeleteRecord(Guid id)
         {
            await _records.DeleteOneAsync(record => record.Id == id);
@@ -37,7 +37,7 @@ namespace Store.Core.Services
 
         public async Task MarkRecordAsSold(Guid id)
         {
-            var currentRecord = GetRecord(id);
+            var currentRecord = await GetRecord(id);
             if (currentRecord == null) throw new Exception("No such record!");
             if (currentRecord.IsSold)
                 throw new Exception("This record already has been sold!");
