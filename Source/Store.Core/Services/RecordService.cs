@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using MongoDB.Driver;
 using Store.Core.Interfaces;
 using Store.Core.Models;
@@ -13,29 +14,28 @@ namespace Store.Core.Services
         {
             _records = client.GetRecordsCollection();
         }
-        public IEnumerable<Record> GetRecords() => _records.Find(record => true).ToList();
-        public Record AddRecord(Record record)
+        public List<Record> GetRecords() =>  _records.Find(record => true).ToList();
+        public async Task<Record> AddRecord(Record record)
         {
-            _records.InsertOne(record);
+            await _records.InsertOneAsync(record);
             return record;
         }
         public Record GetRecord(Guid id) => _records.Find(record => record.Id == id).FirstOrDefault();
-        public void DeleteRecord(Guid id)
+        public async Task DeleteRecord(Guid id)
         {
-            _records.DeleteOne(record => record.Id == id);
+           await _records.DeleteOneAsync(record => record.Id == id);
         }
 
-        public Record UpdateRecord(Record record)
+        public async Task<Record> UpdateRecord(Record record)
         {
             var currentRecord = GetRecord(record.Id);
             if (currentRecord == null) throw new Exception("No such record!");
             
-            _records.ReplaceOne(r => r.Id == record.Id, record);
+            await _records.ReplaceOneAsync(r => r.Id == record.Id, record);
             return record;
-
         }
 
-        public void MarkRecordAsSold(Guid id)
+        public async Task MarkRecordAsSold(Guid id)
         {
             var currentRecord = GetRecord(id);
             if (currentRecord == null) throw new Exception("No such record!");
@@ -45,7 +45,7 @@ namespace Store.Core.Services
             var update = Builders<Record>.Update
                 .Set("IsSold", true)
                 .Set("SoldDate", DateTime.Now);
-            _records.UpdateOne(r => r.Id == id, update);
+            await _records.UpdateOneAsync(r => r.Id == id, update);
         }
     }
 }

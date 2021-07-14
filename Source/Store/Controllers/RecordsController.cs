@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Store.Core.Interfaces;
@@ -26,38 +27,38 @@ namespace SomeStore.Controllers
             return Ok(result);
         }
 
-        [HttpGet("{id:guid}", Name = "GetRecord")]
+        [HttpGet("getRecord/{id:guid}", Name = "GetRecord")]
         public IActionResult GetRecord(Guid id)
         {
             var result = _recordService.GetRecord(id);
             return Ok(result);
         }
 
-        [HttpPost]
-        public IActionResult AddRecord(Record record)
+        [HttpPost("addRecord")]
+        public async Task<IActionResult> AddRecord(Record record)
         {
-            _recordService.AddRecord(record);
+            await _recordService.AddRecord(record);
             return CreatedAtRoute("GetRecord", new { id = record.Id }, record);
         }
 
-        [HttpDelete("{id:guid}")]
-        public IActionResult DeleteRecord(Guid id)
+        [HttpPut("updateRecord")]
+        public async Task<IActionResult> UpdateRecord(Record record)
         {
-            _recordService.DeleteRecord(id);
-            return NoContent();
-        }
-
-        [HttpPut]
-        public IActionResult UpdateRecord(Record record)
-        {
-            var result = _recordService.UpdateRecord(record);
+            var result = await _recordService.UpdateRecord(record);
             return Ok(result);
         }
 
         [HttpPut("markAsSold/{id:guid}",  Name = "MarkAsSold")]
-        public IActionResult RecordMarkAsSold(Guid id)
+        public async Task<NoContentResult> RecordMarkAsSold(Guid id)
         {
-            _recordService.MarkRecordAsSold(id);
+            await _recordService.MarkRecordAsSold(id);
+            return NoContent();
+        }
+        
+        [HttpDelete("deleteRecord/{id:guid}")]
+        public async Task<IActionResult> DeleteRecord(Guid id)
+        {
+            await _recordService.DeleteRecord(id);
             return NoContent();
         }
     }

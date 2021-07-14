@@ -5,15 +5,11 @@
     <projectFile>Source/SomeStore.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b15e2af-e90d-441c-aa5d-47f84236b42b" name="Default Changelist" comment="add CRUD">
+    <list default="true" id="7b15e2af-e90d-441c-aa5d-47f84236b42b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SomeStore/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SomeStore/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Store.Core/Interfaces/IAuditable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Store.Core/Interfaces/IAuditable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Store.Core/Interfaces/IRecordRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Store.Core/Interfaces/IRecordService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Store.Core/Models/Record.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Store.Core/Models/Record.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Store.Core/Services/RecordRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Store.Core/Services/RecordService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Store.Core/Interfaces/IRecordService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Store.Core/Interfaces/IRecordService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Store.Core/Services/RecordService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Store.Core/Services/RecordService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Store/Controllers/RecordsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Store/Controllers/RecordsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Store/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Store/Startup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Store/WeatherForecast.cs" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,8 +126,8 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue=".NET Launch Settings Profile.SomeStore" />
       <item itemvalue=".NET Launch Settings Profile.SomeStore: IIS Express" />
+      <item itemvalue=".NET Launch Settings Profile.SomeStore" />
       <item itemvalue=".NET Project.SomeStore" />
     </list>
   </component>
@@ -145,7 +141,8 @@
       <updated>1625688852821</updated>
       <workItem from="1625688858747" duration="648000" />
       <workItem from="1625689541817" duration="5401000" />
-      <workItem from="1626119425045" duration="10133000" />
+      <workItem from="1626119425045" duration="10674000" />
+      <workItem from="1626205826165" duration="1866000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <created>1625689692191</created>
@@ -175,13 +172,20 @@
       <option name="project" value="LOCAL" />
       <updated>1626125347283</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="add mark as sold">
+      <created>1626205461267</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1626205461267</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -202,6 +206,7 @@
     <MESSAGE value="rewrite to record and inject record service" />
     <MESSAGE value="add db connection" />
     <MESSAGE value="add CRUD" />
-    <option name="LAST_COMMIT_MESSAGE" value="add CRUD" />
+    <MESSAGE value="add mark as sold" />
+    <option name="LAST_COMMIT_MESSAGE" value="add mark as sold" />
   </component>
 </project>
