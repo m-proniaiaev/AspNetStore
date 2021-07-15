@@ -34,7 +34,7 @@ namespace Store.Core.Handlers.CreateRecord
             var record = new Record
             {
                 Id = Guid.NewGuid(),
-                Author = request.Author,
+                Seller = request.Author,
                 Created = DateTime.Now,
                 Name = request.Name,
                 Price = request.Price,

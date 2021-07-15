@@ -43,7 +43,7 @@ namespace Store.Core.Handlers.UpdateRecord
             var updatedRecord = new Record
             {
                 Id = record.Id,
-                Author = record.Author,
+                Seller = record.Seller,
                 Created = record.Created,
                 Name = request.Name,
                 Price = request.Price,

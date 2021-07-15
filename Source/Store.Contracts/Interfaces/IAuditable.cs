@@ -4,7 +4,7 @@ namespace Store.Contracts.Interfaces
 {
     public interface IAuditable
     {
-        public string Author { get; set; }
+        public string Seller { get; set; }
         public DateTime Created { get; set; }
     }
 }
