@@ -1,6 +1,6 @@
 using System;
 
-namespace Store.Core.Interfaces
+namespace Store.Contracts.Interfaces
 {
     public interface ISellable
     {

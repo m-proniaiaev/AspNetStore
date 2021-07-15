@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
-using Store.Core.Interfaces;
-using Store.Core.Models;
+using Store.Contracts.Interfaces;
+using Store.Contracts.Models;
 
 namespace Store.Core.Database
 {

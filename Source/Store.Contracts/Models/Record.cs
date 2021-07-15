@@ -1,9 +1,8 @@
 using System;
-using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-using Store.Core.Interfaces;
+using Store.Contracts.Interfaces;
 
-namespace Store.Core.Models
+namespace Store.Contracts.Models
 {
     public class Record : IEntity, IAuditable, ISellable
     {

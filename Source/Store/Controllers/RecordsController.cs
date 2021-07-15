@@ -1,8 +1,15 @@
 ﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
+using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Store.Core.Interfaces;
-using Store.Core.Models;
+using Store.Contracts.Interfaces;
+using Store.Contracts.Models;
+using Store.Core.Handlers.CreateRecord;
+using Store.Core.Handlers.DeleteRecord;
+using Store.Core.Handlers.GetRecords;
+using Store.Core.Handlers.UpdateRecord;
 
 namespace SomeStore.Controllers
 {
@@ -10,54 +17,57 @@ namespace SomeStore.Controllers
     [Route("api/[controller]")]
     public class RecordsController : ControllerBase
     {
-        private readonly ILogger<RecordsController> _logger;
-        private readonly IRecordService _recordService;
+        private readonly IMediator _mediator;
 
-        public RecordsController(ILogger<RecordsController> logger, IRecordService service)
+        public RecordsController(IMediator mediator)
         {
-            _logger = logger;
-            _recordService = service;
+            _mediator = mediator;
         }
 
         [HttpGet]
-        public IActionResult GetRecords()
+        [ProducesResponseType(typeof(GetRecordsResponse), StatusCodes.Status200OK)]
+        public async Task<ActionResult<GetRecordsResponse>> GetRecords([FromQuery] GetRecordsQuery query, CancellationToken cts)
         {
-            var result = _recordService.GetRecords();
+            var result = await _mediator.Send(query, cts);
             return Ok(result);
         }
 
-        [HttpGet("{id:guid}", Name = "GetRecord")]
-        public IActionResult GetRecord(Guid id)
+        [HttpGet("getRecord/{id:guid}", Name = "GetRecord")]
+        [ProducesResponseType(typeof(Record), StatusCodes.Status200OK)]
+        public async Task<ActionResult<Record>> GetRecord([FromRoute] Guid id, CancellationToken cts)
         {
-            var result = _recordService.GetRecord(id);
+            var result = await _mediator.Send(new GetRecordByIdCommand {Id = id}, cts);
             return Ok(result);
         }
 
-        [HttpPost]
-        public IActionResult AddRecord(Record record)
+        [HttpPost("addRecord")]
+        [ProducesResponseType(typeof(Record), StatusCodes.Status201Created)]
+        public async Task<ActionResult<Record>> AddRecord([FromBody] CreateRecordQuery query, CancellationToken cts)
         {
-            _recordService.AddRecord(record);
-            return CreatedAtRoute("GetRecord", new { id = record.Id }, record);
+            var result = await _mediator.Send(query, cts);
+            return result;
         }
 
-        [HttpDelete("{id:guid}")]
-        public IActionResult DeleteRecord(Guid id)
+        [HttpPut("updateRecord")]
+        [ProducesResponseType(typeof(Record), StatusCodes.Status200OK)]
+        public async Task<IActionResult> UpdateRecord([FromBody] UpdateRecordQuery query, CancellationToken cts)
         {
-            _recordService.DeleteRecord(id);
-            return NoContent();
-        }
-
-        [HttpPut]
-        public IActionResult UpdateRecord(Record record)
-        {
-            var result = _recordService.UpdateRecord(record);
+            var result = await _mediator.Send(query, cts);
             return Ok(result);
         }
 
         [HttpPut("markAsSold/{id:guid}",  Name = "MarkAsSold")]
-        public IActionResult RecordMarkAsSold(Guid id)
+        public async Task<NoContentResult> RecordMarkAsSold([FromRoute]Guid id, CancellationToken cts)
         {
-            _recordService.MarkRecordAsSold(id);
+            await _mediator.Send(new RecordMarkAsSoldQuery {Id = id}, cts);
+            return NoContent();
+        }
+        
+        [HttpDelete("deleteRecord/{id:guid}")]
+        [ProducesResponseType(typeof(Unit), StatusCodes.Status204NoContent)]
+        public async Task<ActionResult> DeleteRecord([FromRoute] Guid id, CancellationToken cts)
+        {
+            await _mediator.Send(new DeleteRecordQuery{ Id = id}, cts);
             return NoContent();
         }
     }
