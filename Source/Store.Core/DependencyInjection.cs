@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using Store.Core.Interfaces;
+using Store.Contracts.Interfaces;
 using Store.Core.Services;
 
 namespace Store.Core

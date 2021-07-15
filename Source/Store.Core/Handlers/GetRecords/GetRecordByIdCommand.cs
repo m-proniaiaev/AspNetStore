@@ -2,8 +2,8 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
+using Store.Contracts.Interfaces;
 using Store.Contracts.Models;
-using Store.Core.Interfaces;
 
 namespace Store.Core.Handlers.GetRecords
 {

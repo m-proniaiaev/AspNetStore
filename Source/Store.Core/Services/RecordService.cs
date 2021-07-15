@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using MongoDB.Driver;
+using Store.Contracts.Interfaces;
 using Store.Contracts.Models;
-using Store.Core.Interfaces;
 
 namespace Store.Core.Services
 {
@@ -28,20 +28,12 @@ namespace Store.Core.Services
 
         public async Task<Record> UpdateRecord(Record record)
         {
-            var currentRecord = GetRecord(record.Id);
-            if (currentRecord == null) throw new Exception("No such record!");
-            
             await _records.ReplaceOneAsync(r => r.Id == record.Id, record);
             return record;
         }
 
         public async Task MarkRecordAsSold(Guid id)
         {
-            var currentRecord = await GetRecord(id);
-            if (currentRecord == null) throw new Exception("No such record!");
-            if (currentRecord.IsSold)
-                throw new Exception("This record already has been sold!");
-
             var update = Builders<Record>.Update
                 .Set("IsSold", true)
                 .Set("SoldDate", DateTime.Now);

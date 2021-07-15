@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using Store.Core.Interfaces;
+using Store.Contracts.Interfaces;
 
 namespace Store.Core.Handlers.GetRecords
 {

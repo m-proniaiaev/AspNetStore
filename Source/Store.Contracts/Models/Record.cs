@@ -1,6 +1,6 @@
 using System;
 using MongoDB.Bson.Serialization.Attributes;
-using Store.Core.Interfaces;
+using Store.Contracts.Interfaces;
 
 namespace Store.Contracts.Models
 {

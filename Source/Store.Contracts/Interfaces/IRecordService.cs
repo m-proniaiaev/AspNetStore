@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Store.Contracts.Models;
 
-namespace Store.Core.Interfaces
+namespace Store.Contracts.Interfaces
 {
     public interface IRecordService
     {

@@ -1,7 +1,7 @@
 using MongoDB.Driver;
 using Store.Contracts.Models;
 
-namespace Store.Core.Interfaces
+namespace Store.Contracts.Interfaces
 {
     public interface IDbClient
     {
