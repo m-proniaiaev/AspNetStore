@@ -2,10 +2,10 @@
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Store.Contracts.Models;
-using Store.Core.Handlers.GetRecordsCommand;
+using Store.Core.Handlers.GetRecords;
 using Store.Core.Interfaces;
 
 namespace SomeStore.Controllers
@@ -24,16 +24,17 @@ namespace SomeStore.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetRecords()
+        [ProducesResponseType(typeof(GetRecordsResponse), StatusCodes.Status200OK)]
+        public async Task<ActionResult<GetRecordsResponse>> GetRecords([FromQuery] GetRecordsQuery query, CancellationToken cts)
         {
-            var result = _recordService.GetRecords();
+            var result = await _mediator.Send(query, cts);
             return Ok(result);
         }
 
         [HttpGet("getRecord/{id:guid}", Name = "GetRecord")]
-        public async Task<ActionResult<GetRecordsResponse>> GetRecord(Guid id, CancellationToken cts)
+        [ProducesResponseType(typeof(Record), StatusCodes.Status200OK)]
+        public async Task<ActionResult<Record>> GetRecord([FromRoute] Guid id, CancellationToken cts)
         {
-            //var result = _recordService.GetRecord(id);
             var result = await _mediator.Send(new GetRecordByIdCommand {Id = id}, cts);
             return Ok(result);
         }

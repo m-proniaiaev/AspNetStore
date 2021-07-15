@@ -5,7 +5,7 @@ using MediatR;
 using Store.Contracts.Models;
 using Store.Core.Interfaces;
 
-namespace Store.Core.Handlers.GetRecordsCommand
+namespace Store.Core.Handlers.GetRecords
 {
     public class GetRecordByIdCommand : IRequest<Record>
     {

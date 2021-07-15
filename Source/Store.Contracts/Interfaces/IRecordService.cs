@@ -7,7 +7,7 @@ namespace Store.Core.Interfaces
 {
     public interface IRecordService
     {
-        List<Record> GetRecords();
+        Task<List<Record>> GetRecords();
         Task<Record> AddRecord(Record record);
         Task<Record> GetRecord(Guid id);
         Task DeleteRecord(Guid id);

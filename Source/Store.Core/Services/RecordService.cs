@@ -14,7 +14,7 @@ namespace Store.Core.Services
         {
             _records = client.GetRecordsCollection();
         }
-        public List<Record> GetRecords() =>  _records.Find(record => true).ToList();
+        public async Task<List<Record>> GetRecords() => await _records.Find(record => true).ToListAsync();
         public async Task<Record> AddRecord(Record record)
         {
             await _records.InsertOneAsync(record);

@@ -7,7 +7,6 @@ using Microsoft.OpenApi.Models;
 using Store.Core;
 using Store.Core.Database;
 using Store.Core.Interfaces;
-using Store.Core.Services;
 
 namespace SomeStore
 {
@@ -18,14 +17,13 @@ namespace SomeStore
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        private IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IDbClient, DbClient>();
             services.Configure<RecordDbConfig>(Configuration);
-            services.AddTransient<IRecordService, RecordService>(); //for dependency injection
             services.AddCoreServices();
             services.AddControllers();
             services.AddSwaggerGen(c =>
