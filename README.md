@@ -8,3 +8,8 @@ Here I've used:
     - Fluent validation for checking commands 
     - Work with MongoDb (connection string is stored in user-secrets since db is cloud-hosted)
     - Unit tests with Xunit
+
+Plans:
+ - Adding one more controller: Sellers and integrating it with Records (reference by id)
+ - Excption formatting
+ - Docker support
