@@ -25,16 +25,11 @@ namespace Store.Core.Handlers.CreateRecord
         
         public async Task<Record> Handle(CreateRecordQuery request, CancellationToken cancellationToken)
         {
-            if (request.Price <= 0)
-                throw new ArgumentException("The price can only be positive, non-negative value!");
-
-            if (string.IsNullOrEmpty(request.Name))
-                throw new ArgumentException("Name can not be empty!");
             
             var record = new Record
             {
                 Id = Guid.NewGuid(),
-                Author = request.Author,
+                Seller = request.Author,
                 Created = DateTime.Now,
                 Name = request.Name,
                 Price = request.Price,

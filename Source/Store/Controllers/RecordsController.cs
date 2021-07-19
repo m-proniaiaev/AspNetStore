@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Store.Contracts.Interfaces;
 using Store.Contracts.Models;
 using Store.Core.Handlers.CreateRecord;
 using Store.Core.Handlers.DeleteRecord;

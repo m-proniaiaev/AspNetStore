@@ -31,19 +31,13 @@ namespace Store.Core.Handlers.UpdateRecord
             if (record == null)
                 throw new Exception($"Record {request.Id} is not found!");
             
-            if (request.Price <= 0)
-                throw new ArgumentException("The price can only be positive, non-negative value!");
-
-            if (string.IsNullOrEmpty(request.Name))
-                throw new ArgumentException("Name can not be empty!");
-            
             if (record.IsSold)
                 throw new Exception("This record already has been sold!");
 
             var updatedRecord = new Record
             {
                 Id = record.Id,
-                Author = record.Author,
+                Seller = record.Seller,
                 Created = record.Created,
                 Name = request.Name,
                 Price = request.Price,

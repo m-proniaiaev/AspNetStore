@@ -9,7 +9,7 @@ namespace Store.Contracts.Models
         [BsonId]
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public string Author { get; set; }
+        public string Seller { get; set; }
         public DateTime Created { get; set; }
         public decimal Price { get; set; }
         public bool IsSold { get; set; }
