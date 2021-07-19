@@ -1,12 +1,11 @@
 using FluentValidation;
-using Store.Core.Handlers.UpdateRecord;
-using Store.Core.Common;
+using Store.Core.Handlers.CreateRecord;
 
 namespace Store.Core.Common.CommandValidation
 {
-    public class UpdateRecordQueryValidator : AbstractValidator<UpdateRecordQuery>
+    public class CreateRecordQueryValidator : AbstractValidator<CreateRecordQuery>
     {
-        public UpdateRecordQueryValidator()
+        public CreateRecordQueryValidator()
         {
             RuleFor(x => x.Price)
                 .ValidateRecordPrice();

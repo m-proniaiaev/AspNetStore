@@ -23,7 +23,7 @@ namespace Store.Core.Handlers.GetRecords
             if (records == null)
                 throw new Exception("No records in database!");
             
-            //TODO move to filtering helpers
+            //TODO move to queryable filtering helpers
             if (request.IsSold.HasValue)
                     records = request.IsSold.Value
                     ? records.Select(x => x).Where(x => x.IsSold).ToList()
