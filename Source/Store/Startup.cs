@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Store.Core;
 using Store.Database.Database;
+using Store.Extensions;
 
 namespace SomeStore
 {
@@ -40,9 +41,11 @@ namespace SomeStore
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SomeStore v1"));
             }
-
+            
+            app.UseExtensions();
+            
             app.UseHttpsRedirection();
-
+            
             app.UseRouting();
 
             app.UseAuthorization();

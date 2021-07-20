@@ -1,6 +1,5 @@
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
-using Store.Contracts.Interfaces;
 using Store.Contracts.Models;
 
 namespace Store.Database.Database

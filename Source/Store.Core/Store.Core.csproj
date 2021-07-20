@@ -10,7 +10,7 @@
       <PackageReference Include="FluentValidation.AspNetCore" Version="10.3.0" />
       <PackageReference Include="MediatR" Version="9.0.0" />
       <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
-      <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0-preview.5.21301.5" />
+      <PackageReference Include="Microsoft.Extensions.Options" Version="5.0.0" />
       <PackageReference Include="MongoDB.Bson" Version="2.13.0-beta1" />
       <PackageReference Include="MongoDB.Driver" Version="2.13.0-beta1" />
     </ItemGroup>

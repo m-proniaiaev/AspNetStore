@@ -1,6 +1,5 @@
 using FluentValidation;
 using Store.Core.Handlers.UpdateRecord;
-using Store.Core.Common;
 
 namespace Store.Core.Common.CommandValidation
 {

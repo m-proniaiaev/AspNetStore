@@ -10,6 +10,8 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\Store.Extensions\Store.Extensions.csproj" />
+      <ProjectReference Include="..\..\Store.Host\Store.Host.csproj" />
       <ProjectReference Include="..\Store.Core\Store.Core.csproj" />
     </ItemGroup>
 
