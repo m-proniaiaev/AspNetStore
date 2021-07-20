@@ -1,4 +1,4 @@
-namespace Store.Core.Database
+namespace Store.Database.Database
 {
     public class RecordDbConfig
     {
