@@ -24,7 +24,7 @@ namespace Store.Core.Handlers.DeleteRecord
             var record = await _recordService.GetRecord(request.Id);
 
             if (record == null)
-                throw new Exception($"Record {request.Id} is not found!");
+                throw new ArgumentException($"Record {request.Id} is not found!");
             
             await _recordService.DeleteRecord(record.Id);
             

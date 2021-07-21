@@ -1,6 +1,5 @@
 using System;
 using System.Linq;
-using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Store.Contracts.Interfaces;
@@ -22,8 +21,6 @@ namespace Store.Core
 
             services.AddMediatR(currentDomain);
             services.AddScoped<IRecordService, RecordService>();
-            services.AddMvc()
-                .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblies(currentDomain));
 
             return services;
         }

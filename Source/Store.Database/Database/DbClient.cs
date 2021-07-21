@@ -1,9 +1,8 @@
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
-using Store.Contracts.Interfaces;
 using Store.Contracts.Models;
 
-namespace Store.Core.Database
+namespace Store.Database.Database
 {
     public class DbClient : IDbClient
     {

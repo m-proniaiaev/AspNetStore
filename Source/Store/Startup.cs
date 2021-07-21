@@ -4,9 +4,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using Store.Contracts.Interfaces;
 using Store.Core;
-using Store.Core.Database;
+using Store.Database.Database;
+using Store.Extensions;
 
 namespace SomeStore
 {
@@ -25,7 +25,7 @@ namespace SomeStore
             services.AddSingleton<IDbClient, DbClient>();
             services.Configure<RecordDbConfig>(Configuration);
             services.AddCoreServices();
-            services.AddControllers();
+            services.AddConfiguredControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SomeStore", Version = "v1" });
@@ -41,9 +41,11 @@ namespace SomeStore
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SomeStore v1"));
             }
-
+            
+            app.UseExtensions();
+            
             app.UseHttpsRedirection();
-
+            
             app.UseRouting();
 
             app.UseAuthorization();

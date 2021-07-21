@@ -10,7 +10,7 @@ namespace Store.Core.Common
         {
             return ruleBuilder
                 .NotEmpty()
-                .WithMessage("Name can not be empty!");
+                .WithMessage(Message);
         }
     }
 }

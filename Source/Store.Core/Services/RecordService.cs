@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using MongoDB.Driver;
 using Store.Contracts.Interfaces;
 using Store.Contracts.Models;
+using Store.Database.Database;
 
 namespace Store.Core.Services
 {
