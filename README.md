@@ -5,11 +5,12 @@ Here I've used:
 
     - Dependency injection (Constructor injection)
     - MediatR for handling api requests
-    - Fluent validation for checking commands 
     - Work with MongoDb (connection string is stored in user-secrets since db is cloud-hosted)
+    - Fluent validation for checking commands 
+    - Middleware to handle exceptions
     - Unit tests with Xunit
 
 Plans:
  - Adding one more controller: Sellers and integrating it with Records (reference by id)
- - Excption formatting
+ - Extend request parameters by adding queryable filtering
  - Docker support
