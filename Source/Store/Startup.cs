@@ -25,7 +25,7 @@ namespace SomeStore
             services.AddSingleton<IDbClient, DbClient>();
             services.Configure<RecordDbConfig>(Configuration);
             services.AddCoreServices();
-            services.AddControllers();
+            services.AddConfiguredControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SomeStore", Version = "v1" });
