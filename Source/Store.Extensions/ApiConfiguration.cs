@@ -6,6 +6,9 @@ using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
+using MongoDB.Bson.Serialization.Serializers;
 using Store.Extensions.Exceptions;
 
 namespace Store.Extensions
@@ -29,6 +32,7 @@ namespace Store.Extensions
                 opt.Filters.Add(new ProducesAttribute("application/json"));
             }).AddJsonOptions(config =>
             {
+                BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String));
                 config.JsonSerializerOptions.IgnoreNullValues = true;
                 config.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
                 config.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());

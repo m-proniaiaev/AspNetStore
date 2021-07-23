@@ -5,7 +5,7 @@ Here I've used:
 
     - Dependency injection (Constructor injection)
     - MediatR pattern for handling async api requests
-    - Work with MongoDb (connection string is stored in user-secrets since db is cloud-hosted)
+    - Work with MongoDb
     - Fluent validation for checking request commands 
     - Middleware to handle runtime and validation exceptions
     - Request are parametrized with queryable filtering
