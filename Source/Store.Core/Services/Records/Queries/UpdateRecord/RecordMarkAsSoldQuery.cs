@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Store.Contracts.Interfaces;
 
-namespace Store.Core.Handlers.UpdateRecord
+namespace Store.Core.Services.Records.Queries.UpdateRecord
 {
     public class RecordMarkAsSoldQuery : IRequest
     {

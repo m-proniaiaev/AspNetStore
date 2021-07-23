@@ -1,6 +1,6 @@
 using FluentValidation.TestHelper;
-using Store.Core.Common.CommandValidation;
-using Store.Core.Handlers.UpdateRecord;
+using Store.Core.Common.Validations.CommandValidation.Records;
+using Store.Core.Services.Records.Queries.UpdateRecord;
 using Xunit;
 
 namespace Store.Tests.Common

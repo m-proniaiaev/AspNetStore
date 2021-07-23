@@ -5,10 +5,12 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Store.Contracts.Models;
-using Store.Core.Handlers.CreateRecord;
-using Store.Core.Handlers.DeleteRecord;
-using Store.Core.Handlers.GetRecords;
-using Store.Core.Handlers.UpdateRecord;
+using Store.Contracts.Responses;
+using Store.Core.Services.Records.Queries.CreateRecord;
+using Store.Core.Services.Records.Queries.DeleteRecord;
+using Store.Core.Services.Records.Queries.GetRecords;
+using Store.Core.Services.Records.Queries.GetRecords.ById;
+using Store.Core.Services.Records.Queries.UpdateRecord;
 
 namespace SomeStore.Controllers
 {
@@ -35,7 +37,7 @@ namespace SomeStore.Controllers
         [ProducesResponseType(typeof(Record), StatusCodes.Status200OK)]
         public async Task<ActionResult<Record>> GetRecord([FromRoute] Guid id, CancellationToken cts)
         {
-            var result = await _mediator.Send(new GetRecordByIdCommand {Id = id}, cts);
+            var result = await _mediator.Send(new GetRecordByIdQuery {Id = id}, cts);
             return Ok(result);
         }
 
@@ -56,6 +58,7 @@ namespace SomeStore.Controllers
         }
 
         [HttpPut("markAsSold/{id:guid}",  Name = "MarkAsSold")]
+        [ProducesResponseType(typeof(Unit), StatusCodes.Status204NoContent)]
         public async Task<NoContentResult> RecordMarkAsSold([FromRoute]Guid id, CancellationToken cts)
         {
             await _mediator.Send(new RecordMarkAsSoldQuery {Id = id}, cts);
