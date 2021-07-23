@@ -14,4 +14,4 @@ Here I've used:
 Plans:
  - Adding one more controller: Sellers and integrating it with Records (reference by id)
  - Adding auth using OAuth 2.0
- - Docker support
+ - Caching requests

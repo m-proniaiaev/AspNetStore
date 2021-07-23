@@ -26,6 +26,12 @@ ProjectSection(SolutionItems) = preProject
 	Deploy\Mongo\mongo.run.ps1 = Deploy\Mongo\mongo.run.ps1
 EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StoreService", "StoreService", "{0E6AA4A2-2954-4AC6-B235-0378351F3959}"
+ProjectSection(SolutionItems) = preProject
+	Deploy\StoreService\store.run.ps1 = Deploy\StoreService\store.run.ps1
+	Deploy\StoreService\docker-compose.store.yml = Deploy\StoreService\docker-compose.store.yml
+EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,5 +75,6 @@ Global
 		{E59296CA-79D0-4223-92D6-F25924D3EA1A} = {E6AC06A8-0C71-4869-8CE1-BF9175FA2447}
 		{DB81960E-D531-4F6A-9A2F-E889BF437D41} = {8F740DB6-3882-43E1-8FA8-EA4609764078}
 		{A224770C-B6B7-4321-91B8-3F911CB29947} = {F6323BFB-A8F2-46AA-8784-212C7A9D984C}
+		{0E6AA4A2-2954-4AC6-B235-0378351F3959} = {F6323BFB-A8F2-46AA-8784-212C7A9D984C}
 	EndGlobalSection
 EndGlobal

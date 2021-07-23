@@ -12,7 +12,7 @@ services:
   mongo:
     image: mongo:4.4.4-bionic
     container_name: "aspnet-store-mongo"
-    hostname: "storeMongo"
+    hostname: storeMongo
     restart: always
     ports:
       - "27017:27017"
