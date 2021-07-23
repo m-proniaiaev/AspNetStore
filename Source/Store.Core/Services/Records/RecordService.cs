@@ -6,7 +6,7 @@ using Store.Contracts.Interfaces;
 using Store.Contracts.Models;
 using Store.Database.Database;
 
-namespace Store.Core.Services
+namespace Store.Core.Services.Records
 {
     public class RecordService : IRecordService
     {

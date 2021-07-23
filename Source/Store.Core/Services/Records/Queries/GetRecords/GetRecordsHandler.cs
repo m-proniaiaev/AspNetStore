@@ -4,13 +4,15 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Store.Contracts.Interfaces;
+using Store.Contracts.Responses;
+using Store.Core.Services.Records.Queries.GetRecords.Helpers;
 
-namespace Store.Core.Handlers.GetRecords
+namespace Store.Core.Services.Records.Queries.GetRecords
 {
     public class GetRecordsHandler : IRequestHandler<GetRecordsQuery, GetRecordsResponse>
     {
         private readonly IRecordService _recordService;
-        
+
         public GetRecordsHandler(IRecordService service)
         {
             _recordService = service;
@@ -19,21 +21,25 @@ namespace Store.Core.Handlers.GetRecords
         public async Task<GetRecordsResponse> Handle(GetRecordsQuery request, CancellationToken cancellationToken)
         {
             var records = await _recordService.GetRecords();
-
+            
             if (records == null)
                 throw new Exception("No records in database!");
+
+            var recordsQuery = records.AsQueryable();
+            recordsQuery = recordsQuery
+                .FilterBySoldStatus(request.IsSold)
+                .FilterByName(request.Name)
+                .FilterByPrice(request.Price)
+                .FilterByCreated(request.CreatedFrom, request.CreatedTo)
+                .FilterBySold(request.SoldFrom, request.SoldTo);
             
-            //TODO move to queryable filtering helpers
-            if (request.IsSold.HasValue)
-                    records = request.IsSold.Value
-                    ? records.Select(x => x).Where(x => x.IsSold).ToList()
-                    : records.Select(x => x).Where(x => x.IsSold != true).ToList();
 
-
+            recordsQuery = recordsQuery.SortBy(request.SortBy, request.SortOrder);
+           
             var response = new GetRecordsResponse
             {
-                Records = records,
-                RecordCount = records.Count
+                Records = recordsQuery.ToList(),
+                RecordCount = recordsQuery.Count()
             };
             
             return response;

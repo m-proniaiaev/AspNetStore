@@ -1,7 +1,7 @@
 using FluentValidation;
-using Store.Core.Handlers.UpdateRecord;
+using Store.Core.Services.Records.Queries.UpdateRecord;
 
-namespace Store.Core.Common.CommandValidation
+namespace Store.Core.Common.Validations.CommandValidation.Records
 {
     public class UpdateRecordQueryValidator : AbstractValidator<UpdateRecordQuery>
     {

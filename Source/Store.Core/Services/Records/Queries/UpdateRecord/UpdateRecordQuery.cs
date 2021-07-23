@@ -5,7 +5,7 @@ using MediatR;
 using Store.Contracts.Interfaces;
 using Store.Contracts.Models;
 
-namespace Store.Core.Handlers.UpdateRecord
+namespace Store.Core.Services.Records.Queries.UpdateRecord
 {
     public class UpdateRecordQuery : IRequest<Record>
     {

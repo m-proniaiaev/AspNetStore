@@ -5,7 +5,7 @@ using MediatR;
 using Store.Contracts.Interfaces;
 using Store.Contracts.Models;
 
-namespace Store.Core.Handlers.CreateRecord
+namespace Store.Core.Services.Records.Queries.CreateRecord
 {
     public class CreateRecordQuery : IRequest<Record>
     {

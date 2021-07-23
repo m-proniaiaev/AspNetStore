@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Store.Contracts.Interfaces;
 
-namespace Store.Core.Handlers.DeleteRecord
+namespace Store.Core.Services.Records.Queries.DeleteRecord
 {
     public class DeleteRecordQuery : IRequest
     {
