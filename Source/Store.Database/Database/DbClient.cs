@@ -7,7 +7,7 @@ namespace Store.Database.Database
     public class DbClient : IDbClient
     {
         private readonly IMongoCollection<Record> _records;
-        public DbClient(IOptions<RecordDbConfig> recordDbConfig)
+        public DbClient(IOptions<DbConfig> recordDbConfig)
         {
             var client = new MongoClient(recordDbConfig.Value.CONNECTION_STRING);
             var db = client.GetDatabase(recordDbConfig.Value.DbName);

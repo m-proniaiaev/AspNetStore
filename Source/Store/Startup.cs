@@ -23,7 +23,7 @@ namespace SomeStore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IDbClient, DbClient>();
-            services.Configure<RecordDbConfig>(Configuration);
+            services.Configure<DbConfig>(Configuration);
             services.AddCoreServices();
             services.AddConfiguredControllers();
             services.AddSwaggerGen(c =>
