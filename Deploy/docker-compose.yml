@@ -29,6 +29,6 @@ services:
     ports:
       - "1337:80"
     environment:
-      "ConnectionString": mongodb://aspnet-store-mongo:27017
+      "DbConfig__ConnectionString": mongodb://aspnet-store-mongo:27017
     depends_on: 
       - mongo
