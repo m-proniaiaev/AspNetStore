@@ -9,7 +9,7 @@ namespace Store.Database.Database
         private readonly IMongoCollection<Record> _records;
         public DbClient(IOptions<DbConfig> recordDbConfig)
         {
-            var client = new MongoClient(recordDbConfig.Value.CONNECTION_STRING);
+            var client = new MongoClient(recordDbConfig.Value.ConnectionString);
             var db = client.GetDatabase(recordDbConfig.Value.DbName);
             _records = db.GetCollection<Record>(recordDbConfig.Value.RecordCollectionName);
         }

@@ -19,6 +19,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Tests.Common", "Tests\Store.Tests.Common\Store.Tests.Common.csproj", "{DB81960E-D531-4F6A-9A2F-E889BF437D41}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deploy", "Deploy", "{F6323BFB-A8F2-46AA-8784-212C7A9D984C}"
+ProjectSection(SolutionItems) = preProject
+	Deploy\docker-compose.yml = Deploy\docker-compose.yml
+	Deploy\run.ps1 = Deploy\run.ps1
+	Deploy\run.sh = Deploy\run.sh
+EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mongo", "Mongo", "{A224770C-B6B7-4321-91B8-3F911CB29947}"
 ProjectSection(SolutionItems) = preProject

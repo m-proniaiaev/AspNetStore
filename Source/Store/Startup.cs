@@ -38,11 +38,12 @@ namespace SomeStore
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SomeStore v1"));
             }
             
             app.UseExtensions();
+            
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SomeStore v1"));
             
             app.UseHttpsRedirection();
             

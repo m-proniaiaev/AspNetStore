@@ -6,6 +6,7 @@ using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
@@ -46,6 +47,13 @@ namespace Store.Extensions
             {
                 options.SuppressModelStateInvalidFilter = true;
             });
+
+            services.AddLogging(configure =>
+            {
+                configure.AddDebug();
+                configure.AddConsole();
+            });
+            
             return services;
         }
     }

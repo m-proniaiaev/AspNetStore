@@ -4,11 +4,24 @@ networks:
   default:
     name: some-store-network
     
+volumes:
+  database:
+
 services:
+  mongo:
+    image: mongo:4.4.4-bionic
+    container_name: "aspnet-store-mongo"
+    hostname: aspnet-store-mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - database:/data/db
+
   aspnet_store:
     image: aspnet_store:dev
     build:
-      context: ../../
+      context: ../
       dockerfile: ./Source/Store/Dockerfile
     container_name: aspnet_store
     hostname: aspnet_store
@@ -17,5 +30,5 @@ services:
       - "1337:80"
     environment:
       "ConnectionString": mongodb://aspnet-store-mongo:27017
-
-
+    depends_on: 
+      - mongo

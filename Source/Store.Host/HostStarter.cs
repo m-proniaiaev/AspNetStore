@@ -38,8 +38,10 @@ namespace Store.Host
             try
             {
                 Log.Information("Starting service...");
+                
                 var webHost = Builder.CreateHostBuilder<T>(args, Log.Logger).Build();
                 webHost.Run();
+                
                 Log.Information("Service stopped.");
                 Log.CloseAndFlush();
                 return 0;

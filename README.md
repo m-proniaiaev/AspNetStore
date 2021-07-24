@@ -1,5 +1,7 @@
 # SomeAspNetProject
 sample asp.net core project with swagger &amp;&amp; mongo, using common practices. 
+For checkout please run {project}/Deploy/run.ps1(.sh).
+ Then go to http://localhost:1337/swagger/index.html
 
 Here I've used: 
 
