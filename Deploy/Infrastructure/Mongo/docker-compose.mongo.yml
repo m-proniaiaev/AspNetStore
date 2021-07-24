@@ -7,12 +7,11 @@ networks:
 volumes:
   database:
 
-
 services:
   mongo:
     image: mongo:4.4.4-bionic
     container_name: "aspnet-store-mongo"
-    hostname: storeMongo
+    hostname: aspnet-store-mongo
     restart: always
     ports:
       - "27017:27017"

@@ -25,17 +25,25 @@ ProjectSection(SolutionItems) = preProject
 	Deploy\run.sh = Deploy\run.sh
 EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mongo", "Mongo", "{A224770C-B6B7-4321-91B8-3F911CB29947}"
-ProjectSection(SolutionItems) = preProject
-	Deploy\Mongo\docker-compose.mongo.yml = Deploy\Mongo\docker-compose.mongo.yml
-	Deploy\Mongo\mongo.run.ps1 = Deploy\Mongo\mongo.run.ps1
-EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StoreService", "StoreService", "{0E6AA4A2-2954-4AC6-B235-0378351F3959}"
 ProjectSection(SolutionItems) = preProject
 	Deploy\StoreService\store.run.ps1 = Deploy\StoreService\store.run.ps1
 	Deploy\StoreService\docker-compose.store.yml = Deploy\StoreService\docker-compose.store.yml
 	Deploy\StoreService\store.run.sh = Deploy\StoreService\store.run.sh
+EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastrucrure", "Infrastrucrure", "{2A0BF293-EF28-4527-AF9C-22D4AD1B5B03}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mongo", "Mongo", "{35963910-3427-4B73-82C9-7E0DCFF307AB}"
+ProjectSection(SolutionItems) = preProject
+	Deploy\Infrastructure\Mongo\docker-compose.mongo.yml = Deploy\Infrastructure\Mongo\docker-compose.mongo.yml
+	Deploy\Infrastructure\Mongo\mongo.run.ps1 = Deploy\Infrastructure\Mongo\mongo.run.ps1
+EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Redis", "Redis", "{2F1338D8-25CB-478A-A030-DBAE250ABF29}"
+ProjectSection(SolutionItems) = preProject
+	Deploy\Infrastructure\Redis\docker-compose.redis.yml = Deploy\Infrastructure\Redis\docker-compose.redis.yml
+	Deploy\Infrastructure\Redis\redis.run.ps1 = Deploy\Infrastructure\Redis\redis.run.ps1
 EndProjectSection
 EndProject
 Global
@@ -80,7 +88,9 @@ Global
 		{52B24363-0E73-4773-BC07-790118E57F44} = {E6AC06A8-0C71-4869-8CE1-BF9175FA2447}
 		{E59296CA-79D0-4223-92D6-F25924D3EA1A} = {E6AC06A8-0C71-4869-8CE1-BF9175FA2447}
 		{DB81960E-D531-4F6A-9A2F-E889BF437D41} = {8F740DB6-3882-43E1-8FA8-EA4609764078}
-		{A224770C-B6B7-4321-91B8-3F911CB29947} = {F6323BFB-A8F2-46AA-8784-212C7A9D984C}
 		{0E6AA4A2-2954-4AC6-B235-0378351F3959} = {F6323BFB-A8F2-46AA-8784-212C7A9D984C}
+		{2A0BF293-EF28-4527-AF9C-22D4AD1B5B03} = {F6323BFB-A8F2-46AA-8784-212C7A9D984C}
+		{35963910-3427-4B73-82C9-7E0DCFF307AB} = {2A0BF293-EF28-4527-AF9C-22D4AD1B5B03}
+		{2F1338D8-25CB-478A-A030-DBAE250ABF29} = {2A0BF293-EF28-4527-AF9C-22D4AD1B5B03}
 	EndGlobalSection
 EndGlobal
