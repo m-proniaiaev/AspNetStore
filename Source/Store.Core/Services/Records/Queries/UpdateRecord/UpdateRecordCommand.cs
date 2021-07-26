@@ -7,7 +7,7 @@ using Store.Contracts.Models;
 
 namespace Store.Core.Services.Records.Queries.UpdateRecord
 {
-    public class UpdateRecordCommand : IRequest<Record>
+    public class UpdateRecordCommand : IRequest<Record>, IEntity
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

@@ -37,7 +37,7 @@ namespace SomeStore.Controllers
         [ProducesResponseType(typeof(Record), StatusCodes.Status200OK)]
         public async Task<ActionResult<Record>> GetRecord([FromRoute] Guid id, CancellationToken cts)
         {
-            var result = await _mediator.Send(new GetRecordByIdQuery {Id = id}, cts);
+            var result = await _mediator.Send(new GetByIdQuery {Id = id}, cts);
             return Ok(result);
         }
 
@@ -61,7 +61,7 @@ namespace SomeStore.Controllers
         [ProducesResponseType(typeof(Unit), StatusCodes.Status204NoContent)]
         public async Task<NoContentResult> RecordMarkAsSold([FromRoute]Guid id, CancellationToken cts)
         {
-            await _mediator.Send(new RecordMarkAsSoldCommand {Id = id}, cts);
+            await _mediator.Send(new MarkAsSoldCommand {Id = id}, cts);
             return NoContent();
         }
         
@@ -69,7 +69,7 @@ namespace SomeStore.Controllers
         [ProducesResponseType(typeof(Unit), StatusCodes.Status204NoContent)]
         public async Task<ActionResult> DeleteRecord([FromRoute] Guid id, CancellationToken cts)
         {
-            await _mediator.Send(new DeleteRecordCommand{ Id = id}, cts);
+            await _mediator.Send(new DeleteCommand{ Id = id}, cts);
             return NoContent();
         }
     }

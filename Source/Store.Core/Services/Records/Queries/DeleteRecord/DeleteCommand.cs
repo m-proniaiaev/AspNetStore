@@ -6,12 +6,12 @@ using Store.Contracts.Interfaces;
 
 namespace Store.Core.Services.Records.Queries.DeleteRecord
 {
-    public class DeleteRecordCommand : IRequest
+    public class DeleteCommand : IRequest, IIdentity
     {
         public Guid Id { get; set; }
     }
     
-    public class DeleteRecordCommandHandler : IRequestHandler<DeleteRecordCommand>
+    public class DeleteRecordCommandHandler : IRequestHandler<DeleteCommand>
     {
         private readonly IRecordService _recordService;
 
@@ -19,7 +19,7 @@ namespace Store.Core.Services.Records.Queries.DeleteRecord
         {
             _recordService = recordService;
         }
-        public async Task<Unit> Handle(DeleteRecordCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(DeleteCommand request, CancellationToken cancellationToken)
         {
             var record = await _recordService.GetRecord(request.Id);
 

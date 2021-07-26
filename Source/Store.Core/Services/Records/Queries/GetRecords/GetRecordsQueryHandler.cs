@@ -29,6 +29,7 @@ namespace Store.Core.Services.Records.Queries.GetRecords
             recordsQuery = recordsQuery
                 .FilterBySoldStatus(request.IsSold)
                 .FilterByName(request.Name)
+                .FilterBySeller(request.Seller)
                 .FilterByPrice(request.Price)
                 .FilterByCreated(request.CreatedFrom, request.CreatedTo)
                 .FilterBySold(request.SoldFrom, request.SoldTo);

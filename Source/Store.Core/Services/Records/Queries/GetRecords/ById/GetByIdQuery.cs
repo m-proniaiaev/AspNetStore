@@ -7,12 +7,12 @@ using Store.Contracts.Models;
 
 namespace Store.Core.Services.Records.Queries.GetRecords.ById
 {
-    public class GetRecordByIdQuery : IRequest<Record>
+    public class GetByIdQuery : IRequest<Record>, IIdentity
     {
         public Guid Id { get; set; }
     }
 
-    public class GetRecordsQueryHandler : IRequestHandler<GetRecordByIdQuery, Record>
+    public class GetRecordsQueryHandler : IRequestHandler<GetByIdQuery, Record>
     {
         private readonly IRecordService _recordService;
         
@@ -20,7 +20,7 @@ namespace Store.Core.Services.Records.Queries.GetRecords.ById
         {
             _recordService = service;
         }
-        public async Task<Record> Handle(GetRecordByIdQuery request, CancellationToken cancellationToken)
+        public async Task<Record> Handle(GetByIdQuery request, CancellationToken cancellationToken)
         {
             var result = await _recordService.GetRecord(request.Id);
             if (result == null)
