@@ -6,15 +6,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{E6AC06A8-0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Core", "Source\Store.Core\Store.Core.csproj", "{19843E21-A39C-4367-BD6E-BF532B7CA20D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Contracts", "Source\Store.Contracts\Store.Contracts.csproj", "{C3E58898-1ACE-4B56-ABD8-9496ADF7B54B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Core.Contracts", "Source\Store.Core.Contracts\Store.Core.Contracts.csproj", "{C3E58898-1ACE-4B56-ABD8-9496ADF7B54B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8F740DB6-3882-43E1-8FA8-EA4609764078}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Database", "Source\Store.Database\Store.Database.csproj", "{9D028137-2B73-465E-9BE1-59874FDC25F3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Core.Database", "Source\Store.Core.Database\Store.Core.Database.csproj", "{9D028137-2B73-465E-9BE1-59874FDC25F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Host", "Source\Store.Host\Store.Host.csproj", "{52B24363-0E73-4773-BC07-790118E57F44}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Core.Host", "Source\Store.Core.Host\Store.Core.Host.csproj", "{52B24363-0E73-4773-BC07-790118E57F44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Extensions", "Source\Store.Extensions\Store.Extensions.csproj", "{E59296CA-79D0-4223-92D6-F25924D3EA1A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Core.Extensions", "Source\Store.Core.Extensions\Store.Core.Extensions.csproj", "{E59296CA-79D0-4223-92D6-F25924D3EA1A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Tests.Common", "Tests\Store.Tests.Common\Store.Tests.Common.csproj", "{DB81960E-D531-4F6A-9A2F-E889BF437D41}"
 EndProject

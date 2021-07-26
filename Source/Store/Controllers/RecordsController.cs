@@ -59,7 +59,7 @@ namespace SomeStore.Controllers
 
         [HttpPut("markAsSold/{id:guid}",  Name = "MarkAsSold")]
         [ProducesResponseType(typeof(Unit), StatusCodes.Status204NoContent)]
-        public async Task<NoContentResult> RecordMarkAsSold([FromRoute]Guid id, CancellationToken cts)
+        public async Task<NoContentResult> RecordMarkAsSold([FromRoute] Guid id, CancellationToken cts)
         {
             await _mediator.Send(new MarkAsSoldCommand {Id = id}, cts);
             return NoContent();

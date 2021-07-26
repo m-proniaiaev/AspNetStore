@@ -3,6 +3,7 @@
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
         <Nullable>enable</Nullable>
+        <RootNamespace>Store.Host</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -15,7 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Store.Extensions\Store.Extensions.csproj" />
+      <ProjectReference Include="..\Store.Core.Extensions\Store.Core.Extensions.csproj" />
     </ItemGroup>
 
 </Project>

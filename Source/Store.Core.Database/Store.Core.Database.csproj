@@ -3,6 +3,7 @@
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
         <Nullable>enable</Nullable>
+        <RootNamespace>Store.Database</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -14,7 +15,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Store.Contracts\Store.Contracts.csproj" />
+      <ProjectReference Include="..\Store.Core.Contracts\Store.Core.Contracts.csproj" />
     </ItemGroup>
 
 </Project>
