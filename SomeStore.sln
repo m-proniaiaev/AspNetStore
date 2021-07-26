@@ -20,7 +20,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Tests.Common", "Tests
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deploy", "Deploy", "{F6323BFB-A8F2-46AA-8784-212C7A9D984C}"
 ProjectSection(SolutionItems) = preProject
-	Deploy\docker-compose.yml = Deploy\docker-compose.yml
 	Deploy\run.ps1 = Deploy\run.ps1
 	Deploy\run.sh = Deploy\run.sh
 EndProjectSection
@@ -32,7 +31,7 @@ ProjectSection(SolutionItems) = preProject
 	Deploy\StoreService\store.run.sh = Deploy\StoreService\store.run.sh
 EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastrucrure", "Infrastrucrure", "{2A0BF293-EF28-4527-AF9C-22D4AD1B5B03}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{2A0BF293-EF28-4527-AF9C-22D4AD1B5B03}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mongo", "Mongo", "{35963910-3427-4B73-82C9-7E0DCFF307AB}"
 ProjectSection(SolutionItems) = preProject
