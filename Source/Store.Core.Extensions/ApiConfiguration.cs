@@ -10,9 +10,9 @@ using Microsoft.Extensions.Logging;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
-using Store.Extensions.Exceptions;
+using Store.Core.Extensions.Exceptions;
 
-namespace Store.Extensions
+namespace Store.Core.Extensions
 {
     public static class ApiConfiguration
     {

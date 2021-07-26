@@ -1,5 +1,5 @@
 using System;
-using Store.Host;
+using Store.Core.Host;
 
 namespace SomeStore
 {

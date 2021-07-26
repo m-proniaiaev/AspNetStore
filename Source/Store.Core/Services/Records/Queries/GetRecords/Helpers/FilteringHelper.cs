@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 using MongoDB.Driver.Linq;
-using Store.Contracts.Models;
+using Store.Core.Contracts.Models;
 
 namespace Store.Core.Services.Records.Queries.GetRecords.Helpers
 {

@@ -1,4 +1,4 @@
-namespace Store.Extensions.Exceptions
+namespace Store.Core.Extensions.Exceptions
 {
     public class ExceptionModel
     {

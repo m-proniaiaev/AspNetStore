@@ -1,6 +1,6 @@
 using System;
 
-namespace Store.Contracts.Interfaces
+namespace Store.Core.Contracts.Interfaces
 {
     public interface IAuditable
     {

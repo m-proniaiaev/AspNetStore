@@ -5,7 +5,7 @@ using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 
-namespace Store.Extensions.Exceptions
+namespace Store.Core.Extensions.Exceptions
 {
     public class ExceptionMiddleware
     {

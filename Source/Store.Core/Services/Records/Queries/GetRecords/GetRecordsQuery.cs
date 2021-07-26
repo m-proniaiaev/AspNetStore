@@ -1,7 +1,7 @@
 using System;
 using MediatR;
-using Store.Contracts.Enums;
-using Store.Contracts.Responses;
+using Store.Core.Contracts.Enums;
+using Store.Core.Contracts.Responses;
 using Store.Core.Services.Records.Queries.GetRecords.Helpers;
 
 namespace Store.Core.Services.Records.Queries.GetRecords

@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
         <Nullable>enable</Nullable>
-        <RootNamespace>Store.Host</RootNamespace>
+        <RootNamespace>Store.Core.Host</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
-        <RootNamespace>Store.Contracts</RootNamespace>
+        <RootNamespace>Store.Core.Contracts</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

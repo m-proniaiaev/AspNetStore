@@ -1,7 +1,7 @@
 using System;
 using System.Threading;
 
-namespace Store.Extensions.CorrelationIdMiddleware
+namespace Store.Core.Extensions.CorrelationIdMiddleware
 {
     public static class CorrelationProcessor
     {

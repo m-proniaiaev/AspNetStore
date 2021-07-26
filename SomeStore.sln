@@ -46,6 +46,8 @@ ProjectSection(SolutionItems) = preProject
 	Deploy\Infrastructure\Redis\redis.run.ps1 = Deploy\Infrastructure\Redis\redis.run.ps1
 EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Core.Cache", "Source\Store.Core.Cache\Store.Core.Cache.csproj", "{43F0AED5-88A3-4AC9-A1B2-D76C504E0782}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -80,6 +82,10 @@ Global
 		{DB81960E-D531-4F6A-9A2F-E889BF437D41}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB81960E-D531-4F6A-9A2F-E889BF437D41}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB81960E-D531-4F6A-9A2F-E889BF437D41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43F0AED5-88A3-4AC9-A1B2-D76C504E0782}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43F0AED5-88A3-4AC9-A1B2-D76C504E0782}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43F0AED5-88A3-4AC9-A1B2-D76C504E0782}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43F0AED5-88A3-4AC9-A1B2-D76C504E0782}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{19843E21-A39C-4367-BD6E-BF532B7CA20D} = {E6AC06A8-0C71-4869-8CE1-BF9175FA2447}
@@ -92,5 +98,6 @@ Global
 		{2A0BF293-EF28-4527-AF9C-22D4AD1B5B03} = {F6323BFB-A8F2-46AA-8784-212C7A9D984C}
 		{35963910-3427-4B73-82C9-7E0DCFF307AB} = {2A0BF293-EF28-4527-AF9C-22D4AD1B5B03}
 		{2F1338D8-25CB-478A-A030-DBAE250ABF29} = {2A0BF293-EF28-4527-AF9C-22D4AD1B5B03}
+		{43F0AED5-88A3-4AC9-A1B2-D76C504E0782} = {E6AC06A8-0C71-4869-8CE1-BF9175FA2447}
 	EndGlobalSection
 EndGlobal

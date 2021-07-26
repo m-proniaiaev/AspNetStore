@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 
-namespace Store.Host
+namespace Store.Core.Host
 {
     public static class Builder
     {

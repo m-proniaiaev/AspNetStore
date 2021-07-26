@@ -3,9 +3,9 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Serilog;
-using Store.Extensions.Logging;
+using Store.Core.Extensions.Logging;
 
-namespace Store.Host
+namespace Store.Core.Host
 {
     public static class HostStarter
     {

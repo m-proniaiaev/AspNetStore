@@ -2,8 +2,8 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using Store.Contracts.Interfaces;
-using Store.Contracts.Models;
+using Store.Core.Contracts.Interfaces;
+using Store.Core.Contracts.Models;
 
 namespace Store.Core.Services.Records.Queries.UpdateRecord
 {

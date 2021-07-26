@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using Store.Contracts.Models;
+using Store.Core.Contracts.Models;
 
-namespace Store.Contracts.Responses
+namespace Store.Core.Contracts.Responses
 {
     public class GetRecordsResponse
     {

@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Store.Contracts.Models;
+using Store.Core.Contracts.Models;
 
-namespace Store.Contracts.Interfaces
+namespace Store.Core.Contracts.Interfaces
 {
     public interface IRecordService
     {

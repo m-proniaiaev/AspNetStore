@@ -1,4 +1,4 @@
-namespace Store.Database.Database
+namespace Store.Core.Database.Database
 {
     public class DbConfig
     {

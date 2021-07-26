@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Serilog.Context;
 
-namespace Store.Extensions.CorrelationIdMiddleware
+namespace Store.Core.Extensions.CorrelationIdMiddleware
 {
     public class CorrelationMiddleware
     {

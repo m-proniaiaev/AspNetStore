@@ -1,8 +1,8 @@
 using System;
 using System.Linq;
-using Store.Contracts.Enums;
-using Store.Contracts.Models;
 using Store.Core.Common;
+using Store.Core.Contracts.Enums;
+using Store.Core.Contracts.Models;
 
 namespace Store.Core.Services.Records.Queries.GetRecords.Helpers
 {

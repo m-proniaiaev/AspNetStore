@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Builder;
-using Store.Extensions.CorrelationIdMiddleware;
-using Store.Extensions.Exceptions;
+using Store.Core.Extensions.CorrelationIdMiddleware;
+using Store.Core.Extensions.Exceptions;
 
-namespace Store.Extensions
+namespace Store.Core.Extensions
 {
     public static class DependencyInjection
     {

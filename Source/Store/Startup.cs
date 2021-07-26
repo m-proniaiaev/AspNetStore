@@ -5,9 +5,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Store.Core;
-using Store.Database;
-using Store.Database.Database;
-using Store.Extensions;
+using Store.Core.Database;
+using Store.Core.Extensions;
 
 namespace SomeStore
 {

@@ -1,4 +1,4 @@
-namespace Store.Contracts.Enums
+namespace Store.Core.Contracts.Enums
 {
     public enum SortOrder
     {

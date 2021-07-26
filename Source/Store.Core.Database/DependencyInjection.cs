@@ -1,8 +1,8 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Store.Database.Database;
+using Store.Core.Database.Database;
 
-namespace Store.Database
+namespace Store.Core.Database
 {
     public static class DependencyInjection
     {

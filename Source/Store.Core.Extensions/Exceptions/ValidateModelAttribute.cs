@@ -4,8 +4,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Newtonsoft.Json.Linq;
 
-
-namespace Store.Extensions.Exceptions
+namespace Store.Core.Extensions.Exceptions
 {
     public class ValidateModelAttribute : ActionFilterAttribute
     {
