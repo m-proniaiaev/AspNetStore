@@ -6,12 +6,12 @@ For checkout please run {project}/Deploy/run.ps1(.sh).
 Here I've used: 
 
     - Dependency injection (Constructor injection)
-    - MediatR pattern for handling async api requests
-    - Work with MongoDb
-    - Fluent validation for checking request commands 
+    - CQRS via Mediator pattern (MediatR)
+    - CRUD with MongoDb
+    - Fluent validation for validating request models
     - Middleware to handle runtime and validation exceptions
-    - Request are parametrized with queryable filtering
-    - Unit tests with Xunit
+    - Requests are parametrized and extended with queryable filtering
+    - Unit tests are done with Xunit
 
 Plans:
  - Adding one more controller: Sellers and integrating it with Records (reference by id)

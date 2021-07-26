@@ -6,20 +6,20 @@ using Store.Contracts.Interfaces;
 
 namespace Store.Core.Services.Records.Queries.DeleteRecord
 {
-    public class DeleteRecordQuery : IRequest
+    public class DeleteRecordCommand : IRequest
     {
         public Guid Id { get; set; }
     }
     
-    public class DeleteRecordQueryHandler : IRequestHandler<DeleteRecordQuery>
+    public class DeleteRecordCommandHandler : IRequestHandler<DeleteRecordCommand>
     {
         private readonly IRecordService _recordService;
 
-        public DeleteRecordQueryHandler(IRecordService recordService)
+        public DeleteRecordCommandHandler(IRecordService recordService)
         {
             _recordService = recordService;
         }
-        public async Task<Unit> Handle(DeleteRecordQuery request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(DeleteRecordCommand request, CancellationToken cancellationToken)
         {
             var record = await _recordService.GetRecord(request.Id);
 

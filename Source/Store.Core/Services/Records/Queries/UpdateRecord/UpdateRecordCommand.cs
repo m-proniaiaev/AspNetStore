@@ -7,7 +7,7 @@ using Store.Contracts.Models;
 
 namespace Store.Core.Services.Records.Queries.UpdateRecord
 {
-    public class UpdateRecordQuery : IRequest<Record>
+    public class UpdateRecordCommand : IRequest<Record>
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
@@ -15,16 +15,16 @@ namespace Store.Core.Services.Records.Queries.UpdateRecord
         public bool IsSold { get; set; }
     }
     
-    public class UpdateRecordHandler : IRequestHandler<UpdateRecordQuery, Record>
+    public class UpdateRecordCommandHandler : IRequestHandler<UpdateRecordCommand, Record>
     {
         private readonly IRecordService _recordService;
 
-        public UpdateRecordHandler(IRecordService recordService)
+        public UpdateRecordCommandHandler(IRecordService recordService)
         {
             _recordService = recordService;
         }
         
-        public async Task<Record> Handle(UpdateRecordQuery request, CancellationToken cancellationToken)
+        public async Task<Record> Handle(UpdateRecordCommand request, CancellationToken cancellationToken)
         {
             var record = await _recordService.GetRecord(request.Id);
             

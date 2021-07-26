@@ -6,20 +6,20 @@ using Store.Contracts.Interfaces;
 
 namespace Store.Core.Services.Records.Queries.UpdateRecord
 {
-    public class RecordMarkAsSoldQuery : IRequest
+    public class RecordMarkAsSoldCommand : IRequest
     {
         public Guid Id { get; set; }
     }
     
-    public class RecordMarkAsSoldQueryHandler : IRequestHandler<RecordMarkAsSoldQuery>
+    public class RecordMarkAsSoldCommandHandler : IRequestHandler<RecordMarkAsSoldCommand>
     {
         private readonly IRecordService _recordService;
 
-        public RecordMarkAsSoldQueryHandler(IRecordService recordService)
+        public RecordMarkAsSoldCommandHandler(IRecordService recordService)
         {
             _recordService = recordService;
         }
-        public async Task<Unit> Handle(RecordMarkAsSoldQuery request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(RecordMarkAsSoldCommand request, CancellationToken cancellationToken)
         {
             var record = await _recordService.GetRecord(request.Id);
 

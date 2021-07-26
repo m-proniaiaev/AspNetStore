@@ -9,11 +9,11 @@ using Store.Core.Services.Records.Queries.GetRecords.Helpers;
 
 namespace Store.Core.Services.Records.Queries.GetRecords
 {
-    public class GetRecordsHandler : IRequestHandler<GetRecordsQuery, GetRecordsResponse>
+    public class GetRecordsQueryHandler : IRequestHandler<GetRecordsQuery, GetRecordsResponse>
     {
         private readonly IRecordService _recordService;
 
-        public GetRecordsHandler(IRecordService service)
+        public GetRecordsQueryHandler(IRecordService service)
         {
             _recordService = service;
         }

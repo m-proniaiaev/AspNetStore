@@ -43,17 +43,17 @@ namespace SomeStore.Controllers
 
         [HttpPost("addRecord")]
         [ProducesResponseType(typeof(Record), StatusCodes.Status201Created)]
-        public async Task<ActionResult<Record>> AddRecord([FromBody] CreateRecordQuery query, CancellationToken cts)
+        public async Task<ActionResult<Record>> AddRecord([FromBody] CreateRecordCommand command, CancellationToken cts)
         {
-            var result = await _mediator.Send(query, cts);
+            var result = await _mediator.Send(command, cts);
             return result;
         }
 
         [HttpPut("updateRecord")]
         [ProducesResponseType(typeof(Record), StatusCodes.Status200OK)]
-        public async Task<IActionResult> UpdateRecord([FromBody] UpdateRecordQuery query, CancellationToken cts)
+        public async Task<IActionResult> UpdateRecord([FromBody] UpdateRecordCommand command, CancellationToken cts)
         {
-            var result = await _mediator.Send(query, cts);
+            var result = await _mediator.Send(command, cts);
             return Ok(result);
         }
 
@@ -61,7 +61,7 @@ namespace SomeStore.Controllers
         [ProducesResponseType(typeof(Unit), StatusCodes.Status204NoContent)]
         public async Task<NoContentResult> RecordMarkAsSold([FromRoute]Guid id, CancellationToken cts)
         {
-            await _mediator.Send(new RecordMarkAsSoldQuery {Id = id}, cts);
+            await _mediator.Send(new RecordMarkAsSoldCommand {Id = id}, cts);
             return NoContent();
         }
         
@@ -69,7 +69,7 @@ namespace SomeStore.Controllers
         [ProducesResponseType(typeof(Unit), StatusCodes.Status204NoContent)]
         public async Task<ActionResult> DeleteRecord([FromRoute] Guid id, CancellationToken cts)
         {
-            await _mediator.Send(new DeleteRecordQuery{ Id = id}, cts);
+            await _mediator.Send(new DeleteRecordCommand{ Id = id}, cts);
             return NoContent();
         }
     }
