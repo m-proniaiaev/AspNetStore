@@ -5,6 +5,7 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:5.0.102-1-buster-slim AS build
 WORKDIR /src
 COPY ["Source/Store.Core/Store.Core.csproj", "Source/Store.Core/"]
+COPY ["Source/Store.Core.Cache/Store.Core.Cache.csproj", "Source/Store.Core.Cache/"]
 COPY ["Source/Store.Core.Contracts/Store.Contracts.csproj", "Source/Store.Core.Contracts/"]
 COPY ["Source/Store.Core.Database/Store.Database.csproj", "Source/Store.Core.Database/"]
 COPY ["Source/Store.Core.Extensions/Store.Extensions.csproj", "Source/Store.Core.Extensions/"]

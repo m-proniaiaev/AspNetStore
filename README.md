@@ -8,6 +8,7 @@ Here I've used:
     - Dependency injection (Constructor injection)
     - CQRS via Mediator pattern (MediatR)
     - CRUD with MongoDb
+    - Caching with Redis
     - Fluent validation for validating request models
     - Middleware to handle runtime and validation exceptions
     - Requests are parametrized and extended with queryable filtering
@@ -16,4 +17,3 @@ Here I've used:
 Plans:
  - Adding one more controller: Sellers and integrating it with Records (reference by id)
  - Adding auth using OAuth 2.0
- - Caching requests
