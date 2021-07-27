@@ -15,8 +15,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Store.Contracts\Store.Contracts.csproj" />
-      <ProjectReference Include="..\Store.Database\Store.Database.csproj" />
+      <ProjectReference Include="..\Store.Core.Contracts\Store.Core.Contracts.csproj" />
+      <ProjectReference Include="..\Store.Core.Database\Store.Core.Database.csproj" />
     </ItemGroup>
 
 </Project>

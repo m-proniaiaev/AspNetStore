@@ -6,24 +6,22 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{E6AC06A8-0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Core", "Source\Store.Core\Store.Core.csproj", "{19843E21-A39C-4367-BD6E-BF532B7CA20D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Contracts", "Source\Store.Contracts\Store.Contracts.csproj", "{C3E58898-1ACE-4B56-ABD8-9496ADF7B54B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Core.Contracts", "Source\Store.Core.Contracts\Store.Core.Contracts.csproj", "{C3E58898-1ACE-4B56-ABD8-9496ADF7B54B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8F740DB6-3882-43E1-8FA8-EA4609764078}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Database", "Source\Store.Database\Store.Database.csproj", "{9D028137-2B73-465E-9BE1-59874FDC25F3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Core.Database", "Source\Store.Core.Database\Store.Core.Database.csproj", "{9D028137-2B73-465E-9BE1-59874FDC25F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Host", "Source\Store.Host\Store.Host.csproj", "{52B24363-0E73-4773-BC07-790118E57F44}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Core.Host", "Source\Store.Core.Host\Store.Core.Host.csproj", "{52B24363-0E73-4773-BC07-790118E57F44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Extensions", "Source\Store.Extensions\Store.Extensions.csproj", "{E59296CA-79D0-4223-92D6-F25924D3EA1A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Core.Extensions", "Source\Store.Core.Extensions\Store.Core.Extensions.csproj", "{E59296CA-79D0-4223-92D6-F25924D3EA1A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Tests.Common", "Tests\Store.Tests.Common\Store.Tests.Common.csproj", "{DB81960E-D531-4F6A-9A2F-E889BF437D41}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deploy", "Deploy", "{F6323BFB-A8F2-46AA-8784-212C7A9D984C}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mongo", "Mongo", "{A224770C-B6B7-4321-91B8-3F911CB29947}"
 ProjectSection(SolutionItems) = preProject
-	Deploy\Mongo\docker-compose.mongo.yml = Deploy\Mongo\docker-compose.mongo.yml
-	Deploy\Mongo\mongo.run.ps1 = Deploy\Mongo\mongo.run.ps1
+	Deploy\run.ps1 = Deploy\run.ps1
+	Deploy\run.sh = Deploy\run.sh
 EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StoreService", "StoreService", "{0E6AA4A2-2954-4AC6-B235-0378351F3959}"
@@ -32,6 +30,22 @@ ProjectSection(SolutionItems) = preProject
 	Deploy\StoreService\docker-compose.store.yml = Deploy\StoreService\docker-compose.store.yml
 	Deploy\StoreService\store.run.sh = Deploy\StoreService\store.run.sh
 EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{2A0BF293-EF28-4527-AF9C-22D4AD1B5B03}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mongo", "Mongo", "{35963910-3427-4B73-82C9-7E0DCFF307AB}"
+ProjectSection(SolutionItems) = preProject
+	Deploy\Infrastructure\Mongo\docker-compose.mongo.yml = Deploy\Infrastructure\Mongo\docker-compose.mongo.yml
+	Deploy\Infrastructure\Mongo\mongo.run.ps1 = Deploy\Infrastructure\Mongo\mongo.run.ps1
+EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Redis", "Redis", "{2F1338D8-25CB-478A-A030-DBAE250ABF29}"
+ProjectSection(SolutionItems) = preProject
+	Deploy\Infrastructure\Redis\docker-compose.redis.yml = Deploy\Infrastructure\Redis\docker-compose.redis.yml
+	Deploy\Infrastructure\Redis\redis.run.ps1 = Deploy\Infrastructure\Redis\redis.run.ps1
+EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Core.Cache", "Source\Store.Core.Cache\Store.Core.Cache.csproj", "{43F0AED5-88A3-4AC9-A1B2-D76C504E0782}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,6 +81,10 @@ Global
 		{DB81960E-D531-4F6A-9A2F-E889BF437D41}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB81960E-D531-4F6A-9A2F-E889BF437D41}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB81960E-D531-4F6A-9A2F-E889BF437D41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43F0AED5-88A3-4AC9-A1B2-D76C504E0782}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43F0AED5-88A3-4AC9-A1B2-D76C504E0782}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43F0AED5-88A3-4AC9-A1B2-D76C504E0782}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43F0AED5-88A3-4AC9-A1B2-D76C504E0782}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{19843E21-A39C-4367-BD6E-BF532B7CA20D} = {E6AC06A8-0C71-4869-8CE1-BF9175FA2447}
@@ -75,7 +93,10 @@ Global
 		{52B24363-0E73-4773-BC07-790118E57F44} = {E6AC06A8-0C71-4869-8CE1-BF9175FA2447}
 		{E59296CA-79D0-4223-92D6-F25924D3EA1A} = {E6AC06A8-0C71-4869-8CE1-BF9175FA2447}
 		{DB81960E-D531-4F6A-9A2F-E889BF437D41} = {8F740DB6-3882-43E1-8FA8-EA4609764078}
-		{A224770C-B6B7-4321-91B8-3F911CB29947} = {F6323BFB-A8F2-46AA-8784-212C7A9D984C}
 		{0E6AA4A2-2954-4AC6-B235-0378351F3959} = {F6323BFB-A8F2-46AA-8784-212C7A9D984C}
+		{2A0BF293-EF28-4527-AF9C-22D4AD1B5B03} = {F6323BFB-A8F2-46AA-8784-212C7A9D984C}
+		{35963910-3427-4B73-82C9-7E0DCFF307AB} = {2A0BF293-EF28-4527-AF9C-22D4AD1B5B03}
+		{2F1338D8-25CB-478A-A030-DBAE250ABF29} = {2A0BF293-EF28-4527-AF9C-22D4AD1B5B03}
+		{43F0AED5-88A3-4AC9-A1B2-D76C504E0782} = {E6AC06A8-0C71-4869-8CE1-BF9175FA2447}
 	EndGlobalSection
 EndGlobal

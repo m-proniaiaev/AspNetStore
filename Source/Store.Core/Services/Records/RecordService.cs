@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using MongoDB.Driver;
-using Store.Contracts.Interfaces;
-using Store.Contracts.Models;
-using Store.Database.Database;
+using Store.Core.Contracts.Interfaces;
+using Store.Core.Contracts.Models;
+using Store.Core.Database.Database;
 
 namespace Store.Core.Services.Records
 {

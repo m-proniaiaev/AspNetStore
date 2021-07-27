@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <RootNamespace>Store.Core.Contracts</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MongoDB.Bson" Version="2.13.0-beta1" />
+      <PackageReference Include="MongoDB.Driver" Version="2.13.0-beta1" />
+    </ItemGroup>
+
+</Project>

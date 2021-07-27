@@ -10,7 +10,7 @@ namespace Store.Tests.Common
         [Fact]
         public void Price_ShouldTrow_WhenZero()
         {
-            var command = new UpdateRecordQuery
+            var command = new UpdateRecordCommand
             {
                 Price = 0
             };
@@ -22,7 +22,7 @@ namespace Store.Tests.Common
         [Fact]
         public void Price_ShouldTrow_WhenNegative()
         {
-            var command = new UpdateRecordQuery
+            var command = new UpdateRecordCommand
             {
                 Price = -1
             };
@@ -34,7 +34,7 @@ namespace Store.Tests.Common
         [Fact]
         public void Name_ShouldTrow_WhenNull()
         {
-            var command = new UpdateRecordQuery
+            var command = new UpdateRecordCommand
             {
                 Name = null
             };
@@ -46,7 +46,7 @@ namespace Store.Tests.Common
         [Fact]
         public void Name_ShouldTrow_WhenEmpty()
         {
-            var command = new UpdateRecordQuery
+            var command = new UpdateRecordCommand
             {
                 Name = ""
             };
@@ -58,7 +58,7 @@ namespace Store.Tests.Common
         [Fact]
         public void ValidationIsCorrect_WhenData_Filled()
         {
-            var command = new UpdateRecordQuery
+            var command = new UpdateRecordCommand
             {
                 Name = "Eren",
                 Price = 993

@@ -1,0 +1,19 @@
+version: '3.7'
+
+networks:
+  default:
+    name: some-store-network
+
+volumes:
+  redis_data:
+
+services:
+  redis:
+    image: redis
+    container_name: "aspnet_store_redis"
+    hostname: "aspnet_store_redis"
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data

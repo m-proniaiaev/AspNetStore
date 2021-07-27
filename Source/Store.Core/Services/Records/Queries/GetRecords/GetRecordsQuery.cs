@@ -1,7 +1,7 @@
 using System;
 using MediatR;
-using Store.Contracts.Enums;
-using Store.Contracts.Responses;
+using Store.Core.Contracts.Enums;
+using Store.Core.Contracts.Responses;
 using Store.Core.Services.Records.Queries.GetRecords.Helpers;
 
 namespace Store.Core.Services.Records.Queries.GetRecords
@@ -11,6 +11,7 @@ namespace Store.Core.Services.Records.Queries.GetRecords
         public bool? IsSold { get; set; }
         public string Name { get; set; }
         public decimal? Price { get; set; }
+        public string Seller { get; set; }
         public DateTime? CreatedFrom { get; set; }
         public DateTime? CreatedTo { get; set; }
         public DateTime? SoldFrom { get; set; }

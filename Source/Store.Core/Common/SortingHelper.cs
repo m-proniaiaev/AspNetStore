@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using Store.Contracts.Enums;
+using Store.Core.Contracts.Enums;
 
 namespace Store.Core.Common
 {

@@ -3,7 +3,7 @@ using Store.Core.Services.Records.Queries.UpdateRecord;
 
 namespace Store.Core.Common.Validations.CommandValidation.Records
 {
-    public class UpdateRecordQueryValidator : AbstractValidator<UpdateRecordQuery>
+    public class UpdateRecordQueryValidator : AbstractValidator<UpdateRecordCommand>
     {
         public UpdateRecordQueryValidator()
         {

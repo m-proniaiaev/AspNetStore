@@ -3,7 +3,7 @@ using Store.Core.Services.Records.Queries.CreateRecord;
 
 namespace Store.Core.Common.Validations.CommandValidation.Records
 {
-    public class CreateRecordQueryValidator : AbstractValidator<CreateRecordQuery>
+    public class CreateRecordQueryValidator : AbstractValidator<CreateRecordCommand>
     {
         public CreateRecordQueryValidator()
         {

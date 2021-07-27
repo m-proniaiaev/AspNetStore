@@ -1,15 +1,15 @@
 ﻿FROM mcr.microsoft.com/dotnet/aspnet:5.0.2-buster-slim AS base
 WORKDIR /app
 EXPOSE 80
-EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0.102-1-buster-slim AS build
 WORKDIR /src
-COPY ["Source/Store.Contracts/Store.Contracts.csproj", "Source/Store.Contracts/"]
 COPY ["Source/Store.Core/Store.Core.csproj", "Source/Store.Core/"]
-COPY ["Source/Store.Database/Store.Database.csproj", "Source/Store.Database/"]
-COPY ["Source/Store.Extensions/Store.Extensions.csproj", "Source/Store.Extensions/"]
-COPY ["Source/Store.Host/Store.Host.csproj", "Source/Store.Host/"]
+COPY ["Source/Store.Core.Cache/Store.Core.Cache.csproj", "Source/Store.Core.Cache/"]
+COPY ["Source/Store.Core.Contracts/Store.Contracts.csproj", "Source/Store.Core.Contracts/"]
+COPY ["Source/Store.Core.Database/Store.Database.csproj", "Source/Store.Core.Database/"]
+COPY ["Source/Store.Core.Extensions/Store.Extensions.csproj", "Source/Store.Core.Extensions/"]
+COPY ["Source/Store.Core.Host/Store.Host.csproj", "Source/Store.Core.Host/"]
 COPY ["Source/Store/SomeStore.csproj", "Source/Store/"]
 RUN dotnet restore "Source/Store/SomeStore.csproj"
 COPY . .
