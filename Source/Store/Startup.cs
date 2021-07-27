@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Store.Core;
+using Store.Core.Cache;
 using Store.Core.Database;
 using Store.Core.Extensions;
 
@@ -25,6 +26,7 @@ namespace SomeStore
             services.AddStoreMongo(Configuration);
             services.AddCoreServices();
             services.AddConfiguredControllers();
+            services.AddStoreCache(Configuration);
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SomeStore", Version = "v1" });

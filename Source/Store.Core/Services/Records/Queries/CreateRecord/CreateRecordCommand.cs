@@ -25,7 +25,7 @@ namespace Store.Core.Services.Records.Queries.CreateRecord
         
         public async Task<Record> Handle(CreateRecordCommand request, CancellationToken cancellationToken)
         {
-            
+            //TODO check for name and author
             var record = new Record
             {
                 Id = Guid.NewGuid(),
