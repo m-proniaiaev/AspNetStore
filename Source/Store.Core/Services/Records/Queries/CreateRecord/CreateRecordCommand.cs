@@ -17,10 +17,12 @@ namespace Store.Core.Services.Records.Queries.CreateRecord
     public class CreateRecordCommandHandler : IRequestHandler<CreateRecordCommand, Record>
     {
         private readonly IRecordService _recordService;
+        private readonly ICacheService _cacheService;
 
-        public CreateRecordCommandHandler(IRecordService recordService)
+        public CreateRecordCommandHandler(IRecordService recordService, ICacheService cacheService)
         {
             _recordService = recordService;
+            _cacheService = cacheService;
         }
         
         public async Task<Record> Handle(CreateRecordCommand request, CancellationToken cancellationToken)
@@ -36,8 +38,17 @@ namespace Store.Core.Services.Records.Queries.CreateRecord
                 IsSold = false,
                 SoldDate = null
             };
-            
-            return await _recordService.AddRecord(record);
+            await _cacheService.AddCacheAsync(record, TimeSpan.FromMinutes(5), cancellationToken);
+
+            try
+            {
+                return await _recordService.AddRecord(record);
+            }
+            catch (Exception)
+            {
+                await _cacheService.DeleteCacheAsync<Record>(record.Id.ToString(), cancellationToken);
+                throw;
+            }
         }
     }
 }

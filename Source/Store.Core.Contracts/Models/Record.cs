@@ -3,7 +3,7 @@ using Store.Core.Contracts.Interfaces;
 
 namespace Store.Core.Contracts.Models
 {
-    public class Record : IEntity, IAuditable, ISellable
+    public class Record : IEntity, IAuditable, ISellable, IIdentity
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

@@ -17,5 +17,6 @@ services:
       - "1337:80"
     environment:
       "DbConfig__ConnectionString": mongodb://aspnet-store-mongo:27017
+      "CacheOptions__Server": aspnet_store_redis:6379
 
 

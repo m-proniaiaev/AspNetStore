@@ -29,9 +29,9 @@ namespace Store.Core.Cache.Redis
             return JsonConvert.DeserializeObject<TRecord>(cacheItem);
         }
 
-        public Task AddCacheAsync<TRecord>(TRecord model, TimeSpan? expiration, CancellationToken cts = default) where TRecord : IIdentity
+        public Task AddCacheAsync<TRecord>(TRecord model, TimeSpan? expiration = default, CancellationToken cts = default) where TRecord : IIdentity
         {
-            return AddAsyncImpl<TRecord>(model.Id.ToString(), model, default, cts);
+            return AddAsyncImpl<TRecord>(model.Id.ToString(), model, expiration, cts);
         }
 
         public Task DeleteCacheAsync<TRecord>(string id, CancellationToken cts = default)
