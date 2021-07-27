@@ -29,6 +29,7 @@ namespace Store.Core.Services.Records.Queries.GetRecords.ById
             if (cachedRecord != null) return cachedRecord;
             
             var result = await _recordService.GetRecord(request.Id);
+            
             if (result == null)
                 throw new ArgumentException($"Record {request.Id} does not exist!");
 

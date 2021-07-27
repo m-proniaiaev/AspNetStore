@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Caching.Distributed;
@@ -29,9 +30,20 @@ namespace Store.Core.Cache.Redis
             return JsonConvert.DeserializeObject<TRecord>(cacheItem);
         }
 
+        public Task<TRecord> GetCacheAsync<TRecord>(object[] keys, CancellationToken cancellationToken = default)
+        {
+            return GetCacheAsync<TRecord>(GetKeys(keys), cancellationToken);
+        }
+
         public Task AddCacheAsync<TRecord>(TRecord model, TimeSpan? expiration = default, CancellationToken cts = default) where TRecord : IIdentity
         {
             return AddAsyncImpl<TRecord>(model.Id.ToString(), model, expiration, cts);
+        }
+
+        public Task AddCacheAsync<TRecord>(object[] keys, TRecord model, TimeSpan? expiration = default,
+            CancellationToken cancellationToken = default)
+        {
+            return AddAsyncImpl<TRecord>(GetKeys(keys), model, expiration, cancellationToken);
         }
 
         public Task DeleteCacheAsync<TRecord>(string id, CancellationToken cts = default)
@@ -43,6 +55,14 @@ namespace Store.Core.Cache.Redis
         {
             return $"{typeof(TRecord).Name}-{id}";
         }
+        
+        private static string GetKeys(object[] keys)
+        {
+            var strKeys = keys?.Select(x => x.ToString()).ToArray();
+
+            return string.Join('$', strKeys ?? Array.Empty<string>());
+        }
+
         
         private Task AddAsyncImpl<TRecord>(string id, TRecord record, TimeSpan? timeSpan, CancellationToken cts)
         {

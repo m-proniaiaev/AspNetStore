@@ -38,17 +38,13 @@ namespace Store.Core.Services.Records.Queries.CreateRecord
                 IsSold = false,
                 SoldDate = null
             };
-            await _cacheService.AddCacheAsync(record, TimeSpan.FromMinutes(5), cancellationToken);
-
-            try
-            {
-                return await _recordService.AddRecord(record);
-            }
-            catch (Exception)
-            {
-                await _cacheService.DeleteCacheAsync<Record>(record.Id.ToString(), cancellationToken);
-                throw;
-            }
+            
+            var result = await _recordService.AddRecord(record);
+            
+            await _cacheService.AddCacheAsync(result, TimeSpan.FromMinutes(5), cancellationToken);
+            
+            return result;
+            
         }
     }
 }

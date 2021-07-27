@@ -18,6 +18,7 @@ namespace Store.Core.Services.Records.Queries.UpdateRecord
     public class UpdateRecordCommandHandler : IRequestHandler<UpdateRecordCommand, Record>
     {
         private readonly IRecordService _recordService;
+        private readonly ICacheService _cacheService;
 
         public UpdateRecordCommandHandler(IRecordService recordService)
         {
@@ -26,7 +27,9 @@ namespace Store.Core.Services.Records.Queries.UpdateRecord
         
         public async Task<Record> Handle(UpdateRecordCommand request, CancellationToken cancellationToken)
         {
-            var record = await _recordService.GetRecord(request.Id);
+            var cachedRecord = await _cacheService.GetCacheAsync<Record>(request.Id.ToString(), cancellationToken);
+            
+            var record = cachedRecord ?? await _recordService.GetRecord(request.Id);
             
             if (record == null)
                 throw new Exception($"Record {request.Id} is not found!");
@@ -45,7 +48,11 @@ namespace Store.Core.Services.Records.Queries.UpdateRecord
                 SoldDate = DateTime.Now
             };
 
-            return await _recordService.UpdateRecord(updatedRecord);
+            var result = await _recordService.UpdateRecord(updatedRecord);
+            
+            await _cacheService.AddCacheAsync(result, TimeSpan.FromMinutes(5), cancellationToken);
+
+            return result;
         }
     }
 }
