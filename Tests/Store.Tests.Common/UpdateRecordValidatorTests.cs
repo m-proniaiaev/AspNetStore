@@ -1,11 +1,12 @@
 using FluentValidation.TestHelper;
+using Store.Core.Common.Validations;
 using Store.Core.Common.Validations.CommandValidation.Records;
 using Store.Core.Services.Records.Queries.UpdateRecord;
 using Xunit;
 
 namespace Store.Tests.Common
 {
-    public class UpdateRecordsValidatorTests
+    public class UpdateRecordValidatorTests
     {
         [Fact]
         public void Price_ShouldTrow_WhenZero()
@@ -14,11 +15,11 @@ namespace Store.Tests.Common
             {
                 Price = 0
             };
-            var validator = new UpdateRecordQueryValidator();
+            var validator = new UpdateRecordCommandValidator();
             var result = validator.TestValidate(command);
             result.ShouldHaveValidationErrorFor(x => x.Price);
         }
-        
+
         [Fact]
         public void Price_ShouldTrow_WhenNegative()
         {
@@ -26,7 +27,7 @@ namespace Store.Tests.Common
             {
                 Price = -1
             };
-            var validator = new UpdateRecordQueryValidator();
+            var validator = new UpdateRecordCommandValidator();
             var result = validator.TestValidate(command);
             result.ShouldHaveValidationErrorFor(x => x.Price);
         }
@@ -38,7 +39,7 @@ namespace Store.Tests.Common
             {
                 Name = null
             };
-            var validator = new UpdateRecordQueryValidator();
+            var validator = new UpdateRecordCommandValidator();
             var result = validator.TestValidate(command);
             result.ShouldHaveValidationErrorFor(x => x.Name);
         }
@@ -50,7 +51,7 @@ namespace Store.Tests.Common
             {
                 Name = ""
             };
-            var validator = new UpdateRecordQueryValidator();
+            var validator = new UpdateRecordCommandValidator();
             var result = validator.TestValidate(command);
             result.ShouldHaveValidationErrorFor(x => x.Name);
         }
@@ -63,7 +64,7 @@ namespace Store.Tests.Common
                 Name = "Eren",
                 Price = 993
             };
-            var validator = new UpdateRecordQueryValidator();
+            var validator = new UpdateRecordCommandValidator();
             var result = validator.TestValidate(command);
             result.ShouldNotHaveAnyValidationErrors();
         }

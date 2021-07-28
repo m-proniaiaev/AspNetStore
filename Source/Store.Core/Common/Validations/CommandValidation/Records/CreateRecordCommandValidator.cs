@@ -3,9 +3,9 @@ using Store.Core.Services.Records.Queries.CreateRecord;
 
 namespace Store.Core.Common.Validations.CommandValidation.Records
 {
-    public class CreateRecordQueryValidator : AbstractValidator<CreateRecordCommand>
+    public class CreateRecordCommandValidator : AbstractValidator<CreateRecordCommand>
     {
-        public CreateRecordQueryValidator()
+        public CreateRecordCommandValidator()
         {
             RuleFor(x => x.Price)
                 .ValidateRecordPrice();
