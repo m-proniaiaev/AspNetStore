@@ -2,6 +2,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
+using Store.Core.Common.Interfaces;
 using Store.Core.Contracts.Interfaces;
 using Store.Core.Contracts.Models;
 
@@ -10,7 +11,7 @@ namespace Store.Core.Services.Records.Queries.CreateRecord
     public class CreateRecordCommand : IRequest<Record>
     {
         public string Name { get; set; }
-        public string Author { get; set; }
+        public string Seller { get; set; }
         public decimal Price { get; set; }
     }
     
@@ -28,23 +29,14 @@ namespace Store.Core.Services.Records.Queries.CreateRecord
         public async Task<Record> Handle(CreateRecordCommand request, CancellationToken cancellationToken)
         {
             //TODO check for name and author
-            var record = new Record
-            {
-                Id = Guid.NewGuid(),
-                Seller = request.Author,
-                Created = DateTime.Now,
-                Name = request.Name,
-                Price = request.Price,
-                IsSold = false,
-                SoldDate = null
-            };
-            
-            var result = await _recordService.AddRecord(record);
+            var id = Guid.NewGuid();
+            await _recordService.AddRecordAsync(request, id);
+                
+            var result = await _recordService.GetRecord(id);
             
             await _cacheService.AddCacheAsync(result, TimeSpan.FromMinutes(5), cancellationToken);
             
             return result;
-            
         }
     }
 }

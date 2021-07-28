@@ -37,7 +37,7 @@ namespace SomeStore.Controllers
         [ProducesResponseType(typeof(Record), StatusCodes.Status200OK)]
         public async Task<ActionResult<Record>> GetRecord([FromRoute] Guid id, CancellationToken cts)
         {
-            var result = await _mediator.Send(new GetByIdQuery {Id = id}, cts);
+            var result = await _mediator.Send(new GetRecordByIdQuery {Id = id}, cts);
             return Ok(result);
         }
 
