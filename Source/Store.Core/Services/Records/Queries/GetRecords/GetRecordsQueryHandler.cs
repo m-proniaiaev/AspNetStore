@@ -28,6 +28,7 @@ namespace Store.Core.Services.Records.Queries.GetRecords
                 throw new Exception("No records in database!");
 
             var recordsQuery = records.AsQueryable();
+            
             recordsQuery = recordsQuery
                 .FilterBySoldStatus(request.IsSold)
                 .FilterByName(request.Name)

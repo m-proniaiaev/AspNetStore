@@ -38,7 +38,8 @@ namespace Store.Core.Services.Records.Queries.UpdateRecord
 
             await _recordService.MarkRecordAsSold(record.Id);
             
-            await _cacheService.AddCacheAsync(RecordCacheHelper.MarkRecordAsSold(record), 
+            var result = await _recordService.GetRecord(record.Id);
+            await _cacheService.AddCacheAsync(result, 
                 TimeSpan.FromMinutes(5), cancellationToken);
             
             return Unit.Value;

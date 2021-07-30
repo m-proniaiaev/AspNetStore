@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using MongoDB.Driver;
 using Store.Core.Common;
@@ -8,6 +9,7 @@ using Store.Core.Contracts.Interfaces;
 using Store.Core.Contracts.Models;
 using Store.Core.Database.Database;
 using Store.Core.Services.Records.Queries.CreateRecord;
+using Store.Core.Services.Records.Queries.UpdateRecord;
 
 namespace Store.Core.Services.Records
 {
@@ -40,9 +42,20 @@ namespace Store.Core.Services.Records
            await _records.DeleteOneAsync(record => record.Id == id);
         }
 
-        public async Task<Record> UpdateRecord(Record record)
+        public async Task<Record> UpdateRecord(UpdateRecordCommand request, Record origin, CancellationToken cts)
         {
-            await _records.ReplaceOneAsync(r => r.Id == record.Id, record);
+            var record = new Record
+            {
+                Id = origin.Id,
+                Seller = origin.Seller,
+                Created = origin.Created,
+                Name = request.Name,
+                Price = request.Price,
+                IsSold = request.IsSold,
+                SoldDate = DateTime.Now
+            };
+            
+            await _records.ReplaceOneAsync(r => r.Id == record.Id, record, cancellationToken: cts);
             return record;
         }
 

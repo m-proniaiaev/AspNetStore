@@ -38,19 +38,10 @@ namespace Store.Core.Services.Records.Queries.UpdateRecord
             
             if (record.IsSold)
                 throw new Exception("This record already has been sold!");
-
-            var updatedRecord = new Record
-            {
-                Id = record.Id,
-                Seller = record.Seller,
-                Created = record.Created,
-                Name = request.Name,
-                Price = request.Price,
-                IsSold = request.IsSold,
-                SoldDate = DateTime.Now
-            };
-
-            var result = await _recordService.UpdateRecord(updatedRecord);
+            
+            await _recordService.UpdateRecord(request, record, cancellationToken);
+            
+            var result =  await _recordService.GetRecord(record.Id);
             
             await _cacheService.AddCacheAsync(result, TimeSpan.FromMinutes(5), cancellationToken);
 

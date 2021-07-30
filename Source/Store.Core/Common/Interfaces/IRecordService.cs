@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using Store.Core.Contracts.Models;
 using Store.Core.Services.Records.Queries.CreateRecord;
+using Store.Core.Services.Records.Queries.UpdateRecord;
 
 namespace Store.Core.Common.Interfaces
 {
@@ -12,7 +14,7 @@ namespace Store.Core.Common.Interfaces
         Task AddRecordAsync(CreateRecordCommand request, Guid id);
         Task<Record> GetRecord(Guid id);
         Task DeleteRecord(Guid id);
-        Task<Record> UpdateRecord(Record record);
+        Task<Record> UpdateRecord(UpdateRecordCommand request, Record origin, CancellationToken cts);
         Task MarkRecordAsSold(Guid id);
 
     }
