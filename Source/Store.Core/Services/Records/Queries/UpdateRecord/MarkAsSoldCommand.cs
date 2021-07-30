@@ -31,10 +31,10 @@ namespace Store.Core.Services.Records.Queries.UpdateRecord
             var record = cacheRecord ?? await _recordService.GetRecord(request.Id);
 
             if (record == null)
-                throw new Exception($"Record {request.Id} is not found!");
+                throw new ArgumentException($"Record {request.Id} is not found!");
             
             if (record.IsSold)
-                throw new Exception("This record already has been sold!");
+                throw new ArgumentException("This record already has been sold!");
 
             await _recordService.MarkRecordAsSold(record.Id);
             
