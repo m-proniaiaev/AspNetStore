@@ -1,4 +1,3 @@
-using System;
 using Store.Core.Host;
 
 namespace SomeStore

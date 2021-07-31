@@ -6,7 +6,6 @@ using MediatR;
 using Moq;
 using Store.Core.Common.Interfaces;
 using Store.Core.Contracts.Interfaces;
-using Store.Core.Services.Records.Queries.GetRecords.ById;
 using Store.Core.Services.Records.Queries.UpdateRecord;
 using Xunit;
 using Record = Store.Core.Contracts.Models.Record;

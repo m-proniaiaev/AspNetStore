@@ -1,5 +1,4 @@
 using FluentValidation.TestHelper;
-using Store.Core.Common.Validations;
 using Store.Core.Common.Validations.CommandValidation.Records;
 using Store.Core.Services.Records.Queries.UpdateRecord;
 using Xunit;

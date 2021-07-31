@@ -3,9 +3,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using Store.Core.Common;
 using Store.Core.Common.Interfaces;
-using Store.Core.Contracts.Interfaces;
 using Store.Core.Contracts.Responses;
 using Store.Core.Services.Records.Queries.GetRecords.Helpers;
 
