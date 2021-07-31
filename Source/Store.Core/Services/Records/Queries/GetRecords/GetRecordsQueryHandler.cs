@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using Store.Core.Contracts.Interfaces;
+using Store.Core.Common.Interfaces;
 using Store.Core.Contracts.Responses;
 using Store.Core.Services.Records.Queries.GetRecords.Helpers;
 
@@ -20,12 +20,13 @@ namespace Store.Core.Services.Records.Queries.GetRecords
 
         public async Task<GetRecordsResponse> Handle(GetRecordsQuery request, CancellationToken cancellationToken)
         {
-            var records = await _recordService.GetRecords();
+            var records = await _recordService.GetRecords(cancellationToken);
             
             if (records == null)
                 throw new Exception("No records in database!");
 
             var recordsQuery = records.AsQueryable();
+            
             recordsQuery = recordsQuery
                 .FilterBySoldStatus(request.IsSold)
                 .FilterByName(request.Name)

@@ -12,7 +12,7 @@ Here I've used:
     - Fluent validation for validating request models
     - Middleware to handle runtime and validation exceptions
     - Requests are parametrized and extended with queryable filtering
-    - Unit tests are done with Xunit
+    - Unit tests are done with Xunit, Moq, Fluent Validations, Fluent Assertions
 
 Plans:
  - Adding one more controller: Sellers and integrating it with Records (reference by id)

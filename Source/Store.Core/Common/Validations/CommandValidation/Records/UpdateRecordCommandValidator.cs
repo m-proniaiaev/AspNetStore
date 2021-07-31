@@ -3,9 +3,9 @@ using Store.Core.Services.Records.Queries.UpdateRecord;
 
 namespace Store.Core.Common.Validations.CommandValidation.Records
 {
-    public class UpdateRecordQueryValidator : AbstractValidator<UpdateRecordCommand>
+    public class UpdateRecordCommandValidator : AbstractValidator<UpdateRecordCommand>
     {
-        public UpdateRecordQueryValidator()
+        public UpdateRecordCommandValidator()
         {
             RuleFor(x => x.Price)
                 .ValidateRecordPrice();

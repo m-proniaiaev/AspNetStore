@@ -2,6 +2,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
+using Store.Core.Common.Interfaces;
 using Store.Core.Contracts.Interfaces;
 using Store.Core.Contracts.Models;
 
@@ -20,35 +21,27 @@ namespace Store.Core.Services.Records.Queries.UpdateRecord
         private readonly IRecordService _recordService;
         private readonly ICacheService _cacheService;
 
-        public UpdateRecordCommandHandler(IRecordService recordService)
+        public UpdateRecordCommandHandler(IRecordService recordService, ICacheService cacheService)
         {
             _recordService = recordService;
+            _cacheService = cacheService;
         }
         
         public async Task<Record> Handle(UpdateRecordCommand request, CancellationToken cancellationToken)
         {
             var cachedRecord = await _cacheService.GetCacheAsync<Record>(request.Id.ToString(), cancellationToken);
             
-            var record = cachedRecord ?? await _recordService.GetRecord(request.Id);
+            var record = cachedRecord ?? await _recordService.GetRecord(request.Id, cancellationToken);
             
             if (record == null)
-                throw new Exception($"Record {request.Id} is not found!");
+                throw new ArgumentException($"Record {request.Id} is not found!");
             
             if (record.IsSold)
-                throw new Exception("This record already has been sold!");
+                throw new ArgumentException("You can not change records which already has been sold!");
 
-            var updatedRecord = new Record
-            {
-                Id = record.Id,
-                Seller = record.Seller,
-                Created = record.Created,
-                Name = request.Name,
-                Price = request.Price,
-                IsSold = request.IsSold,
-                SoldDate = DateTime.Now
-            };
-
-            var result = await _recordService.UpdateRecord(updatedRecord);
+            await _recordService.UpdateRecord(request, record, cancellationToken);
+            
+            var result = await _recordService.GetRecord(record.Id, cancellationToken);
             
             await _cacheService.AddCacheAsync(result, TimeSpan.FromMinutes(5), cancellationToken);
 

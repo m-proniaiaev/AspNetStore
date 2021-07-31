@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using MongoDB.Driver;
-using Store.Core.Contracts.Interfaces;
+using Store.Core.Common.Interfaces;
 using Store.Core.Contracts.Models;
 using Store.Core.Database.Database;
+using Store.Core.Services.Records.Queries.CreateRecord;
+using Store.Core.Services.Records.Queries.UpdateRecord;
 
 namespace Store.Core.Services.Records
 {
@@ -15,30 +18,55 @@ namespace Store.Core.Services.Records
         {
             _records = client.GetRecordsCollection();
         }
-        public async Task<List<Record>> GetRecords() => await _records.Find(record => true).ToListAsync();
-        public async Task<Record> AddRecord(Record record)
+        public async Task<List<Record>> GetRecords(CancellationToken cancellationToken) 
+            => await _records.Find(record => true).ToListAsync(cancellationToken);
+        
+        public async Task AddRecordAsync(CreateRecordCommand request, Guid id, CancellationToken cts)
         {
-            await _records.InsertOneAsync(record);
-            return record;
+            var record = new Record
+            {
+                Id = id,
+                Seller = request.Seller,
+                Created = DateTime.Now,
+                Name = request.Name,
+                Price = request.Price,
+                IsSold = false,
+                SoldDate = null
+            };
+            
+            await _records.InsertOneAsync(record, cancellationToken: cts);
         }
-        public async Task<Record> GetRecord(Guid id) => await _records.Find(record => record.Id == id).FirstOrDefaultAsync();
-        public async Task DeleteRecord(Guid id)
+        public async Task<Record> GetRecord(Guid id, CancellationToken cancellationToken) 
+            => await _records.Find(record => record.Id == id).FirstOrDefaultAsync(cancellationToken);
+        
+        public async Task DeleteRecord(Guid id, CancellationToken cts)
         {
-           await _records.DeleteOneAsync(record => record.Id == id);
+           await _records.DeleteOneAsync(record => record.Id == id, cancellationToken: cts);
         }
 
-        public async Task<Record> UpdateRecord(Record record)
+        public async Task<Record> UpdateRecord(UpdateRecordCommand request, Record origin, CancellationToken cts)
         {
-            await _records.ReplaceOneAsync(r => r.Id == record.Id, record);
+            var record = new Record
+            {
+                Id = origin.Id,
+                Seller = origin.Seller,
+                Created = origin.Created,
+                Name = request.Name,
+                Price = request.Price,
+                IsSold = request.IsSold,
+                SoldDate = DateTime.Now
+            };
+            
+            await _records.ReplaceOneAsync(r => r.Id == record.Id, record, cancellationToken: cts);
             return record;
         }
 
-        public async Task MarkRecordAsSold(Guid id)
+        public async Task MarkRecordAsSold(Guid id, CancellationToken cts)
         {
             var update = Builders<Record>.Update
                 .Set("IsSold", true)
                 .Set("SoldDate", DateTime.Now);
-            await _records.UpdateOneAsync(r => r.Id == id, update);
+            await _records.UpdateOneAsync(r => r.Id == id, update, cancellationToken: cts);
         }
     }
 }
