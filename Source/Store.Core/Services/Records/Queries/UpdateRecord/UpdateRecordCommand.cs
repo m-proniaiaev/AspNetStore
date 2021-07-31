@@ -22,9 +22,10 @@ namespace Store.Core.Services.Records.Queries.UpdateRecord
         private readonly IRecordService _recordService;
         private readonly ICacheService _cacheService;
 
-        public UpdateRecordCommandHandler(IRecordService recordService)
+        public UpdateRecordCommandHandler(IRecordService recordService, ICacheService cacheService)
         {
             _recordService = recordService;
+            _cacheService = cacheService;
         }
         
         public async Task<Record> Handle(UpdateRecordCommand request, CancellationToken cancellationToken)
