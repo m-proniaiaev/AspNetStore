@@ -27,7 +27,7 @@ namespace Store.Core.Services.Records.Queries.UpdateRecord
         {
             var cacheRecord = await _cacheService.GetCacheAsync<Record>(request.Id.ToString(), cancellationToken);
             
-            var record = cacheRecord ?? await _recordService.GetRecord(request.Id, cancellationToken);
+            var record = cacheRecord ?? await _recordService.GetRecordAsync(request.Id, cancellationToken);
 
             if (record == null)
                 throw new ArgumentException($"Record {request.Id} is not found!");
@@ -37,7 +37,7 @@ namespace Store.Core.Services.Records.Queries.UpdateRecord
 
             await _recordService.MarkRecordAsSold(record.Id, cancellationToken);
             
-            var result = await _recordService.GetRecord(record.Id, cancellationToken);
+            var result = await _recordService.GetRecordAsync(record.Id, cancellationToken);
             await _cacheService.AddCacheAsync(result, 
                 TimeSpan.FromMinutes(5), cancellationToken);
             

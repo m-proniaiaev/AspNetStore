@@ -67,7 +67,7 @@ namespace Store.Services.Records.Tests.Handlers
                 .ReturnsAsync(model);
             _cacheService.Setup(x => x.AddCacheAsync(model, It.IsAny<TimeSpan?>(), It.IsAny<CancellationToken>()));
             _recordService.Setup(x => x.MarkRecordAsSold(id, It.IsAny<CancellationToken>()));
-            _recordService.Setup(x => x.GetRecord(id, It.IsAny<CancellationToken>()))
+            _recordService.Setup(x => x.GetRecordAsync(id, It.IsAny<CancellationToken>()))
                 .ReturnsAsync(model);
 
             var handler = new RecordMarkAsSoldCommandHandler(_recordService.Object, _cacheService.Object);
@@ -75,7 +75,7 @@ namespace Store.Services.Records.Tests.Handlers
             await handler.Handle(request, CancellationToken.None);
 
            _cacheService.Verify(X=>X.GetCacheAsync<Record>(id.ToString(), It.IsAny<CancellationToken>()), Times.Once);
-           _recordService.Verify(x=>x.GetRecord(id, It.IsAny<CancellationToken>()), Times.Once);
+           _recordService.Verify(x=>x.GetRecordAsync(id, It.IsAny<CancellationToken>()), Times.Once);
            _cacheService.Verify(x=>x.AddCacheAsync(model, It.IsAny<TimeSpan?>(), It.IsAny<CancellationToken>()), Times.Once);
            _recordService.Verify(x=>x.MarkRecordAsSold(id, It.IsAny<CancellationToken>()), Times.Once);
         }

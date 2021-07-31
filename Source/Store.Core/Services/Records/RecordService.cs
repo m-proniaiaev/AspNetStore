@@ -38,7 +38,7 @@ namespace Store.Core.Services.Records
             
             await _records.InsertOneAsync(record, cancellationToken: cts);
         }
-        public async Task<Record> GetRecord(Guid id, CancellationToken cancellationToken) 
+        public async Task<Record> GetRecordAsync(Guid id, CancellationToken cancellationToken) 
             => await _records.Find(record => record.Id == id).FirstOrDefaultAsync(cancellationToken);
         
         public async Task DeleteRecord(Guid id, CancellationToken cts)

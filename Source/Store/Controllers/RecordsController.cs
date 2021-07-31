@@ -69,7 +69,7 @@ namespace SomeStore.Controllers
         [ProducesResponseType(typeof(Unit), StatusCodes.Status204NoContent)]
         public async Task<NoContentResult> DeleteRecord([FromRoute] Guid id, CancellationToken cts)
         {
-            await _mediator.Send(new DeleteCommand{ Id = id}, cts);
+            await _mediator.Send(new DeleteRecordCommand{ Id = id}, cts);
             return NoContent();
         }
     }
