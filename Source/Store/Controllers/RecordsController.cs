@@ -51,7 +51,7 @@ namespace SomeStore.Controllers
 
         [HttpPut("updateRecord")]
         [ProducesResponseType(typeof(Record), StatusCodes.Status200OK)]
-        public async Task<IActionResult> UpdateRecord([FromBody] UpdateRecordCommand command, CancellationToken cts)
+        public async Task<ActionResult<Record>> UpdateRecord([FromBody] UpdateRecordCommand command, CancellationToken cts)
         {
             var result = await _mediator.Send(command, cts);
             return Ok(result);
@@ -67,7 +67,7 @@ namespace SomeStore.Controllers
         
         [HttpDelete("deleteRecord/{id:guid}")]
         [ProducesResponseType(typeof(Unit), StatusCodes.Status204NoContent)]
-        public async Task<ActionResult> DeleteRecord([FromRoute] Guid id, CancellationToken cts)
+        public async Task<NoContentResult> DeleteRecord([FromRoute] Guid id, CancellationToken cts)
         {
             await _mediator.Send(new DeleteCommand{ Id = id}, cts);
             return NoContent();

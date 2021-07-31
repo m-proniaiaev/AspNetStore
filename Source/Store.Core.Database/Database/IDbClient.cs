@@ -6,5 +6,6 @@ namespace Store.Core.Database.Database
     public interface IDbClient
     {
         IMongoCollection<Record> GetRecordsCollection();
+        public IMongoCollection<Seller> GetSellersCollection();
     }
 }
