@@ -8,10 +8,11 @@ namespace Store.Core.Services.Records.Queries.GetRecords
 {
     public class GetRecordsQuery : IRequest<GetRecordsResponse>
     {
-        public bool? IsSold { get; set; }
         public string Name { get; set; }
-        public decimal? Price { get; set; }
         public string Seller { get; set; }
+        public decimal? Price { get; set; }
+        public bool? IsSold { get; set; }
+        public RecordType RecordType { get; set; }
         public DateTime? CreatedFrom { get; set; }
         public DateTime? CreatedTo { get; set; }
         public DateTime? SoldFrom { get; set; }

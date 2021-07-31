@@ -28,8 +28,10 @@ namespace Store.Core.Services.Records
                 Id = id,
                 Seller = request.Seller,
                 Created = DateTime.Now,
+                CreatedBy = Guid.Empty, //TODO change after adding users
                 Name = request.Name,
                 Price = request.Price,
+                RecordType = request.RecordType,
                 IsSold = false,
                 SoldDate = null
             };
@@ -41,7 +43,7 @@ namespace Store.Core.Services.Records
         
         public async Task DeleteRecord(Guid id, CancellationToken cts)
         {
-           await _records.DeleteOneAsync(record => record.Id == id, cancellationToken: cts);
+           await _records.DeleteOneAsync(record => record.Id == id, cts);
         }
 
         public async Task<Record> UpdateRecord(UpdateRecordCommand request, Record origin, CancellationToken cts)
@@ -51,6 +53,8 @@ namespace Store.Core.Services.Records
                 Id = origin.Id,
                 Seller = origin.Seller,
                 Created = origin.Created,
+                CreatedBy = origin.CreatedBy,
+                RecordType = origin.RecordType,
                 Name = request.Name,
                 Price = request.Price,
                 IsSold = request.IsSold,

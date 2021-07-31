@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Store.Core.Common.Interfaces;
+using Store.Core.Contracts.Enums;
 using Store.Core.Contracts.Interfaces;
 using Store.Core.Contracts.Models;
 
@@ -13,6 +14,7 @@ namespace Store.Core.Services.Records.Queries.CreateRecord
         public string Name { get; set; }
         public string Seller { get; set; }
         public decimal Price { get; set; }
+        public RecordType RecordType { get; set; }
     }
     
     public class CreateRecordCommandHandler : IRequestHandler<CreateRecordCommand, Record>

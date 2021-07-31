@@ -16,6 +16,7 @@ namespace Store.Core.Services.Records.Queries.GetRecords.Helpers
             {
                 RecordSortBy.Name => source.SortBy(r => r.Name, sortOrder),
                 RecordSortBy.Seller => source.SortBy(r=>r.Seller, sortOrder),
+                RecordSortBy.Type => source.SortBy(r=> r.RecordType, sortOrder),
                 _ => throw new ArgumentOutOfRangeException(nameof(sortBy), sortBy, "No such filter!")
             };
         }

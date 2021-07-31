@@ -33,7 +33,8 @@ namespace Store.Core.Services.Records.Queries.GetRecords
                 .FilterBySeller(request.Seller)
                 .FilterByPrice(request.Price)
                 .FilterByCreated(request.CreatedFrom, request.CreatedTo)
-                .FilterBySold(request.SoldFrom, request.SoldTo);
+                .FilterBySold(request.SoldFrom, request.SoldTo)
+                .FilterByType(request.RecordType);
             
 
             recordsQuery = recordsQuery.SortBy(request.SortBy, request.SortOrder);
