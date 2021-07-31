@@ -20,8 +20,10 @@ namespace Store.Core.Services.Records
         {
             _records = client.GetRecordsCollection();
         }
-        public async Task<List<Record>> GetRecords() => await _records.Find(record => true).ToListAsync();
-        public async Task AddRecordAsync(CreateRecordCommand request, Guid id)
+        public async Task<List<Record>> GetRecords(CancellationToken cancellationToken) 
+            => await _records.Find(record => true).ToListAsync(cancellationToken);
+        
+        public async Task AddRecordAsync(CreateRecordCommand request, Guid id, CancellationToken cts)
         {
             var record = new Record
             {
@@ -34,12 +36,14 @@ namespace Store.Core.Services.Records
                 SoldDate = null
             };
             
-            await _records.InsertOneAsync(record);
+            await _records.InsertOneAsync(record, cancellationToken: cts);
         }
-        public async Task<Record> GetRecord(Guid id) => await _records.Find(record => record.Id == id).FirstOrDefaultAsync();
-        public async Task DeleteRecord(Guid id)
+        public async Task<Record> GetRecord(Guid id, CancellationToken cancellationToken) 
+            => await _records.Find(record => record.Id == id).FirstOrDefaultAsync(cancellationToken);
+        
+        public async Task DeleteRecord(Guid id, CancellationToken cts)
         {
-           await _records.DeleteOneAsync(record => record.Id == id);
+           await _records.DeleteOneAsync(record => record.Id == id, cancellationToken: cts);
         }
 
         public async Task<Record> UpdateRecord(UpdateRecordCommand request, Record origin, CancellationToken cts)
@@ -59,12 +63,12 @@ namespace Store.Core.Services.Records
             return record;
         }
 
-        public async Task MarkRecordAsSold(Guid id)
+        public async Task MarkRecordAsSold(Guid id, CancellationToken cts)
         {
             var update = Builders<Record>.Update
                 .Set("IsSold", true)
                 .Set("SoldDate", DateTime.Now);
-            await _records.UpdateOneAsync(r => r.Id == id, update);
+            await _records.UpdateOneAsync(r => r.Id == id, update, cancellationToken: cts);
         }
     }
 }

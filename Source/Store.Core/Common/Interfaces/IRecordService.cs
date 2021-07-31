@@ -10,12 +10,12 @@ namespace Store.Core.Common.Interfaces
 {
     public interface IRecordService
     {
-        Task<List<Record>> GetRecords();
-        Task AddRecordAsync(CreateRecordCommand request, Guid id);
-        Task<Record> GetRecord(Guid id);
-        Task DeleteRecord(Guid id);
+        Task<List<Record>> GetRecords(CancellationToken cts);
+        Task AddRecordAsync(CreateRecordCommand request, Guid id, CancellationToken cts);
+        Task<Record> GetRecord(Guid id, CancellationToken cts);
+        Task DeleteRecord(Guid id, CancellationToken cts);
         Task<Record> UpdateRecord(UpdateRecordCommand request, Record origin, CancellationToken cts);
-        Task MarkRecordAsSold(Guid id);
+        Task MarkRecordAsSold(Guid id, CancellationToken cts);
 
     }
 }

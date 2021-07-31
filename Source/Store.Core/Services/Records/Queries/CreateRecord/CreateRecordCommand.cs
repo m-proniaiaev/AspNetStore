@@ -30,9 +30,9 @@ namespace Store.Core.Services.Records.Queries.CreateRecord
         {
             //TODO check for name and author
             var id = Guid.NewGuid();
-            await _recordService.AddRecordAsync(request, id);
+            await _recordService.AddRecordAsync(request, id, cancellationToken);
                 
-            var result = await _recordService.GetRecord(id);
+            var result = await _recordService.GetRecord(id, cancellationToken);
             
             await _cacheService.AddCacheAsync(result, TimeSpan.FromMinutes(5), cancellationToken);
             

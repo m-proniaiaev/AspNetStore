@@ -47,7 +47,7 @@ namespace Store.Services.Records.Tests.Handlers
             result.Should().BeEquivalentTo(expectedRecord, x => x.ExcludingMissingMembers());
             
             _cacheService.Verify(x=>x.GetCacheAsync<Record>(id.ToString(), It.IsAny<CancellationToken>()), Times.Once);
-            _recordService.Verify(x=>x.GetRecord(It.IsAny<Guid>()), Times.Never);
+            _recordService.Verify(x=>x.GetRecord(It.IsAny<Guid>(), It.IsAny<CancellationToken>()), Times.Never);
         }
         
         [Fact]
@@ -67,7 +67,7 @@ namespace Store.Services.Records.Tests.Handlers
 
             _cacheService.Setup(arg => arg.GetCacheAsync<Record>(id.ToString(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync((Record) null);
-            _recordService.Setup(x => x.GetRecord(id))
+            _recordService.Setup(x => x.GetRecord(id, It.IsAny<CancellationToken>()))
                 .ReturnsAsync(expectedRecord);
 
             var handle = new GetRecordByIdQueryHandler(_recordService.Object, _cacheService.Object);
@@ -77,7 +77,7 @@ namespace Store.Services.Records.Tests.Handlers
             result.Should().BeEquivalentTo(expectedRecord, x => x.ExcludingMissingMembers());
             
             _cacheService.Verify(x=>x.GetCacheAsync<Record>(id.ToString(), It.IsAny<CancellationToken>()), Times.Once);
-            _recordService.Verify(x=>x.GetRecord(It.IsAny<Guid>()), Times.Once);
+            _recordService.Verify(x=>x.GetRecord(It.IsAny<Guid>(), It.IsAny<CancellationToken>()), Times.Once);
         }
         
         [Fact]
@@ -91,7 +91,7 @@ namespace Store.Services.Records.Tests.Handlers
             
             _cacheService.Setup(arg => arg.GetCacheAsync<Record>(id.ToString(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync((Record) null);
-            _recordService.Setup(x => x.GetRecord(id))
+            _recordService.Setup(x => x.GetRecord(id, It.IsAny<CancellationToken>()))
                 .ReturnsAsync((Record)null);
 
             var handle = new GetRecordByIdQueryHandler(_recordService.Object, _cacheService.Object);
