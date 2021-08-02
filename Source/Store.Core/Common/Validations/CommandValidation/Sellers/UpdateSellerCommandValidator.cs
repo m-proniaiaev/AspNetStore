@@ -1,12 +1,12 @@
 using FluentValidation;
 using Store.Core.Contracts.Enums;
-using Store.Core.Services.Sellers.Queries.CreateSeller;
+using Store.Core.Services.Sellers.Queries.UpdateSellerAsync;
 
 namespace Store.Core.Common.Validations.CommandValidation.Sellers
 {
-    public class CreateSellerCommandValidator : AbstractValidator<CreateSellerCommand>
+    public class UpdateSellerCommandValidator : AbstractValidator<UpdateSellerCommand>
     {
-        public CreateSellerCommandValidator()
+        public UpdateSellerCommandValidator()
         {
             RuleFor(x => x.Name).ValidateName();
             RuleForEach(x => x.RecordType).NotEmpty()

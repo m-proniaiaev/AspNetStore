@@ -14,7 +14,7 @@ namespace Store.Core.Common.Interfaces
         Task AddRecordAsync(CreateRecordCommand request, Guid id, CancellationToken cts);
         Task<Record> GetRecordAsync(Guid id, CancellationToken cts);
         Task DeleteRecord(Guid id, CancellationToken cts);
-        Task<Record> UpdateRecord(UpdateRecordCommand request, Record origin, CancellationToken cts);
+        Task UpdateRecord(UpdateRecordCommand request, Record origin, CancellationToken cts);
         Task MarkRecordAsSold(Guid id, CancellationToken cts);
 
     }

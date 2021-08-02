@@ -8,7 +8,7 @@ namespace Store.Core.Contracts.Models
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public RecordType RecordType { get; set; }
+        public RecordType[] RecordType { get; set; }
         public DateTime Created { get; set; }
         public Guid CreatedBy { get; set; }
     }
