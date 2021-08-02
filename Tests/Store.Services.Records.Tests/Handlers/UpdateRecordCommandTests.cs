@@ -74,7 +74,7 @@ namespace Store.Services.Records.Tests.Handlers
             _cacheService.Setup(x => x.GetCacheAsync<Record>(id.ToString(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(record);
             _recordService.Setup(x => x.UpdateRecord(request, record, It.IsAny<CancellationToken>()));
-            _recordService.Setup(x => x.GetRecord(request.Id, It.IsAny<CancellationToken>()))
+            _recordService.Setup(x => x.GetRecordAsync(request.Id, It.IsAny<CancellationToken>()))
                 .ReturnsAsync(updatedRecord);
             _cacheService.Setup(x =>
                 x.AddCacheAsync(updatedRecord, It.IsAny<TimeSpan?>(), It.IsAny<CancellationToken>()));
@@ -89,7 +89,7 @@ namespace Store.Services.Records.Tests.Handlers
             
             _cacheService.Verify(x => x.GetCacheAsync<Record>(id.ToString(), It.IsAny<CancellationToken>()), Times.Once);
             _recordService.Verify(x => x.UpdateRecord(request, record, It.IsAny<CancellationToken>()), Times.Once);
-            _recordService.Verify(x => x.GetRecord(request.Id, It.IsAny<CancellationToken>()), Times.Once);
+            _recordService.Verify(x => x.GetRecordAsync(request.Id, It.IsAny<CancellationToken>()), Times.Once);
             _cacheService.Verify(x =>
                 x.AddCacheAsync(updatedRecord, It.IsAny<TimeSpan?>(), It.IsAny<CancellationToken>()), Times.Once);
         }
@@ -122,7 +122,7 @@ namespace Store.Services.Records.Tests.Handlers
             
             _recordService.Setup(x => x.UpdateRecord(request, record, It.IsAny<CancellationToken>()));
             
-            _recordService.Setup(x => x.GetRecord(record.Id, It.IsAny<CancellationToken>()))
+            _recordService.Setup(x => x.GetRecordAsync(record.Id, It.IsAny<CancellationToken>()))
                 .ReturnsAsync(updatedRecord);
             
             _cacheService.Setup(x =>
@@ -140,7 +140,7 @@ namespace Store.Services.Records.Tests.Handlers
             
             _recordService.Verify(x => x.UpdateRecord(request, updatedRecord, It.IsAny<CancellationToken>()), Times.Once);
             
-            _recordService.Verify(x => x.GetRecord(request.Id, It.IsAny<CancellationToken>()), Times.Exactly(2));
+            _recordService.Verify(x => x.GetRecordAsync(request.Id, It.IsAny<CancellationToken>()), Times.Exactly(2));
             
             _cacheService.Verify(x =>
                 x.AddCacheAsync(updatedRecord, It.IsAny<TimeSpan?>(), It.IsAny<CancellationToken>()), Times.Once);

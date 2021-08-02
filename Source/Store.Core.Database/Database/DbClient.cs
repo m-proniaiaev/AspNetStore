@@ -7,14 +7,17 @@ namespace Store.Core.Database.Database
     public class DbClient : IDbClient
     {
         private readonly IMongoCollection<Record> _records;
+        private readonly IMongoCollection<Seller> _sellers;
         public DbClient(IOptions<DbConfig> recordDbConfig)
         {
             var client = new MongoClient(recordDbConfig.Value.ConnectionString);
             var db = client.GetDatabase(recordDbConfig.Value.DbName);
             _records = db.GetCollection<Record>(recordDbConfig.Value.RecordCollectionName);
+            _sellers = db.GetCollection<Seller>(recordDbConfig.Value.SellerCollectionName);
         }
 
         public IMongoCollection<Record> GetRecordsCollection() => _records;
-        
+        public IMongoCollection<Seller> GetSellersCollection() => _sellers;
+
     }
 }

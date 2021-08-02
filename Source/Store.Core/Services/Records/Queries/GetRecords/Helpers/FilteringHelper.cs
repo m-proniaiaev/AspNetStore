@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Store.Core.Contracts.Enums;
 using Store.Core.Contracts.Models;
 
 namespace Store.Core.Services.Records.Queries.GetRecords.Helpers
@@ -67,6 +68,15 @@ namespace Store.Core.Services.Records.Queries.GetRecords.Helpers
                 source = source.Where(r => r.SoldDate <= to.Value);
 
             return source;
+        }
+
+        public static IQueryable<Record> FilterByType(this IQueryable<Record> source, RecordType? type)
+        {
+            if (source == null) return null;
+
+            return type.HasValue 
+                ? source.Where(x => x.RecordType == type.Value) 
+                : source;
         }
     }
 }

@@ -3,7 +3,7 @@ using Store.Core.Common.Validations.CommandValidation.Records;
 using Store.Core.Services.Records.Queries.UpdateRecord;
 using Xunit;
 
-namespace Store.Tests.Common
+namespace Store.Tests.Common.Records
 {
     public class UpdateRecordValidatorTests
     {

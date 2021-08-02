@@ -8,12 +8,12 @@ using Store.Core.Contracts.Models;
 
 namespace Store.Core.Services.Records.Queries.DeleteRecord
 {
-    public class DeleteCommand : IRequest, IIdentity
+    public class DeleteRecordCommand : IRequest, IIdentity
     {
         public Guid Id { get; set; }
     }
     
-    public class DeleteRecordCommandHandler : IRequestHandler<DeleteCommand>
+    public class DeleteRecordCommandHandler : IRequestHandler<DeleteRecordCommand>
     {
         private readonly IRecordService _recordService;
         private readonly ICacheService _cacheService;
@@ -23,10 +23,10 @@ namespace Store.Core.Services.Records.Queries.DeleteRecord
             _recordService = recordService;
             _cacheService = cacheService;
         }
-        public async Task<Unit> Handle(DeleteCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(DeleteRecordCommand request, CancellationToken cancellationToken)
         {
             var cachedRecord = await _cacheService.GetCacheAsync<Record>(request.Id.ToString(), cancellationToken);
-            var record = cachedRecord ?? await _recordService.GetRecord(request.Id, cancellationToken);
+            var record = cachedRecord ?? await _recordService.GetRecordAsync(request.Id, cancellationToken);
 
             if (record == null)
                 throw new ArgumentException($"Record {request.Id} is not found!");

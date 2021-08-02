@@ -42,7 +42,7 @@ namespace Store.Services.Records.Tests.Handlers
             
             _recordService.Setup(x => x.AddRecordAsync(request, It.IsAny<Guid>(), CancellationToken.None));
             
-            _recordService.Setup(x => x.GetRecord(It.IsAny<Guid>(), CancellationToken.None))
+            _recordService.Setup(x => x.GetRecordAsync(It.IsAny<Guid>(), CancellationToken.None))
                 .ReturnsAsync(expectedRecord);
             
             _cacheService.Setup(x => x.AddCacheAsync(It.IsAny<Record>(), default, It.IsAny<CancellationToken>()));
@@ -56,7 +56,7 @@ namespace Store.Services.Records.Tests.Handlers
             result.Should().BeEquivalentTo(expectedRecord, x=> x.ExcludingMissingMembers());
             
             _recordService.Verify(x=>x.AddRecordAsync(request, It.IsAny<Guid>(), CancellationToken.None), Times.Once);
-            _recordService.Verify(x=>x.GetRecord(It.IsAny<Guid>(), CancellationToken.None), Times.Once);
+            _recordService.Verify(x=>x.GetRecordAsync(It.IsAny<Guid>(), CancellationToken.None), Times.Once);
             _cacheService.Verify(x=>x.AddCacheAsync(result, TimeSpan.FromMinutes(5),
                 It.IsAny<CancellationToken>()), Times.Once);
         }

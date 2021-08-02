@@ -4,6 +4,7 @@ namespace Store.Core.Database.Database
     {
         public string DbName { get; set; }
         public string RecordCollectionName { get; set; }
+        public string SellerCollectionName { get; set; }
         public string ConnectionString { get; set; }
     }
 }
