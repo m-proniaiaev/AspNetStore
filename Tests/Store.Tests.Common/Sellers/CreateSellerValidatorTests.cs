@@ -1,4 +1,3 @@
-using System;
 using FluentValidation.TestHelper;
 using Store.Core.Common.Validations.CommandValidation.Sellers;
 using Store.Core.Contracts.Enums;

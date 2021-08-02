@@ -6,7 +6,7 @@ using Store.Core.Common.Interfaces;
 using Store.Core.Contracts.Interfaces;
 using Store.Core.Contracts.Models;
 
-namespace Store.Core.Services.Sellers.Queries
+namespace Store.Core.Services.Sellers.Queries.DeleteSeller
 {
     public class DeleteSellerCommand : IRequest, IIdentity
     { 

@@ -1,5 +1,3 @@
-using System;
-
 namespace Store.Core.Contracts.Interfaces
 {
     public interface IEntity
