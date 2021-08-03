@@ -46,8 +46,10 @@ namespace Store.Core.Services.Records
            await _records.DeleteOneAsync(record => record.Id == id, cts);
         }
 
-        public async Task<Record> UpdateRecord(UpdateRecordCommand request, Record origin, CancellationToken cts)
+        public async Task UpdateRecord(UpdateRecordCommand request, Record origin, CancellationToken cts)
         {
+            DateTime? includeSoldDate = request.IsSold ? DateTime.Now : null;
+            
             var record = new Record
             {
                 Id = origin.Id,
@@ -58,11 +60,10 @@ namespace Store.Core.Services.Records
                 Name = request.Name,
                 Price = request.Price,
                 IsSold = request.IsSold,
-                SoldDate = DateTime.Now
+                SoldDate = includeSoldDate
             };
             
             await _records.ReplaceOneAsync(r => r.Id == record.Id, record, cancellationToken: cts);
-            return record;
         }
 
         public async Task MarkRecordAsSold(Guid id, CancellationToken cts)

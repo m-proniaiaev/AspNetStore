@@ -23,7 +23,7 @@ namespace Store.Core.Services.Records.Queries.GetRecords
             var records = await _recordService.GetRecords(cancellationToken);
             
             if (records == null)
-                throw new Exception("No records in database!");
+                throw new ArgumentException("No records in database!");
 
             var recordsQuery = records.AsQueryable();
             

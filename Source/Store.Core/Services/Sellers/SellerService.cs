@@ -7,6 +7,7 @@ using Store.Core.Common.Interfaces;
 using Store.Core.Contracts.Models;
 using Store.Core.Database.Database;
 using Store.Core.Services.Sellers.Queries.CreateSeller;
+using Store.Core.Services.Sellers.Queries.UpdateSellerAsync;
 
 namespace Store.Core.Services.Sellers
 {
@@ -22,6 +23,20 @@ namespace Store.Core.Services.Sellers
         public async Task<List<Seller>> GetSellersAsync(CancellationToken cts)
         {
             return await _sellers.Find(x => true).ToListAsync(cts);
+        }
+
+        public async Task UpdateSellerAsync(UpdateSellerCommand request, Seller origin, CancellationToken cts)
+        {
+            var seller = new Seller 
+            {
+                Name = request.Name,
+                RecordType = request.RecordType,
+                Id = origin.Id,
+                CreatedBy = origin.CreatedBy,
+                Created = origin.Created
+            };
+            
+            await _sellers.ReplaceOneAsync(s => s.Id == seller.Id, seller, cancellationToken: cts);
         }
 
         public async Task<Seller> GetSellerAsync(Guid id, CancellationToken cts)

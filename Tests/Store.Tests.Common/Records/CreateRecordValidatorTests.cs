@@ -54,13 +54,26 @@ namespace Store.Tests.Common.Records
             var result = validator.TestValidate(command);
             result.ShouldHaveValidationErrorFor(x => x.Name);
         }
-
+        [Fact]
+        
+        public void ValidationFailed_WhenNoSellerSpecified()
+        {
+            var command = new CreateRecordCommand
+            {
+                Seller = "",
+            };
+            var validator = new CreateRecordCommandValidator();
+            var result = validator.TestValidate(command);
+            result.ShouldHaveValidationErrorFor(x => x.Seller);
+        }
+        
         [Fact]
         public void ValidationIsCorrect_WhenData_Filled()
         {
             var command = new CreateRecordCommand
             {
                 Name = "Eren",
+                Seller = "Kekl",
                 Price = 993
             };
             var validator = new CreateRecordCommandValidator();

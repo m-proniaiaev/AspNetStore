@@ -4,6 +4,7 @@ using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Store.Core.Common.Interfaces;
 using Store.Core.Services.Records;
+using Store.Core.Services.Sellers;
 
 namespace Store.Core
 {
@@ -20,6 +21,7 @@ namespace Store.Core
                 }).ToArray();
 
             services.AddMediatR(currentDomain);
+            services.AddScoped<ISellerService, SellerService>();
             services.AddScoped<IRecordService, RecordService>();
 
             return services;

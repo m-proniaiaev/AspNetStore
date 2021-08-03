@@ -12,7 +12,7 @@ namespace Store.Core.Services.Sellers.Queries.CreateSeller
     public class CreateSellerCommand : IRequest<Seller>
     {
         public string Name { get; set; }
-        public RecordType RecordType { get; set; }
+        public RecordType[] RecordType { get; set; }
     }
     
     public class CreateSellerCommandHandler : IRequestHandler<CreateSellerCommand, Seller>
