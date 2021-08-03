@@ -2,6 +2,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using FluentAssertions;
+using MediatR;
 using Moq;
 using Store.Core.Common.Interfaces;
 using Store.Core.Contracts.Interfaces;
@@ -15,11 +16,13 @@ namespace Store.Services.Records.Tests.Handlers
     {
         private readonly Mock<IRecordService> _recordService;
         private readonly Mock<ICacheService> _cacheService;
+        private readonly Mock<IMediator> _mediador;
 
         public CreateRecordHandlerTests()
         {
             _cacheService = new Mock<ICacheService>();
             _recordService = new Mock<IRecordService>();
+            _mediador = new Mock<IMediator>();
         }
 
         [Fact]
@@ -47,7 +50,7 @@ namespace Store.Services.Records.Tests.Handlers
             
             _cacheService.Setup(x => x.AddCacheAsync(It.IsAny<Record>(), default, It.IsAny<CancellationToken>()));
             
-            var handler = new CreateRecordCommandHandler(_recordService.Object, _cacheService.Object);
+            var handler = new CreateRecordCommandHandler(_recordService.Object, _cacheService.Object, _mediador.Object);
             
             //Act
             Record result = await handler.Handle(request, CancellationToken.None);

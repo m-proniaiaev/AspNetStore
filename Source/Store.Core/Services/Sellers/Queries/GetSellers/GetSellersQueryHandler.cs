@@ -27,17 +27,17 @@ namespace Store.Core.Services.Sellers.Queries.GetSellers
             
             var sellersQuery = sellers.AsQueryable();
 
-            sellersQuery
-                .FilterByName(request.Name)
-                .FilterByTypes(request.RecordType)
-                .FilterByCreatedBy(request.CreatedBy)
-                .FilterByCreated(request.CreatedFrom, request.CreatedTo);
+            sellersQuery = sellersQuery
+                            .FilterByName(request.Name)
+                            .FilterByTypes(request.RecordType)
+                            .FilterByCreatedBy(request.CreatedBy)
+                            .FilterByCreated(request.CreatedFrom, request.CreatedTo);
             
             sellersQuery = sellersQuery.SortBy(request.SortBy, request.SortOrder);
 
             var response = new GetSellersResponse
             {
-                Records = sellersQuery.ToList(),
+                Sellers = sellersQuery.ToList(),
                 SellerCount = sellersQuery.Count()
             };
             

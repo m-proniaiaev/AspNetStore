@@ -1,6 +1,6 @@
 using FluentValidation;
 
-namespace Store.Core.Common.Validations
+namespace Store.Core.Common.Validations.CustomValidators
 {
     public static class PriceValidator
     {

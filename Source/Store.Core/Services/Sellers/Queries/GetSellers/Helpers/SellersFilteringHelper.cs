@@ -12,7 +12,7 @@ namespace Store.Core.Services.Sellers.Queries.GetSellers.Helpers
             if (source == null) return null;
 
             return !string.IsNullOrWhiteSpace(name) 
-                ? source.Where(r => string.Equals(r.Name, name, StringComparison.InvariantCultureIgnoreCase))
+                ? source.Where(seller => string.Equals(seller.Name, name, StringComparison.InvariantCultureIgnoreCase))
                 : source;
         }
 
@@ -20,7 +20,7 @@ namespace Store.Core.Services.Sellers.Queries.GetSellers.Helpers
         {
             if (source == null) return null;
 
-            return recordTypes.Length > 0
+            return recordTypes?.Length > 0
                 ? source.Where(r => r.RecordType.Intersect(recordTypes).Count() == recordTypes.Length)
                 : source;
         }

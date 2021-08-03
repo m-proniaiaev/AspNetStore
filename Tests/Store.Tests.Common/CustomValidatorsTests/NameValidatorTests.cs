@@ -1,6 +1,7 @@
 using FluentValidation;
 using FluentValidation.TestHelper;
 using Store.Core.Common.Validations;
+using Store.Core.Common.Validations.CustomValidators;
 using Xunit;
 
 namespace Store.Tests.Common.CustomValidatorsTests

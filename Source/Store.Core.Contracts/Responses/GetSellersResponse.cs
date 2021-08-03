@@ -5,7 +5,7 @@ namespace Store.Core.Contracts.Responses
 {
     public class GetSellersResponse
     {
-        public List<Seller> Records { get; set; }
+        public List<Seller> Sellers { get; set; }
         public int SellerCount { get; set; }
     }
 }
