@@ -16,6 +16,9 @@ namespace Store.Core.Cache.Redis
 
         public CacheService(IDistributedCache distributedCache, IOptions<CacheOptions> options)
         {
+            if (options == null)
+                throw new Exception("Can't configure redis cache!");
+            
             _distributedCache = distributedCache;
             _expiration = TimeSpan.FromMinutes(options.Value.ExpirationMinutes);
         }
