@@ -1,6 +1,7 @@
 # AspNet Store:
 Sample asp.net core project with swagger &amp;&amp; MongoDb, Redis, using common practices.
 For checkout please run {project.git.dir}/Deploy/run.ps1(.sh).
+
 Then go to:
 http://localhost:1337/swagger/index.html - internal host; sellers and records controllers
 
