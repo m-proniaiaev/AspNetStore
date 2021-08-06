@@ -10,10 +10,10 @@ namespace Store.Core.Common.Interfaces
 {
     public interface ISellerService
     {
-        public Task<List<Seller>> GetSellersAsync(CancellationToken cts);
-        public Task UpdateSellerAsync(UpdateSellerCommand command, Seller origin, CancellationToken cts);
-        public Task<Seller> GetSellerAsync(Guid id, CancellationToken cts);
-        public Task CreateSellerAsync(CreateSellerCommand request, Guid id, CancellationToken cts);
-        public Task DeleteSellerAsync(Guid id, CancellationToken cts);
+        Task<List<Seller>> GetSellersAsync(CancellationToken cts);
+        Task UpdateSellerAsync(UpdateSellerCommand command, Seller origin, CancellationToken cts);
+        Task<Seller> GetSellerAsync(Guid id, CancellationToken cts);
+        Task CreateSellerAsync(CreateSellerCommand request, Guid id, CancellationToken cts);
+        Task DeleteSellerAsync(Guid id, CancellationToken cts);
     }
 }

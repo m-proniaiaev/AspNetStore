@@ -6,10 +6,9 @@ networks:
     
 services:
   aspnet_store:
-    image: aspnet_store:dev
     build:
       context: ../../
-      dockerfile: ./Source/Store/Dockerfile
+      dockerfile: ./Source/Store.WebApi.Internal/Dockerfile
     container_name: aspnet_store
     hostname: aspnet_store
     restart: "always"

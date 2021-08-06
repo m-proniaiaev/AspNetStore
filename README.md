@@ -1,11 +1,12 @@
-# SomeAspNetProject
-sample asp.net core project with swagger &amp;&amp; mongo, using common practices. 
-For checkout please run {project}/Deploy/run.ps1(.sh).
- Then go to http://localhost:1337/swagger/index.html
+# AspNet Store:
+Sample asp.net core project with swagger &amp;&amp; MongoDb, Redis, using common practices.
+For checkout please run {project.git.dir}/Deploy/run.ps1(.sh).
+Then go to:
+http://localhost:1337/swagger/index.html - internal host; sellers and records controllers
 
 Here I've used: 
 
-    - Dependency injection (Constructor injection)
+    - Dependency injection (constructor injection)
     - CQRS via Mediator pattern (MediatR)
     - CRUD with MongoDb
     - Caching with Redis
@@ -15,5 +16,10 @@ Here I've used:
     - Unit tests are done with Xunit, Moq, Fluent Validations, Fluent Assertions
 
 Plans:
- - Adding one more controller: Sellers and integrating it with Records (reference by id)
+
+Auth host:
+ - User controller
  - Adding auth using OAuth 2.0
+
+External host:
+- Client controller
