@@ -14,7 +14,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Store.Core.Cache\Store.Core.Cache.csproj" />
-      <ProjectReference Include="..\Store.Core\Store.Core.csproj" />
+      <ProjectReference Include="..\Store.Core.Services\Store.Core.Services.csproj" />
       <ProjectReference Include="..\Store.Core.Database\Store.Core.Database.csproj" />
       <ProjectReference Include="..\Store.Core.Extensions\Store.Core.Extensions.csproj" />
       <ProjectReference Include="..\Store.Core.Host\Store.Core.Host.csproj" />
