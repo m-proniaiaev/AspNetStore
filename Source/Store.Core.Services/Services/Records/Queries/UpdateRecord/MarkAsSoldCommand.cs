@@ -35,7 +35,7 @@ namespace Store.Core.Services.Records.Queries.UpdateRecord
             if (record.IsSold)
                 throw new ArgumentException("This record already has been sold!");
 
-            await _recordService.MarkRecordAsSold(record.Id, cancellationToken);
+            await _recordService.MarkRecordAsSoldAsync(record.Id, cancellationToken);
             
             var result = await _recordService.GetRecordAsync(record.Id, cancellationToken);
             await _cacheService.AddCacheAsync(result, 

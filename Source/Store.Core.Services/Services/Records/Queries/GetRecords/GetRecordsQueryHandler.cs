@@ -20,7 +20,7 @@ namespace Store.Core.Services.Records.Queries.GetRecords
 
         public async Task<GetRecordsResponse> Handle(GetRecordsQuery request, CancellationToken cancellationToken)
         {
-            var records = await _recordService.GetRecords(cancellationToken);
+            var records = await _recordService.GetRecordsAsync(cancellationToken);
             
             if (records == null)
                 throw new ArgumentException("No records in database!");

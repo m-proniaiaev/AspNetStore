@@ -57,7 +57,7 @@ namespace Store.Services.Records.Tests.Handlers
                 RecordCount = 3
             };
 
-            _recordService.Setup(x => x.GetRecords(It.IsAny<CancellationToken>()))
+            _recordService.Setup(x => x.GetRecordsAsync(It.IsAny<CancellationToken>()))
                 .ReturnsAsync(records);
             
             //Act
@@ -110,7 +110,7 @@ namespace Store.Services.Records.Tests.Handlers
                 RecordCount = 1
             };
 
-            _recordService.Setup(x => x.GetRecords(It.IsAny<CancellationToken>()))
+            _recordService.Setup(x => x.GetRecordsAsync(It.IsAny<CancellationToken>()))
                 .ReturnsAsync(records);
             
             //Act
@@ -148,7 +148,7 @@ namespace Store.Services.Records.Tests.Handlers
                 RecordCount = 0
             };
 
-            _recordService.Setup(x => x.GetRecords(It.IsAny<CancellationToken>()))
+            _recordService.Setup(x => x.GetRecordsAsync(It.IsAny<CancellationToken>()))
                 .ReturnsAsync(records);
             
             //Act

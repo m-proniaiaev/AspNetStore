@@ -18,7 +18,7 @@ namespace Store.Core.Services.Records
         {
             _records = client.GetRecordsCollection();
         }
-        public async Task<List<Record>> GetRecords(CancellationToken cancellationToken) 
+        public async Task<List<Record>> GetRecordsAsync(CancellationToken cancellationToken) 
             => await _records.Find(record => true).ToListAsync(cancellationToken);
         
         public async Task AddRecordAsync(CreateRecordCommand request, Guid id, CancellationToken cts)
@@ -41,12 +41,12 @@ namespace Store.Core.Services.Records
         public async Task<Record> GetRecordAsync(Guid id, CancellationToken cancellationToken) 
             => await _records.Find(record => record.Id == id).FirstOrDefaultAsync(cancellationToken);
         
-        public async Task DeleteRecord(Guid id, CancellationToken cts)
+        public async Task DeleteRecordAsync(Guid id, CancellationToken cts)
         {
            await _records.DeleteOneAsync(record => record.Id == id, cts);
         }
 
-        public async Task UpdateRecord(UpdateRecordCommand request, Record origin, CancellationToken cts)
+        public async Task UpdateRecordAsync(UpdateRecordCommand request, Record origin, CancellationToken cts)
         {
             DateTime? includeSoldDate = request.IsSold ? DateTime.Now : null;
             
@@ -66,7 +66,7 @@ namespace Store.Core.Services.Records
             await _records.ReplaceOneAsync(r => r.Id == record.Id, record, cancellationToken: cts);
         }
 
-        public async Task MarkRecordAsSold(Guid id, CancellationToken cts)
+        public async Task MarkRecordAsSoldAsync(Guid id, CancellationToken cts)
         {
             var update = Builders<Record>.Update
                 .Set("IsSold", true)

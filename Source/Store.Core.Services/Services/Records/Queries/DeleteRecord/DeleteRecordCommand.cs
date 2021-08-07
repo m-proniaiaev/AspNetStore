@@ -31,7 +31,7 @@ namespace Store.Core.Services.Records.Queries.DeleteRecord
             if (record == null)
                 throw new ArgumentException($"Record {request.Id} is not found!");
             
-            await _recordService.DeleteRecord(record.Id, cancellationToken);
+            await _recordService.DeleteRecordAsync(record.Id, cancellationToken);
             await _cacheService.DeleteCacheAsync<Record>(record.Id.ToString(), cancellationToken);
             
             return Unit.Value;

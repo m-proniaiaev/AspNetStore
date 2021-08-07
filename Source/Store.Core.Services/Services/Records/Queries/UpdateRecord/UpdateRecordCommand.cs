@@ -39,7 +39,7 @@ namespace Store.Core.Services.Records.Queries.UpdateRecord
             if (record.IsSold)
                 throw new ArgumentException("You can not change records which already has been sold!");
 
-            await _recordService.UpdateRecord(request, record, cancellationToken);
+            await _recordService.UpdateRecordAsync(request, record, cancellationToken);
             
             var result = await _recordService.GetRecordAsync(record.Id, cancellationToken);
             

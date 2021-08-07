@@ -1,4 +1,5 @@
 using System;
+using Store.Core.Contracts.Enums;
 using Store.Core.Contracts.Interfaces;
 
 namespace Store.Core.Contracts.Models
@@ -7,6 +8,7 @@ namespace Store.Core.Contracts.Models
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
+        public RoleType RoleType { get; set; }
         public bool IsActive { get; set; }
         public string[] Actions { get; set; }
         public DateTime Created { get; set; }
