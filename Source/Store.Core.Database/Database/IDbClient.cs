@@ -7,5 +7,7 @@ namespace Store.Core.Database.Database
     {
         public IMongoCollection<Record> GetRecordsCollection();
         public IMongoCollection<Seller> GetSellersCollection();
+        public IMongoCollection<Role> GetRolesCollection();
+        public IMongoCollection<User> GetUsersCollection();
     }
 }
