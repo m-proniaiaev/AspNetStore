@@ -24,7 +24,7 @@ namespace SomeStore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddStoreMongo(Configuration);
-            services.AddCoreServices();
+            services.AddInternalServices();
             services.AddConfiguredControllers();
             services.AddStoreCache(Configuration);
             services.AddSwaggerGen(c =>

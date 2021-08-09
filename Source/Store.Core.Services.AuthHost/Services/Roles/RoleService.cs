@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using MongoDB.Driver;
-using Store.Core.Common.Interfaces;
 using Store.Core.Contracts.Models;
 using Store.Core.Database.Database;
-using Store.Core.Services.Roles.Queries.CreateRole;
+using Store.Core.Services.AuthHost.Common.Interfaces;
+using Store.Core.Services.AuthHost.Services.Roles.Queries.CreateRole;
 
-namespace Store.Core.Services.Roles
+namespace Store.Core.Services.AuthHost.Services.Roles
 {
     public class RoleService : IRoleService
     {

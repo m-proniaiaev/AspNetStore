@@ -19,6 +19,10 @@ namespace Store.Core.Database.Database
             
             var client = new MongoClient(recordDbConfig.Value.ConnectionString);
             var db = client.GetDatabase(recordDbConfig.Value.DbName);
+            
+            if (db is null)
+                throw new InvalidOperationException("Can't connect to db!");
+            
             _records = db.GetCollection<Record>(recordDbConfig.Value.RecordCollectionName);
             _sellers = db.GetCollection<Seller>(recordDbConfig.Value.SellerCollectionName);
             _roles = db.GetCollection<Role>(recordDbConfig.Value.RolesCollectionName);

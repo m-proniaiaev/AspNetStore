@@ -10,7 +10,7 @@ namespace Store.Core
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddCoreServices(this IServiceCollection services)
+        public static IServiceCollection AddInternalServices(this IServiceCollection services)
         {
             var currentDomain = AppDomain.CurrentDomain
                 .GetAssemblies()

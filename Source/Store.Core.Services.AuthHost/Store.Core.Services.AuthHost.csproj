@@ -1,21 +1,24 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
-      <UserSecretsId>4a240e8e-3bd1-4943-a1ff-2979c590c8e5</UserSecretsId>
-      <RootNamespace>Store.Core</RootNamespace>
-  </PropertyGroup>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="Common\Validations\CommandValidation" />
+      <Folder Include="Services" />
+    </ItemGroup>
 
     <ItemGroup>
       <PackageReference Include="FluentValidation" Version="10.3.0" />
-      <PackageReference Include="MediatR" Version="9.0.0" />
       <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
-      <PackageReference Include="Microsoft.Extensions.Options" Version="5.0.0" />
-      <PackageReference Include="MongoDB.Bson" Version="2.13.0-beta1" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
       <PackageReference Include="MongoDB.Driver" Version="2.13.0-beta1" />
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Store.Core.Common\Store.Core.Common.csproj" />
       <ProjectReference Include="..\Store.Core.Contracts\Store.Core.Contracts.csproj" />
       <ProjectReference Include="..\Store.Core.Database\Store.Core.Database.csproj" />
     </ItemGroup>

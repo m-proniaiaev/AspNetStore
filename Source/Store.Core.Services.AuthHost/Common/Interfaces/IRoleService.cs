@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Store.Core.Contracts.Models;
-using Store.Core.Contracts.Responses;
-using Store.Core.Services.Roles.Queries.CreateRole;
-using Store.Core.Services.Roles.Queries.GetActions;
+using Store.Core.Services.AuthHost.Services.Roles.Queries.CreateRole;
 
-namespace Store.Core.Common.Interfaces
+namespace Store.Core.Services.AuthHost.Common.Interfaces
 {
     public interface IRoleService
     {

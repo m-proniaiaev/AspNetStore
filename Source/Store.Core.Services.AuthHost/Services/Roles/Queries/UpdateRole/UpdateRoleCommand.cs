@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 using MediatR;
 using Store.Core.Contracts.Interfaces;
 using Store.Core.Contracts.Models;
-using Store.Core.Services.Roles.Queries.CreateRole;
+using Store.Core.Services.AuthHost.Services.Roles.Queries.CreateRole;
 
-namespace Store.Core.Services.Roles.Queries.UpdateRole
+namespace Store.Core.Services.AuthHost.Services.Roles.Queries.UpdateRole
 {
     public class UpdateRoleCommand : CreateRoleCommand, IIdentity
     {
