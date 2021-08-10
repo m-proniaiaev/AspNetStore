@@ -3,11 +3,11 @@
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
         <Nullable>enable</Nullable>
+        <RootNamespace>Store.Core.Services.AuthHost</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
       <Folder Include="Common\Validations\CommandValidation" />
-      <Folder Include="Services" />
     </ItemGroup>
 
     <ItemGroup>

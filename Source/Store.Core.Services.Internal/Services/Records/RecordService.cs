@@ -69,8 +69,8 @@ namespace Store.Core.Services.Records
         public async Task MarkRecordAsSoldAsync(Guid id, CancellationToken cts)
         {
             var update = Builders<Record>.Update
-                .Set("IsSold", true)
-                .Set("SoldDate", DateTime.Now);
+                .Set(x =>x.IsSold, true)
+                .Set(x => x.SoldDate, DateTime.Now);
             await _records.UpdateOneAsync(r => r.Id == id, update, cancellationToken: cts);
         }
     }

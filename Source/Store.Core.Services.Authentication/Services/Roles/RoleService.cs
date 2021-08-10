@@ -53,7 +53,7 @@ namespace Store.Core.Services.AuthHost.Services.Roles
         public async Task DisableRoleAsync(Guid id, CancellationToken cts)
         {
             var update = Builders<Role>.Update
-                .Set("IsActive", false);
+                .Set(x => x.IsActive, false);
 
             await _roles.UpdateOneAsync(role => role.Id == id, update, cancellationToken: cts);
         }

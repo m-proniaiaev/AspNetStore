@@ -3,6 +3,7 @@ using System.Linq;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Store.Core.Services.AuthHost.Common.Interfaces;
+using Store.Core.Services.AuthHost.PasswordProcessor;
 using Store.Core.Services.AuthHost.Services.Roles;
 
 namespace Store.Core.Services.AuthHost
@@ -21,6 +22,7 @@ namespace Store.Core.Services.AuthHost
 
             services.AddMediatR(currentDomain);
             services.AddScoped<IRoleService, RoleService>();
+            services.AddTransient<IHasher, Hasher>();
 
             return services;
         }

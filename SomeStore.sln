@@ -53,7 +53,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.WebApi.Internal", "So
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Services.Sellers.Test", "Tests\Store.Services.Sellers.Test\Store.Services.Sellers.Test.csproj", "{5C64F19A-83F0-413C-974D-0F2337D07924}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Core.Services.AuthHost", "Source\Store.Core.Services.AuthHost\Store.Core.Services.AuthHost.csproj", "{20883ECA-7BA5-4C73-A270-54D35CD38345}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Core.Services.Authentication", "Source\Store.Core.Services.Authentication\Store.Core.Services.Authentication.csproj", "{20883ECA-7BA5-4C73-A270-54D35CD38345}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Core.Common", "Source\Store.Core.Common\Store.Core.Common.csproj", "{CA988AE8-B4B8-45BC-A312-30FAA3E1EA1D}"
 EndProject
