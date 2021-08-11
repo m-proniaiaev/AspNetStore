@@ -46,7 +46,7 @@ namespace Store.Core.Services.AuthHost.Services.Users.Query
                IsActive = request.IsActive,
                Role = role.Id,
                Salt = password.salt,
-               Hash = password.pass,
+               Hash = password.hash,
                Created = DateTime.Now,
                CreatedBy = Guid.Empty //TODO
             };

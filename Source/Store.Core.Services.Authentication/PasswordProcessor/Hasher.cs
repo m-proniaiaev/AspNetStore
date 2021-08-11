@@ -16,7 +16,7 @@ namespace Store.Core.Services.AuthHost.PasswordProcessor
             _options = options;
         }
         
-        public (string salt, string pass) Hash(string password)
+        public (string salt, string hash) Hash(string password)
         {
             using var algorithm = new Rfc2898DeriveBytes(
                 password,
