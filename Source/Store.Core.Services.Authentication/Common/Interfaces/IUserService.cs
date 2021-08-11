@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Store.Core.Contracts.Models;
+using Store.Core.Services.AuthHost.Services.Users.Query;
 
 namespace Store.Core.Services.AuthHost.Common.Interfaces
 {
     public interface IUserService
     {
         Task<List<User>> GetUsersAsync(CancellationToken cts);
-        Task AddUserAsync(Guid id, CancellationToken cts);
+        Task AddUserAsync(User user, CancellationToken cts);
         Task<User> GetUserAsync(Guid id, CancellationToken cts);
         Task DeleteUserAsync(Guid id, CancellationToken cts);
-        Task UpdateUserAsync(CancellationToken cts);
-        Task ChangeUserPassword(CancellationToken cts);
-        Task ChangeUserRole(CancellationToken cts);
+        Task UpdateUserAsync(User user, CancellationToken cts);
+        Task ChangeUserPassword(User user, CancellationToken cts);
+        Task ChangeUserRole(User user, CancellationToken cts);
         Task MarkUserAsDisabledAsync(Guid id, CancellationToken cts);
     }
 }

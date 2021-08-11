@@ -6,6 +6,7 @@ using MongoDB.Driver;
 using Store.Core.Contracts.Models;
 using Store.Core.Database.Database;
 using Store.Core.Services.AuthHost.Common.Interfaces;
+using Store.Core.Services.AuthHost.Services.Users.Query;
 
 namespace Store.Core.Services.AuthHost.Services.Users
 {
@@ -23,9 +24,9 @@ namespace Store.Core.Services.AuthHost.Services.Users
             return await _users.Find(x => true).ToListAsync(cts);
         }
 
-        public async Task AddUserAsync(Guid id, CancellationToken cts)
+        public async Task AddUserAsync(User user, CancellationToken cts)
         {
-            throw new NotImplementedException();
+            await _users.InsertOneAsync(user, cancellationToken: cts);
         }
 
         public async Task<User> GetUserAsync(Guid id, CancellationToken cts)
@@ -38,19 +39,26 @@ namespace Store.Core.Services.AuthHost.Services.Users
             await _users.DeleteOneAsync(user => user.Id == id, cts);
         }
 
-        public async Task UpdateUserAsync(CancellationToken cts)
+        public async Task UpdateUserAsync(User user, CancellationToken cts)
         {
-            throw new NotImplementedException();
+            await _users.ReplaceOneAsync(u => u.Id == user.Id, user, cancellationToken: cts);
         }
 
-        public async Task ChangeUserPassword(CancellationToken cts)
+        public async Task ChangeUserPassword(User user, CancellationToken cts)
         {
-            throw new NotImplementedException();
+            var update = Builders<User>.Update
+                .Set(x => x.Hash, user.Hash)
+                .Set(x => x.Salt, user.Salt);
+
+            await _users.UpdateOneAsync(u => u.Id == user.Id, update, cancellationToken: cts);
         }
 
-        public async Task ChangeUserRole(CancellationToken cts)
+        public async Task ChangeUserRole(User user, CancellationToken cts)
         {
-            throw new NotImplementedException();
+            var update = Builders<User>.Update
+                .Set(x => x.Roles, user.Roles);
+
+            await _users.UpdateOneAsync(u => u.Id == user.Id, update, cancellationToken: cts);
         }
 
         public async Task MarkUserAsDisabledAsync(Guid id, CancellationToken cts)
