@@ -29,7 +29,7 @@ namespace Store.Core.Services.AuthHost.PasswordProcessor
             return ($"{salt}", $"{_options.Iterations}.{key}");
         }
 
-        public bool Check(string salt, string hash, string requestedPassword)
+        public bool CheckHash(string salt, string hash, string requestedPassword)
         {
             var passHashValues = hash.Split('.', 2);
 

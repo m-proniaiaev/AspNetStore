@@ -4,6 +4,6 @@ namespace Store.Core.Services.AuthHost.Common.Interfaces
     {
         (string salt, string pass) Hash(string password);
   
-        bool Check(string salt, string hash, string requestedPassword);
+        bool CheckHash(string salt, string hash, string requestedPassword);
     }
 }

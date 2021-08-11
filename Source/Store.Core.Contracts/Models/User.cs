@@ -8,7 +8,7 @@ namespace Store.Core.Contracts.Models
         public Guid Id { get; set; }
         public string Name { get; set; }
         public bool IsActive { get; set; }
-        public Guid[] Roles { get; set; }
+        public Guid Role { get; set; }
         public string Hash { get; set; }
         public string Salt { get; set; }
         public DateTime Created { get; set; }

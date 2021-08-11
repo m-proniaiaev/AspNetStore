@@ -56,7 +56,7 @@ namespace Store.Core.Services.AuthHost.Services.Users
         public async Task ChangeUserRole(User user, CancellationToken cts)
         {
             var update = Builders<User>.Update
-                .Set(x => x.Roles, user.Roles);
+                .Set(x => x.Role, user.Role);
 
             await _users.UpdateOneAsync(u => u.Id == user.Id, update, cancellationToken: cts);
         }
