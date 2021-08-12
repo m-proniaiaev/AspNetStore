@@ -14,7 +14,7 @@ using Store.Core.Services.Internal.Sellers.Queries.UpdateSellerAsync;
 namespace SomeStore.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/internal/[controller]")]
     public class SellersController : ControllerBase
     {
         private readonly IMediator _mediator;

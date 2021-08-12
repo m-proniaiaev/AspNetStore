@@ -1,11 +1,9 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
-      <UserSecretsId>e4761c82-dab4-4819-b726-e09b5cf2699d</UserSecretsId>
-      <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-      <RootNamespace>SomeStore</RootNamespace>
-  </PropertyGroup>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
@@ -14,9 +12,9 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Store.Core.Cache\Store.Core.Cache.csproj" />
-      <ProjectReference Include="..\Store.Core.Services\Store.Core.Services.csproj" />
       <ProjectReference Include="..\Store.Core.Database\Store.Core.Database.csproj" />
       <ProjectReference Include="..\Store.Core.Host\Store.Core.Host.csproj" />
+      <ProjectReference Include="..\Store.Core.Services\Store.Core.Services.csproj" />
     </ItemGroup>
 
 </Project>

@@ -15,7 +15,7 @@ using Store.Core.Services.Internal.Records.Queries.UpdateRecord;
 namespace SomeStore.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/internal/[controller]")]
     public class RecordsController : ControllerBase
     {
         private readonly IMediator _mediator;

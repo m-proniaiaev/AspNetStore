@@ -51,6 +51,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.WebApi.Internal", "So
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Services.Sellers.Test", "Tests\Store.Services.Sellers.Test\Store.Services.Sellers.Test.csproj", "{5C64F19A-83F0-413C-974D-0F2337D07924}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.WebApi.Authorization", "Source\Store.WebApi.Authorization\Store.WebApi.Authorization.csproj", "{4171DD15-48B1-4857-B816-7151F60E391A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{5C64F19A-83F0-413C-974D-0F2337D07924}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C64F19A-83F0-413C-974D-0F2337D07924}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C64F19A-83F0-413C-974D-0F2337D07924}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4171DD15-48B1-4857-B816-7151F60E391A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4171DD15-48B1-4857-B816-7151F60E391A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4171DD15-48B1-4857-B816-7151F60E391A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4171DD15-48B1-4857-B816-7151F60E391A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{19843E21-A39C-4367-BD6E-BF532B7CA20D} = {E6AC06A8-0C71-4869-8CE1-BF9175FA2447}
@@ -108,5 +114,6 @@ Global
 		{D5819E25-4EC9-432B-AD97-F706B51923C1} = {8F740DB6-3882-43E1-8FA8-EA4609764078}
 		{28946111-DEC3-45F3-A2FD-2A2B8C1EC7E9} = {6CFE5DA1-25F9-4318-8A94-08ACFCF4D9E7}
 		{5C64F19A-83F0-413C-974D-0F2337D07924} = {8F740DB6-3882-43E1-8FA8-EA4609764078}
+		{4171DD15-48B1-4857-B816-7151F60E391A} = {6CFE5DA1-25F9-4318-8A94-08ACFCF4D9E7}
 	EndGlobalSection
 EndGlobal
