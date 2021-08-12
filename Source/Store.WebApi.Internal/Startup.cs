@@ -51,6 +51,7 @@ namespace SomeStore
             
             app.UseRouting();
 
+            //app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
