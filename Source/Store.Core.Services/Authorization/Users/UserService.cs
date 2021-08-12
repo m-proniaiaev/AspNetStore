@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using MongoDB.Driver;
-using Store.Core.Common.Interfaces;
 using Store.Core.Contracts.Models;
 using Store.Core.Database.Database;
+using Store.Core.Services.Common.Interfaces;
 
-namespace Store.Core.Authorization.Services.Users
+namespace Store.Core.Services.Authorization.Users
 {
     public class UserService : IUserService
     {

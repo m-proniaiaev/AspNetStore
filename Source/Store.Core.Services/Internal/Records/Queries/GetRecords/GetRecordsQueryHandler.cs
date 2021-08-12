@@ -3,11 +3,11 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using Store.Core.Common.Interfaces;
 using Store.Core.Contracts.Responses;
-using Store.Core.Internal.Records.Queries.GetRecords.Helpers;
+using Store.Core.Services.Common.Interfaces;
+using Store.Core.Services.Internal.Records.Queries.GetRecords.Helpers;
 
-namespace Store.Core.Internal.Records.Queries.GetRecords
+namespace Store.Core.Services.Internal.Records.Queries.GetRecords
 {
     public class GetRecordsQueryHandler : IRequestHandler<GetRecordsQuery, GetRecordsResponse>
     {

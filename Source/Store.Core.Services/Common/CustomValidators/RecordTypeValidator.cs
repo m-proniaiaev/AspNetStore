@@ -1,7 +1,7 @@
 using FluentValidation;
 using Store.Core.Contracts.Enums;
 
-namespace Store.Core.Common.CustomValidators
+namespace Store.Core.Services.Common.CustomValidators
 {
     public static class RecordTypeValidator
     {

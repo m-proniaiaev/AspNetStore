@@ -1,4 +1,4 @@
-namespace Store.Core.Authorization.PasswordProcessor
+namespace Store.Core.Services.Authorization.PasswordProcessor
 {
     public sealed class HashingOptions
     {

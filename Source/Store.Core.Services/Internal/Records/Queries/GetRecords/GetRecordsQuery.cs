@@ -2,9 +2,9 @@ using System;
 using MediatR;
 using Store.Core.Contracts.Enums;
 using Store.Core.Contracts.Responses;
-using Store.Core.Internal.Records.Queries.GetRecords.Helpers;
+using Store.Core.Services.Internal.Records.Queries.GetRecords.Helpers;
 
-namespace Store.Core.Internal.Records.Queries.GetRecords
+namespace Store.Core.Services.Internal.Records.Queries.GetRecords
 {
     public class GetRecordsQuery : IRequest<GetRecordsResponse>
     {

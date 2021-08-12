@@ -3,7 +3,6 @@
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
       <UserSecretsId>4a240e8e-3bd1-4943-a1ff-2979c590c8e5</UserSecretsId>
-      <RootNamespace>Store.Core</RootNamespace>
   </PropertyGroup>
 
     <ItemGroup>

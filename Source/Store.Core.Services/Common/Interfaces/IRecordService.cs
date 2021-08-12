@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Store.Core.Contracts.Models;
-using Store.Core.Internal.Records.Queries.CreateRecord;
-using Store.Core.Internal.Records.Queries.UpdateRecord;
+using Store.Core.Services.Internal.Records.Queries.CreateRecord;
+using Store.Core.Services.Internal.Records.Queries.UpdateRecord;
 
-namespace Store.Core.Common.Interfaces
+namespace Store.Core.Services.Common.Interfaces
 {
     public interface IRecordService
     {

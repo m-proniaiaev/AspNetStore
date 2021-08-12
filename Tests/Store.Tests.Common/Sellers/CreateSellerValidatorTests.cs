@@ -1,7 +1,7 @@
 using FluentValidation.TestHelper;
-using Store.Core.Common.Validations.CommandValidation.Sellers;
 using Store.Core.Contracts.Enums;
-using Store.Core.Internal.Sellers.Queries.CreateSeller;
+using Store.Core.Services.Common.Validations.CommandValidation.Sellers;
+using Store.Core.Services.Internal.Sellers.Queries.CreateSeller;
 using Xunit;
 
 namespace Store.Tests.Common.Sellers

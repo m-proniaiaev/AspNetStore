@@ -6,10 +6,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Store.Core.Contracts.Models;
 using Store.Core.Contracts.Responses;
-using Store.Core.Internal.Sellers.Queries.CreateSeller;
-using Store.Core.Internal.Sellers.Queries.DeleteSeller;
-using Store.Core.Internal.Sellers.Queries.GetSellers;
-using Store.Core.Internal.Sellers.Queries.UpdateSellerAsync;
+using Store.Core.Services.Internal.Sellers.Queries.CreateSeller;
+using Store.Core.Services.Internal.Sellers.Queries.DeleteSeller;
+using Store.Core.Services.Internal.Sellers.Queries.GetSellers;
+using Store.Core.Services.Internal.Sellers.Queries.UpdateSellerAsync;
 
 namespace SomeStore.Controllers
 {

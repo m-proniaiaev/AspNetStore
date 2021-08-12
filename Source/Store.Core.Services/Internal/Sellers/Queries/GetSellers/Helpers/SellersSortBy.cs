@@ -1,4 +1,4 @@
-namespace Store.Core.Internal.Sellers.Queries.GetSellers.Helpers
+namespace Store.Core.Services.Internal.Sellers.Queries.GetSellers.Helpers
 {
     public enum SellersSortBy
     {

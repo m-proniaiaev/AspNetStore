@@ -1,9 +1,8 @@
 using FluentValidation;
-using Store.Core.Common.CustomValidators;
-using Store.Core.Contracts.Enums;
-using Store.Core.Internal.Sellers.Queries.UpdateSellerAsync;
+using Store.Core.Services.Common.CustomValidators;
+using Store.Core.Services.Internal.Sellers.Queries.UpdateSellerAsync;
 
-namespace Store.Core.Common.Validations.CommandValidation.Sellers
+namespace Store.Core.Services.Common.Validations.CommandValidation.Sellers
 {
     public class UpdateSellerCommandValidator : AbstractValidator<UpdateSellerCommand>
     {

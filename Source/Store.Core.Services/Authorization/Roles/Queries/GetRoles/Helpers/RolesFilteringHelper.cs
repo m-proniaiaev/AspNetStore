@@ -3,7 +3,7 @@ using System.Linq;
 using Store.Core.Contracts.Enums;
 using Store.Core.Contracts.Models;
 
-namespace Store.Core.Authorization.Services.Roles.Queries.GetRoles.Helpers
+namespace Store.Core.Services.Authorization.Roles.Queries.GetRoles.Helpers
 {
     public static class RolesFilteringHelper
     {

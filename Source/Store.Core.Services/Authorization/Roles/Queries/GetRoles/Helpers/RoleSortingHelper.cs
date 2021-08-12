@@ -1,10 +1,10 @@
 using System;
 using System.Linq;
-using Store.Core.Common;
 using Store.Core.Contracts.Enums;
 using Store.Core.Contracts.Models;
+using Store.Core.Services.Common;
 
-namespace Store.Core.Authorization.Services.Roles.Queries.GetRoles.Helpers
+namespace Store.Core.Services.Authorization.Roles.Queries.GetRoles.Helpers
 {
     public static class RoleSortingHelper
     {

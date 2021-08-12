@@ -2,12 +2,12 @@ using System;
 using System.Linq;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using Store.Core.Authorization.PasswordProcessor;
-using Store.Core.Authorization.Services.Roles;
-using Store.Core.Authorization.Services.Users;
-using Store.Core.Common.Interfaces;
+using Store.Core.Services.Authorization.PasswordProcessor;
+using Store.Core.Services.Authorization.Roles;
+using Store.Core.Services.Authorization.Users;
+using Store.Core.Services.Common.Interfaces;
 
-namespace Store.Core.Authorization
+namespace Store.Core.Services.Authorization
 {
     public static class DependencyInjection
     {

@@ -3,7 +3,7 @@ using System.Linq;
 using Store.Core.Contracts.Enums;
 using Store.Core.Contracts.Models;
 
-namespace Store.Core.Internal.Records.Queries.GetRecords.Helpers
+namespace Store.Core.Services.Internal.Records.Queries.GetRecords.Helpers
 {
     public static class FilteringHelper
     {

@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Store.Core.Contracts.Models;
 
-namespace Store.Core.Common.Interfaces
+namespace Store.Core.Services.Common.Interfaces
 {
     public interface IUserService
     {

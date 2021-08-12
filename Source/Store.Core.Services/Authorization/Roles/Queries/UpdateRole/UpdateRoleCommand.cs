@@ -2,12 +2,12 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using Store.Core.Authorization.Services.Roles.Queries.CreateRole;
-using Store.Core.Common.Interfaces;
 using Store.Core.Contracts.Interfaces;
 using Store.Core.Contracts.Models;
+using Store.Core.Services.Authorization.Roles.Queries.CreateRole;
+using Store.Core.Services.Common.Interfaces;
 
-namespace Store.Core.Authorization.Services.Roles.Queries.UpdateRole
+namespace Store.Core.Services.Authorization.Roles.Queries.UpdateRole
 {
     public class UpdateRoleCommand : CreateRoleCommand, IIdentity
     {

@@ -2,11 +2,11 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using Store.Core.Common.Interfaces;
 using Store.Core.Contracts.Interfaces;
 using Store.Core.Contracts.Models;
+using Store.Core.Services.Common.Interfaces;
 
-namespace Store.Core.Internal.Records.Queries.GetRecords.ById
+namespace Store.Core.Services.Internal.Records.Queries.GetRecords.ById
 {
     public class GetRecordByIdQuery : IRequest<Record>, IIdentity
     {

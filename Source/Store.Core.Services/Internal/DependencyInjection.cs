@@ -2,11 +2,11 @@ using System;
 using System.Linq;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using Store.Core.Common.Interfaces;
-using Store.Core.Internal.Records;
-using Store.Core.Internal.Sellers;
+using Store.Core.Services.Common.Interfaces;
+using Store.Core.Services.Internal.Records;
+using Store.Core.Services.Internal.Sellers;
 
-namespace Store.Core.Internal
+namespace Store.Core.Services.Internal
 {
     public static class DependencyInjection
     {

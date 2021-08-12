@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Store.Core.Contracts.Models;
-using Store.Core.Internal.Sellers.Queries.CreateSeller;
-using Store.Core.Internal.Sellers.Queries.UpdateSellerAsync;
+using Store.Core.Services.Internal.Sellers.Queries.CreateSeller;
+using Store.Core.Services.Internal.Sellers.Queries.UpdateSellerAsync;
 
-namespace Store.Core.Common.Interfaces
+namespace Store.Core.Services.Common.Interfaces
 {
     public interface ISellerService
     {

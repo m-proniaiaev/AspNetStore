@@ -7,7 +7,7 @@ using Store.Core.Contracts.Enums;
 using Store.Core.Contracts.Models;
 using Store.Core.Contracts.Responses;
 
-namespace Store.Core.Authorization.Services.Roles.Queries.GetActions
+namespace Store.Core.Services.Authorization.Roles.Queries.GetActions
 {
     public class GetActionsQuery : IRequest<GetActionsResponse>
     {

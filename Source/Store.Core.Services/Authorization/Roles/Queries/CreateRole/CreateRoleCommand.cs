@@ -3,12 +3,12 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using Store.Core.Authorization.Services.Roles.Queries.GetActions;
-using Store.Core.Common.Interfaces;
 using Store.Core.Contracts.Enums;
 using Store.Core.Contracts.Models;
+using Store.Core.Services.Authorization.Roles.Queries.GetActions;
+using Store.Core.Services.Common.Interfaces;
 
-namespace Store.Core.Authorization.Services.Roles.Queries.CreateRole
+namespace Store.Core.Services.Authorization.Roles.Queries.CreateRole
 {
     public class CreateRoleCommand : IRequest<Role>
     {

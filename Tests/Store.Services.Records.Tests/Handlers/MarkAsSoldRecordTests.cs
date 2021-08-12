@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using MediatR;
 using Moq;
-using Store.Core.Common.Interfaces;
 using Store.Core.Contracts.Interfaces;
-using Store.Core.Internal.Records.Queries.UpdateRecord;
+using Store.Core.Services.Common.Interfaces;
+using Store.Core.Services.Internal.Records.Queries.UpdateRecord;
 using Xunit;
 using Record = Store.Core.Contracts.Models.Record;
 

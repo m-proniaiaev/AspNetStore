@@ -3,7 +3,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using Store.Core.Contracts.Enums;
 
-namespace Store.Core.Common
+namespace Store.Core.Services.Common
 {
     public static class SortingHelper
     {

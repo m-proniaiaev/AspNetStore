@@ -1,10 +1,10 @@
 using System;
 using System.Linq;
-using Store.Core.Common;
 using Store.Core.Contracts.Enums;
 using Store.Core.Contracts.Models;
+using Store.Core.Services.Common;
 
-namespace Store.Core.Internal.Records.Queries.GetRecords.Helpers
+namespace Store.Core.Services.Internal.Records.Queries.GetRecords.Helpers
 {
     public static class RecordSortingHelper
     {

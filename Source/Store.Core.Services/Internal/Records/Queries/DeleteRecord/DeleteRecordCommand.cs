@@ -2,11 +2,11 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using Store.Core.Common.Interfaces;
 using Store.Core.Contracts.Interfaces;
 using Store.Core.Contracts.Models;
+using Store.Core.Services.Common.Interfaces;
 
-namespace Store.Core.Internal.Records.Queries.DeleteRecord
+namespace Store.Core.Services.Internal.Records.Queries.DeleteRecord
 {
     public class DeleteRecordCommand : IRequest, IIdentity
     {

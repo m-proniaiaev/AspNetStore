@@ -1,6 +1,6 @@
 using FluentValidation;
 
-namespace Store.Core.Common.CustomValidators
+namespace Store.Core.Services.Common.CustomValidators
 {
     public static class NameValidator
     {

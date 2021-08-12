@@ -1,9 +1,9 @@
 using System;
 using System.Linq;
 using System.Security.Cryptography;
-using Store.Core.Common.Interfaces;
+using Store.Core.Services.Common.Interfaces;
 
-namespace Store.Core.Authorization.PasswordProcessor
+namespace Store.Core.Services.Authorization.PasswordProcessor
 {
     public class Hasher : IHasher
     {

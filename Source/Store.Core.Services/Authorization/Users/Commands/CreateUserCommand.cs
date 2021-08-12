@@ -2,11 +2,11 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using Store.Core.Authorization.Services.Roles.Queries.GetRoles;
-using Store.Core.Common.Interfaces;
 using Store.Core.Contracts.Models;
+using Store.Core.Services.Authorization.Roles.Queries.GetRoles;
+using Store.Core.Services.Common.Interfaces;
 
-namespace Store.Core.Authorization.Services.Users.Query
+namespace Store.Core.Services.Authorization.Users.Commands
 {
     public class CreateUserCommand : IRequest<User>
     {
@@ -31,12 +31,18 @@ namespace Store.Core.Authorization.Services.Users.Query
         
         public async Task<User> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
+            //var nameIsAvailable = _mediato
+            
             var role = await _mediator.Send(new GetRoleByIdQuery { Id = request.Role }, cancellationToken);
 
             if (role == null)
                 throw new ArgumentException("There is no such role!");
 
             var password = _hasher.Hash(request.Password);
+
+            if (password.salt == null || password.hash == null)
+                throw new ArgumentException("Can't create user with provided password!");
+                
 
             var id = Guid.NewGuid();
             var user = new User

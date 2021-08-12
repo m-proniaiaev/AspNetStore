@@ -8,7 +8,7 @@ using Store.Core;
 using Store.Core.Cache;
 using Store.Core.Database;
 using Store.Core.Host.Extensions;
-using Store.Core.Internal;
+using Store.Core.Services.Internal;
 
 namespace SomeStore
 {

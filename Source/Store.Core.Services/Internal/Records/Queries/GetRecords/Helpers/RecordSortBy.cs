@@ -1,4 +1,4 @@
-namespace Store.Core.Internal.Records.Queries.GetRecords.Helpers
+namespace Store.Core.Services.Internal.Records.Queries.GetRecords.Helpers
 {
     public enum RecordSortBy
     {

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using MongoDB.Driver;
-using Store.Core.Common.Interfaces;
 using Store.Core.Contracts.Models;
 using Store.Core.Database.Database;
-using Store.Core.Internal.Sellers.Queries.CreateSeller;
-using Store.Core.Internal.Sellers.Queries.UpdateSellerAsync;
+using Store.Core.Services.Common.Interfaces;
+using Store.Core.Services.Internal.Sellers.Queries.CreateSeller;
+using Store.Core.Services.Internal.Sellers.Queries.UpdateSellerAsync;
 
-namespace Store.Core.Internal.Sellers
+namespace Store.Core.Services.Internal.Sellers
 {
     public class SellerService : ISellerService
     {

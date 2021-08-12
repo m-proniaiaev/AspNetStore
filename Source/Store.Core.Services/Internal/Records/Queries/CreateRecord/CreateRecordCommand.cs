@@ -3,13 +3,13 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using Store.Core.Common.Interfaces;
 using Store.Core.Contracts.Enums;
 using Store.Core.Contracts.Interfaces;
 using Store.Core.Contracts.Models;
-using Store.Core.Internal.Sellers.Queries.GetSellers;
+using Store.Core.Services.Common.Interfaces;
+using Store.Core.Services.Internal.Sellers.Queries.GetSellers;
 
-namespace Store.Core.Internal.Records.Queries.CreateRecord
+namespace Store.Core.Services.Internal.Records.Queries.CreateRecord
 {
     public class CreateRecordCommand : IRequest<Record>
     {

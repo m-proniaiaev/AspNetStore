@@ -3,12 +3,12 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using Store.Core.Authorization.Services.Roles.Queries.GetRoles.Helpers;
-using Store.Core.Common.Interfaces;
 using Store.Core.Contracts.Enums;
 using Store.Core.Contracts.Responses;
+using Store.Core.Services.Authorization.Roles.Queries.GetRoles.Helpers;
+using Store.Core.Services.Common.Interfaces;
 
-namespace Store.Core.Authorization.Services.Roles.Queries.GetRoles
+namespace Store.Core.Services.Authorization.Roles.Queries.GetRoles
 {
     public class GetRolesQuery : IRequest<GetRolesResponse>
     {

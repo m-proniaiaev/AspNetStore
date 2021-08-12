@@ -1,10 +1,10 @@
 using System;
 using System.Linq;
-using Store.Core.Common;
 using Store.Core.Contracts.Enums;
 using Store.Core.Contracts.Models;
+using Store.Core.Services.Common;
 
-namespace Store.Core.Internal.Sellers.Queries.GetSellers.Helpers
+namespace Store.Core.Services.Internal.Sellers.Queries.GetSellers.Helpers
 {
     public static class SellersSortHelper
     {

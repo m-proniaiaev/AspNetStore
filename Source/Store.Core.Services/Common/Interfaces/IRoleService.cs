@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Store.Core.Authorization.Services.Roles.Queries.CreateRole;
 using Store.Core.Contracts.Models;
+using Store.Core.Services.Authorization.Roles.Queries.CreateRole;
 
-namespace Store.Core.Common.Interfaces
+namespace Store.Core.Services.Common.Interfaces
 {
     public interface IRoleService
     {
