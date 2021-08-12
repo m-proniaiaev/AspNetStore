@@ -7,7 +7,7 @@ using Moq;
 using Store.Core.Common.Interfaces;
 using Store.Core.Contracts.Interfaces;
 using Store.Core.Contracts.Models;
-using Store.Core.Services.Sellers.Queries.DeleteSeller;
+using Store.Core.Internal.Sellers.Queries.DeleteSeller;
 using Xunit;
 
 namespace Store.Services.Sellers.Test.Handlers

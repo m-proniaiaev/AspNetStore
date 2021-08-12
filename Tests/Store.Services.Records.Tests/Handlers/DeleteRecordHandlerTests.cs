@@ -5,7 +5,7 @@ using FluentAssertions;
 using Moq;
 using Store.Core.Common.Interfaces;
 using Store.Core.Contracts.Interfaces;
-using Store.Core.Services.Records.Queries.DeleteRecord;
+using Store.Core.Internal.Records.Queries.DeleteRecord;
 using Xunit;
 using Record = Store.Core.Contracts.Models.Record;
 

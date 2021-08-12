@@ -6,11 +6,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Store.Core.Contracts.Models;
 using Store.Core.Contracts.Responses;
-using Store.Core.Services.Records.Queries.CreateRecord;
-using Store.Core.Services.Records.Queries.DeleteRecord;
-using Store.Core.Services.Records.Queries.GetRecords;
-using Store.Core.Services.Records.Queries.GetRecords.ById;
-using Store.Core.Services.Records.Queries.UpdateRecord;
+using Store.Core.Internal.Records.Queries.CreateRecord;
+using Store.Core.Internal.Records.Queries.DeleteRecord;
+using Store.Core.Internal.Records.Queries.GetRecords;
+using Store.Core.Internal.Records.Queries.GetRecords.ById;
+using Store.Core.Internal.Records.Queries.UpdateRecord;
 
 namespace SomeStore.Controllers
 {

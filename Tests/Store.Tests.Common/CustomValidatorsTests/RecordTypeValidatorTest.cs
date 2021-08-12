@@ -1,6 +1,6 @@
 using FluentValidation;
 using FluentValidation.TestHelper;
-using Store.Core.Common.Validations.CustomValidators;
+using Store.Core.Common.CustomValidators;
 using Store.Core.Contracts.Enums;
 using Xunit;
 

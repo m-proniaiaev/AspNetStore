@@ -7,7 +7,8 @@ using Microsoft.OpenApi.Models;
 using Store.Core;
 using Store.Core.Cache;
 using Store.Core.Database;
-using Store.Core.Extensions;
+using Store.Core.Host.Extensions;
+using Store.Core.Internal;
 
 namespace SomeStore
 {
