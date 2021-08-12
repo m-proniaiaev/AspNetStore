@@ -1,9 +1,11 @@
 using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Store.Core.Contracts.Models;
 using Store.Core.Services.Authorization.Roles.Queries.GetRoles;
+using Store.Core.Services.Authorization.Users.Queries;
 using Store.Core.Services.Common.Interfaces;
 
 namespace Store.Core.Services.Authorization.Users.Commands
@@ -31,7 +33,12 @@ namespace Store.Core.Services.Authorization.Users.Commands
         
         public async Task<User> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
-            //var nameIsAvailable = _mediato
+            var nameIsTaken = (await _mediator.Send(new GetUsersQuery { Name = request.Name }, cancellationToken))
+                                    .Users.Any();
+            if (nameIsTaken)
+            {
+                throw new ArgumentException("User with such name already exists!");
+            }
             
             var role = await _mediator.Send(new GetRoleByIdQuery { Id = request.Role }, cancellationToken);
 

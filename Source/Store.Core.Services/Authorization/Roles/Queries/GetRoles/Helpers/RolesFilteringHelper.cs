@@ -34,12 +34,12 @@ namespace Store.Core.Services.Authorization.Roles.Queries.GetRoles.Helpers
                 : source;
         }
         
-        public static IQueryable<Role> FilterByCreatedBy(this IQueryable<Role> source, Guid? active)
+        public static IQueryable<Role> FilterByCreatedBy(this IQueryable<Role> source, Guid? created)
         {
             if (source == null) return null;
 
-            return active.HasValue 
-                ? source.Where(x => x.CreatedBy == active.Value) 
+            return created.HasValue 
+                ? source.Where(x => x.CreatedBy == created.Value) 
                 : source;
         }
     }
