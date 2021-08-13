@@ -7,6 +7,7 @@ using Microsoft.OpenApi.Models;
 using Store.Core.Cache;
 using Store.Core.Contracts.Models;
 using Store.Core.Database;
+using Store.Core.Host.Authorization;
 using Store.Core.Host.Extensions;
 using Store.Core.Services;
 
@@ -27,12 +28,10 @@ namespace Store.WebApi.Authorization
             services.AddStoreMongo(Configuration);
             services.AddStoreCache(Configuration);
             services.AddCoreServices();
+            services.AddStoreAuthorization(Configuration);
             services.AddConfiguredControllers();
             services.Configure<ActionsConfig>(option => Configuration.GetSection(nameof(ActionsConfig)).Bind(option));
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Store.WebApi.Authorization", Version = "v1" });
-            });
+            services.AddStoreSwagger();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,7 +51,7 @@ namespace Store.WebApi.Authorization
             
             app.UseRouting();
 
-            //app.UseAuthentication();
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

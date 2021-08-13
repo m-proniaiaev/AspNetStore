@@ -6,6 +6,6 @@
         public string Issuer { get; set; }
         public bool RequireHttpsMetadata { get; set; }
         public int AccessTokenExpiration { get; set; }
-        public int RefreshTokenExpiration { get; set; }
+        //public int RefreshTokenExpiration { get; set; }
     }
 }

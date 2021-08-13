@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using Store.Core.Host.Authorization.JWT;
 using Store.Core.Services.Authorization.PasswordProcessor;
 using Store.Core.Services.Authorization.Roles;
 using Store.Core.Services.Authorization.Users;

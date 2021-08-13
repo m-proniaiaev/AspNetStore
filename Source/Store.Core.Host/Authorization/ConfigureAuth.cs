@@ -15,7 +15,8 @@ namespace Store.Core.Host.Authorization
             services.Configure<JwtConfig>(configuration.GetSection(nameof(JwtConfig)));
             var config = new JwtConfig();
             configuration.GetSection(nameof(JwtConfig)).Bind(config);
-            
+            services.AddTransient<IAuthManager, AuthManager>();
+
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

@@ -41,7 +41,7 @@ namespace Store.Core.Services.Authorization.PasswordProcessor
             if (iterations != _options.Iterations)
                 throw new ArgumentException("Invalid hash!");
             
-            var key = Convert.FromBase64String(passHashValues[2]);
+            var key = Convert.FromBase64String(passHashValues[1]);
             var saltValue = Convert.FromBase64String(salt);
 
             using var algorithm = new Rfc2898DeriveBytes(

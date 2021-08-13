@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Store.Core.Contracts.Models;
 using Store.Core.Contracts.Responses;
 using Store.Core.Services.Authorization.Roles.Queries.CreateRole;
@@ -19,7 +16,7 @@ using Store.Core.Services.Authorization.Roles.Queries.UpdateRole;
 namespace Store.WebApi.Authorization.Controllers
 {
     [ApiController]
-    [Route("api/auth/[controller]")]
+    [Route("api/internal/[controller]")]
     public class RolesController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -28,7 +25,7 @@ namespace Store.WebApi.Authorization.Controllers
         {
             _mediator = mediator;
         }
-
+        
         [HttpGet]
         [ProducesResponseType(typeof(GetRolesResponse), StatusCodes.Status200OK)]
         public async Task<ActionResult<GetRolesResponse>> GetRoles([FromQuery] GetRolesQuery query, CancellationToken cancellationToken)

@@ -13,7 +13,7 @@ using Store.Core.Services.Authorization.Users.Commands.Update;
 namespace Store.WebApi.Authorization.Controllers
 {
     [ApiController]
-    [Route("api/auth/[controller]")]
+    [Route("api/internal/[controller]")]
     public class UserController : ControllerBase
     {
         private readonly IMediator _mediator;

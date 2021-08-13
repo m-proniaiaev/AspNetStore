@@ -3,13 +3,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
-using Store.Core;
 using Store.Core.Cache;
 using Store.Core.Database;
+using Store.Core.Host.Authorization;
 using Store.Core.Host.Extensions;
 using Store.Core.Services;
-using Store.Core.Services.Internal;
 
 namespace SomeStore
 {
@@ -28,11 +26,9 @@ namespace SomeStore
             services.AddStoreMongo(Configuration);
             services.AddStoreCache(Configuration);
             services.AddCoreServices();
+            services.AddStoreAuthorization(Configuration);
             services.AddConfiguredControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Store.WebApi.Internal", Version = "v1" });
-            });
+            services.AddStoreSwagger();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,7 +48,7 @@ namespace SomeStore
             
             app.UseRouting();
 
-            //app.UseAuthentication();
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

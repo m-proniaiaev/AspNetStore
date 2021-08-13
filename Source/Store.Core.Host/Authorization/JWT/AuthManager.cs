@@ -2,6 +2,7 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
 namespace Store.Core.Host.Authorization.JWT
@@ -10,12 +11,12 @@ namespace Store.Core.Host.Authorization.JWT
     {
         private readonly JwtConfig _config;
 
-        public AuthManager(JwtConfig config)
+        public AuthManager(IOptions<JwtConfig> config)
         {
-            _config = config;
+            _config = config.Value;
         }
 
-        public string GenerateToken(string username, Claim[] claims)
+        public string GenerateToken(Claim[] claims)
         {
             var token = new JwtSecurityToken(
                 _config.Issuer,
@@ -31,5 +32,6 @@ namespace Store.Core.Host.Authorization.JWT
 
             return accessToken;
         }
+        
     }
 }
