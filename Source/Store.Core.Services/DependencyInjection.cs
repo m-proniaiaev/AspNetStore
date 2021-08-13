@@ -6,12 +6,14 @@ using Store.Core.Services.Authorization.PasswordProcessor;
 using Store.Core.Services.Authorization.Roles;
 using Store.Core.Services.Authorization.Users;
 using Store.Core.Services.Common.Interfaces;
+using Store.Core.Services.Internal.Records;
+using Store.Core.Services.Internal.Sellers;
 
-namespace Store.Core.Services.Authorization
+namespace Store.Core.Services
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddAuthHostServices(this IServiceCollection services)
+        public static IServiceCollection AddCoreServices(this IServiceCollection services)
         {
             var currentDomain = AppDomain.CurrentDomain
                 .GetAssemblies()
@@ -22,8 +24,11 @@ namespace Store.Core.Services.Authorization
                 }).ToArray();
 
             services.AddMediatR(currentDomain);
+            services.AddScoped<ISellerService, SellerService>();
+            services.AddScoped<IRecordService, RecordService>();
             services.AddScoped<IRoleService, RoleService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddSingleton<HashingOptions>();
             services.AddTransient<IHasher, Hasher>();
 
             return services;

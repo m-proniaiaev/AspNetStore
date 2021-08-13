@@ -8,6 +8,7 @@ using Store.Core;
 using Store.Core.Cache;
 using Store.Core.Database;
 using Store.Core.Host.Extensions;
+using Store.Core.Services;
 using Store.Core.Services.Internal;
 
 namespace SomeStore
@@ -25,9 +26,9 @@ namespace SomeStore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddStoreMongo(Configuration);
-            services.AddInternalServices();
-            services.AddConfiguredControllers();
             services.AddStoreCache(Configuration);
+            services.AddCoreServices();
+            services.AddConfiguredControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Store.WebApi.Internal", Version = "v1" });

@@ -7,7 +7,7 @@ using Microsoft.OpenApi.Models;
 using Store.Core.Cache;
 using Store.Core.Database;
 using Store.Core.Host.Extensions;
-using Store.Core.Services.Authorization;
+using Store.Core.Services;
 
 namespace Store.WebApi.Authorization
 {
@@ -25,7 +25,7 @@ namespace Store.WebApi.Authorization
         {
             services.AddStoreMongo(Configuration);
             services.AddStoreCache(Configuration);
-            services.AddAuthHostServices();
+            services.AddCoreServices();
             services.AddConfiguredControllers();
             services.AddSwaggerGen(c =>
             {
