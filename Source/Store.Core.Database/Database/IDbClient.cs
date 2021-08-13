@@ -9,5 +9,6 @@ namespace Store.Core.Database.Database
         public IMongoCollection<Seller> GetSellersCollection();
         public IMongoCollection<Role> GetRolesCollection();
         public IMongoCollection<User> GetUsersCollection();
+        public IMongoCollection<BlackListRecord> GetBlackListCollection();
     }
 }

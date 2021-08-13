@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using Store.Core.Host.Authorization.JWT;
+using Store.Core.Services.Authorization.BlackList;
 using Store.Core.Services.Authorization.PasswordProcessor;
 using Store.Core.Services.Authorization.Roles;
 using Store.Core.Services.Authorization.Users;
@@ -29,6 +29,7 @@ namespace Store.Core.Services
             services.AddScoped<IRecordService, RecordService>();
             services.AddScoped<IRoleService, RoleService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IBlackListService, BlackListService>();
             services.AddSingleton<HashingOptions>();
             services.AddTransient<IHasher, Hasher>();
 

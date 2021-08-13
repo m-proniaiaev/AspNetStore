@@ -11,7 +11,8 @@ namespace Store.Core.Database.Database
         private readonly IMongoCollection<Seller> _sellers;
         private readonly IMongoCollection<Role> _roles;
         private readonly IMongoCollection<User> _users;
-        
+        private readonly IMongoCollection<BlackListRecord> _blackList;
+
         public DbClient(IOptions<DbConfig> recordDbConfig)
         {
             if (recordDbConfig == null)
@@ -27,11 +28,13 @@ namespace Store.Core.Database.Database
             _sellers = db.GetCollection<Seller>(recordDbConfig.Value.SellerCollectionName);
             _roles = db.GetCollection<Role>(recordDbConfig.Value.RolesCollectionName);
             _users = db.GetCollection<User>(recordDbConfig.Value.UserCollectionName);
+            _blackList = db.GetCollection<BlackListRecord>(recordDbConfig.Value.BlackListCollectionName);
         }
 
         public IMongoCollection<Record> GetRecordsCollection() => _records;
         public IMongoCollection<Seller> GetSellersCollection() => _sellers;
         public IMongoCollection<Role> GetRolesCollection() => _roles;
         public IMongoCollection<User> GetUsersCollection() => _users;
+        public IMongoCollection<BlackListRecord> GetBlackListCollection() => _blackList;
     }
 }
