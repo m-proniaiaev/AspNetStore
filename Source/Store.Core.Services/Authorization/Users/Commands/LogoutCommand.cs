@@ -23,7 +23,7 @@ namespace Store.Core.Services.Authorization.Users.Commands
 
         public async Task<Unit> Handle(LogoutCommand request, CancellationToken cancellationToken)
         {
-            await _mediator.Send(new AddToBlackListCommand { Id = _currentUserService.Id, Block = !_currentUserService.IsActive }, cancellationToken);
+            await _mediator.Send(new AddToBlackListCommand { Id = _currentUserService.Id }, cancellationToken);
             return Unit.Value;
         }
     }

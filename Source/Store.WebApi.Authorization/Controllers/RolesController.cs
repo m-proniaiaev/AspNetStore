@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Store.Core.Contracts.Models;
 using Store.Core.Contracts.Responses;
+using Store.Core.Services.Authorization;
 using Store.Core.Services.Authorization.Roles.Queries.CreateRole;
 using Store.Core.Services.Authorization.Roles.Queries.DeleteRole;
 using Store.Core.Services.Authorization.Roles.Queries.DisableRole;
@@ -25,7 +26,8 @@ namespace Store.WebApi.Authorization.Controllers
         {
             _mediator = mediator;
         }
-        
+       
+        [ActionRequired("Roles-Get")]
         [HttpGet]
         [ProducesResponseType(typeof(GetRolesResponse), StatusCodes.Status200OK)]
         public async Task<ActionResult<GetRolesResponse>> GetRoles([FromQuery] GetRolesQuery query, CancellationToken cancellationToken)
@@ -34,6 +36,7 @@ namespace Store.WebApi.Authorization.Controllers
             return Ok(result);
         }
         
+        [ActionRequired("Role-Get")]
         [HttpGet("getRole/{id:guid}")]
         [ProducesResponseType(typeof(Role), StatusCodes.Status200OK)]
         public async Task<ActionResult<Role>> GetRole([FromRoute] Guid id, CancellationToken cancellationToken)
@@ -42,6 +45,7 @@ namespace Store.WebApi.Authorization.Controllers
             return Ok(result);
         }
 
+        [ActionRequired("Actions-Get")]
         [HttpGet("GetActions")]
         [ProducesResponseType(typeof(GetActionsResponse), StatusCodes.Status200OK)]
         public async Task<ActionResult<GetActionsResponse>> GetActions([FromQuery] GetActionsQuery query,
@@ -51,6 +55,7 @@ namespace Store.WebApi.Authorization.Controllers
             return Ok(result);
         }
 
+        [ActionRequired("Role-Create")]
         [HttpPost("addRole")]
         [ProducesResponseType(typeof(Role), StatusCodes.Status201Created)]
         public async Task<ActionResult<Role>> CreateRole([FromBody] CreateRoleCommand command, CancellationToken cancellationToken)
@@ -59,6 +64,7 @@ namespace Store.WebApi.Authorization.Controllers
             return Ok(result);
         }
         
+        [ActionRequired("Role-Update")]
         [HttpPut("updateRole")]
         [ProducesResponseType(typeof(Role), StatusCodes.Status200OK)]
         public async Task<ActionResult<Role>> UpdateRole([FromBody] UpdateRoleCommand command, CancellationToken cts)
@@ -67,6 +73,7 @@ namespace Store.WebApi.Authorization.Controllers
             return Ok(result);
         }
         
+        [ActionRequired("Role-Disable")]
         [HttpPut("disableRole/{id:guid}")]
         [ProducesResponseType(typeof(Role), StatusCodes.Status200OK)]
         public async Task<ActionResult<Role>> DisableRole([FromRoute] Guid id, CancellationToken cts)
@@ -75,6 +82,7 @@ namespace Store.WebApi.Authorization.Controllers
             return Ok(result);
         }
 
+        [ActionRequired("Role-Delete")]
         [HttpDelete("deleteRole/{id:guid}")]
         [ProducesResponseType(typeof(Unit), StatusCodes.Status204NoContent)]
         public async Task<ActionResult<Role>> DeleteRole([FromRoute] Guid id, CancellationToken cts)
