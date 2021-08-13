@@ -9,7 +9,7 @@ using Store.Core.Host.Authorization;
 using Store.Core.Host.Extensions;
 using Store.Core.Services;
 
-namespace SomeStore
+namespace Store.WebApi.Internal
 {
     public class Startup
     {

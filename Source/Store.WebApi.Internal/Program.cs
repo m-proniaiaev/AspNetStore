@@ -1,7 +1,6 @@
-using Store.Core.Host;
 using Store.Core.Host.HostBuilder;
 
-namespace SomeStore
+namespace Store.WebApi.Internal
 {
     public class Program
     {

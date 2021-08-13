@@ -12,7 +12,7 @@ using Store.Core.Services.Internal.Records.Queries.GetRecords;
 using Store.Core.Services.Internal.Records.Queries.GetRecords.ById;
 using Store.Core.Services.Internal.Records.Queries.UpdateRecord;
 
-namespace SomeStore.Controllers
+namespace Store.WebApi.Internal.Controllers
 {
     [ApiController]
     [Route("api/internal/[controller]")]

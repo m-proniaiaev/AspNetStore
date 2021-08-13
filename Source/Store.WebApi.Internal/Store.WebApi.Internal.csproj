@@ -4,7 +4,7 @@
         <TargetFramework>net5.0</TargetFramework>
       <UserSecretsId>e4761c82-dab4-4819-b726-e09b5cf2699d</UserSecretsId>
       <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-      <RootNamespace>SomeStore</RootNamespace>
+      <RootNamespace>Store.WebApi.Internal</RootNamespace>
   </PropertyGroup>
 
     <ItemGroup>

@@ -11,7 +11,7 @@ using Store.Core.Services.Internal.Sellers.Queries.DeleteSeller;
 using Store.Core.Services.Internal.Sellers.Queries.GetSellers;
 using Store.Core.Services.Internal.Sellers.Queries.UpdateSellerAsync;
 
-namespace SomeStore.Controllers
+namespace Store.WebApi.Internal.Controllers
 {
     [ApiController]
     [Route("api/internal/[controller]")]
