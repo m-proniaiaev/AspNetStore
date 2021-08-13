@@ -8,6 +8,7 @@ namespace Store.Core.Services.Authorization.BlackList.Commands
 {
     public class RemoveFromBlackListCommand : BlackListRecord, IRequest
     {
+        public bool Unblock { get; set; }
     }
     
     public class RemoveFromBlackListCommandHandler : IRequestHandler<RemoveFromBlackListCommand>
@@ -21,7 +22,7 @@ namespace Store.Core.Services.Authorization.BlackList.Commands
 
         public async Task<Unit> Handle(RemoveFromBlackListCommand request, CancellationToken cancellationToken)
         {
-            await _blackListService.RemoveFromBlackList(new BlackListRecord { Id = request.Id, Permanent = request.Permanent }, cancellationToken);
+            await _blackListService.RemoveFromBlackList(request, cancellationToken);
             
             return Unit.Value;
         }

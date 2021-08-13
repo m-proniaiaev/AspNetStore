@@ -6,6 +6,5 @@ namespace Store.Core.Contracts.Models
     public class BlackListRecord : IIdentity
     {
         public Guid Id { get; set; }
-        public bool Permanent { get; set; }
     }
 }

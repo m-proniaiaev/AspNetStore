@@ -5,6 +5,7 @@ using MongoDB.Driver;
 using Store.Core.Contracts.Interfaces;
 using Store.Core.Contracts.Models;
 using Store.Core.Database.Database;
+using Store.Core.Services.Authorization.BlackList.Commands;
 using Store.Core.Services.Common.Interfaces;
 
 namespace Store.Core.Services.Authorization.BlackList
@@ -20,31 +21,32 @@ namespace Store.Core.Services.Authorization.BlackList
             _blackList = client.GetBlackListCollection();
         }
 
-        public async Task AddToBlackList(BlackListRecord record, CancellationToken cancellationToken)
+        public async Task AddToBlackList(AddToBlackListCommand command, CancellationToken cancellationToken)
         {
+            var record = new BlackListRecord { Id = command.Id };
             await _cacheService.AddCacheAsync(record, TimeSpan.FromHours(1),
                 cancellationToken);
             
-            if (record.Permanent)
+            if (command.Block)
             {
                 await _blackList.InsertOneAsync(record, cancellationToken: cancellationToken);
             }
         }
         
-        public async Task RemoveFromBlackList(BlackListRecord record, CancellationToken cancellationToken)
+        public async Task RemoveFromBlackList(RemoveFromBlackListCommand command, CancellationToken cancellationToken)
         {
-            await _cacheService.DeleteCacheAsync<BlackListRecord>(record.Id.ToString(), cancellationToken);
+            await _cacheService.DeleteCacheAsync<BlackListRecord>(command.Id.ToString(), cancellationToken);
             
-            if (!record.Permanent)
+            if (command.Unblock)
             {
-                var blackListEntry = await FindBlackList(record.Id, cancellationToken);
+                var blackListEntry = await FindBlackList(command.Id, cancellationToken);
                 
                 if (blackListEntry == null)
                 {
                     return;
                 }
                 
-                await _blackList.DeleteOneAsync(list => list.Id == record.Id, cancellationToken);
+                await _blackList.DeleteOneAsync(list => list.Id == command.Id, cancellationToken);
             }
         }
 

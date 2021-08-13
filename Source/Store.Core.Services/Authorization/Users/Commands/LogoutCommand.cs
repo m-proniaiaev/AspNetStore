@@ -1,6 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
+using Store.Core.Host.Authorization.CurrentUser;
 using Store.Core.Services.Authorization.BlackList.Commands;
 
 namespace Store.Core.Services.Authorization.Users.Commands
@@ -12,15 +13,17 @@ namespace Store.Core.Services.Authorization.Users.Commands
     public class LogoutCommandHandler : IRequestHandler<LogoutCommand>
     {
         private readonly IMediator _mediator;
+        private readonly ICurrentUserService _currentUserService;
 
-        public LogoutCommandHandler(IMediator mediator)
+        public LogoutCommandHandler(IMediator mediator, ICurrentUserService currentUserService)
         {
             _mediator = mediator;
+            _currentUserService = currentUserService;
         }
 
         public async Task<Unit> Handle(LogoutCommand request, CancellationToken cancellationToken)
         {
-            await _mediator.Send(new AddToBlackListCommand { }, cancellationToken);
+            await _mediator.Send(new AddToBlackListCommand { Id = _currentUserService.Id, Block = !_currentUserService.IsActive }, cancellationToken);
             return Unit.Value;
         }
     }

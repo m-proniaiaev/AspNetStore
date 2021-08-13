@@ -8,6 +8,8 @@ using MediatR;
 using Microsoft.IdentityModel.JsonWebTokens;
 using Store.Core.Contracts.Responses;
 using Store.Core.Host.Authorization.JWT;
+using Store.Core.Services.Authorization.BlackList;
+using Store.Core.Services.Authorization.BlackList.Commands;
 using Store.Core.Services.Authorization.Roles.Queries.GetRoles;
 using Store.Core.Services.Authorization.Users.Queries;
 using Store.Core.Services.Common.Interfaces;
@@ -38,7 +40,7 @@ namespace Store.Core.Services.Authorization.Users.Commands
             var user = (await _mediator.Send(new GetUsersQuery { Name = request.UserName }, cancellationToken))
                 .Users.FirstOrDefault();
 
-            if (user is null)
+            if (user is null || !user.IsActive)
                 throw new ArgumentException("Username or password is incorrect!");
 
             var validationResult = _hasher.CheckHash(user.Salt, user.Hash, request.Password);
@@ -51,12 +53,18 @@ namespace Store.Core.Services.Authorization.Users.Commands
             var authClaims = new Claim[]
             {
                 new(ClaimTypes.Name, request.UserName),
-                new(JwtRegisteredClaimNames.NameId, user.Id.ToString()),
-                new("actions", $"{string.Join(",", actions)}")
+                new(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new("actions", $"{string.Join(",", actions)}"),
+                new("status", user.IsActive.ToString().ToLower())
             };
 
             var token = _authManager.GenerateToken(authClaims);
 
+            var blackListed = await _mediator.Send(new GetBlackListQuery { Id = user.Id }, cancellationToken);
+
+            if (blackListed != null)
+                await _mediator.Send(new RemoveFromBlackListCommand { Id = user.Id, Unblock = user.IsActive}, cancellationToken);
+            
             return new LoginResult()
             {
                 Token = token,

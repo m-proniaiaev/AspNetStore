@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Store.Core.Host.Authorization.CurrentUser;
 using Store.Core.Host.Authorization.JWT;
 
 namespace Store.Core.Host.Authorization
@@ -16,6 +17,7 @@ namespace Store.Core.Host.Authorization
             var config = new JwtConfig();
             configuration.GetSection(nameof(JwtConfig)).Bind(config);
             services.AddTransient<IAuthManager, AuthManager>();
+            services.AddTransient<ICurrentUserService, CurrentUserService>();
 
             services.AddAuthentication(options =>
             {

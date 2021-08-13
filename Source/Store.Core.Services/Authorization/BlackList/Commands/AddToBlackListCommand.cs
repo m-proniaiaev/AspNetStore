@@ -9,6 +9,7 @@ namespace Store.Core.Services.Authorization.BlackList.Commands
 {
     public class AddToBlackListCommand : BlackListRecord, IRequest
     {
+        public bool Block { get; set; }
     }
     
     public class AddToBlackListCommandHandler : IRequestHandler<AddToBlackListCommand>
@@ -22,7 +23,7 @@ namespace Store.Core.Services.Authorization.BlackList.Commands
 
         public async Task<Unit> Handle(AddToBlackListCommand request, CancellationToken cancellationToken)
         {
-            await _blackListService.AddToBlackList(new BlackListRecord { Id = request.Id, Permanent = request.Permanent }, cancellationToken);
+            await _blackListService.AddToBlackList(request, cancellationToken);
             
             return Unit.Value;
         }
