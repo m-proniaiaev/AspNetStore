@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Store.Core.Cache;
+using Store.Core.Contracts.Models;
 using Store.Core.Database;
 using Store.Core.Host.Extensions;
 using Store.Core.Services;
@@ -27,6 +28,7 @@ namespace Store.WebApi.Authorization
             services.AddStoreCache(Configuration);
             services.AddCoreServices();
             services.AddConfiguredControllers();
+            services.Configure<ActionsConfig>(option => Configuration.GetSection(nameof(ActionsConfig)).Bind(option));
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Store.WebApi.Authorization", Version = "v1" });

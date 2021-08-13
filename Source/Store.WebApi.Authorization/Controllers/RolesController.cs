@@ -47,7 +47,7 @@ namespace Store.WebApi.Authorization.Controllers
 
         [HttpGet("GetActions")]
         [ProducesResponseType(typeof(GetActionsResponse), StatusCodes.Status200OK)]
-        public async Task<ActionResult<GetActionsResponse>> GetActions([FromBody] GetActionsQuery query,
+        public async Task<ActionResult<GetActionsResponse>> GetActions([FromQuery] GetActionsQuery query,
             CancellationToken cancellationToken)
         {
             var result = await _mediator.Send(query, cancellationToken);

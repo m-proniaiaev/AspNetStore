@@ -25,7 +25,7 @@ namespace Store.Core.Services.Authorization.Roles.Queries.GetActions
         
         public Task<GetActionsResponse> Handle(GetActionsQuery request, CancellationToken cancellationToken)
         {
-            return Task.FromResult(new GetActionsResponse()
+            return Task.FromResult(new GetActionsResponse
             {
                 RoleType = request.RoleType,
                 Actions = _roles[request.RoleType]

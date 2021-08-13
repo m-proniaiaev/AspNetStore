@@ -2,9 +2,9 @@ namespace Store.Core.Contracts.Enums
 {
     public enum RoleType
     {
-        Undefined,
-        Administrator,
-        User,
-        ReadOnly
+        Undefined = 0,
+        Administrator = 1,
+        User = 2,
+        ReadOnly = 3
     }
 }
