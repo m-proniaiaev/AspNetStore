@@ -39,7 +39,7 @@ namespace Store.Core.Services.Authorization.Roles.Queries.GetRoles
             var rolesQuery = roles.AsQueryable();
 
             rolesQuery = rolesQuery
-                .FilterBySoldStatus(request.Name)
+                .FilterByName(request.Name)
                 .FilterByType(request.RoleType)
                 .FilterByActive(request.IsActive)
                 .FilterByCreatedBy(request.CreatedBy);

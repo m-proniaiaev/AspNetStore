@@ -50,7 +50,7 @@ namespace Store.Core.Services.Authorization.Roles.Queries.CreateRole
 
         private static string[] ValidateActions(string[] allowedActions, string[] actions)
         {
-            if (actions?.Length < 0) return allowedActions;
+            if (actions?.Length <= 0) return allowedActions;
             
             var createdActions = allowedActions.Intersect(actions).ToArray();
 

@@ -7,7 +7,7 @@ namespace Store.Core.Services.Authorization.Roles.Queries.GetRoles.Helpers
 {
     public static class RolesFilteringHelper
     {
-        public static IQueryable<Role> FilterBySoldStatus(this IQueryable<Role> source, string name)
+        public static IQueryable<Role> FilterByName(this IQueryable<Role> source, string name)
         {
             if (source == null) return null;
             

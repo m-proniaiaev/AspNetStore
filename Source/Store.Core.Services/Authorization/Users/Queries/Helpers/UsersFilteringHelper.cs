@@ -33,12 +33,12 @@ namespace Store.Core.Services.Authorization.Users.Queries.Helpers
                 : source;
         }
         
-        public static IQueryable<User> FilterByName(this IQueryable<User> source, string isActive)
+        public static IQueryable<User> FilterByName(this IQueryable<User> source, string name)
         {
             if (source == null) return null;
 
-            return string.IsNullOrWhiteSpace(isActive)
-                ? source.Where(x => x.Name == isActive) 
+            return !string.IsNullOrWhiteSpace(name)
+                ? source.Where(x => string.Equals(x.Name, name, StringComparison.InvariantCultureIgnoreCase)) 
                 : source;
         }
     }
