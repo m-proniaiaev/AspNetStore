@@ -8,12 +8,12 @@ using Store.Core.Services.Common.Interfaces;
 
 namespace Store.Core.Services.Authorization.Users.Queries
 {
-    public class UserGetByIdQuery : IRequest<User>, IIdentity
+    public class GetUserByIdQuery : IRequest<User>, IIdentity
     {
         public Guid Id { get; set; }
     }
     
-    public class UserGetByIdQueryHandler : IRequestHandler<UserGetByIdQuery, User>
+    public class UserGetByIdQueryHandler : IRequestHandler<GetUserByIdQuery, User>
     {
         private readonly IUserService _userService;
 
@@ -22,7 +22,7 @@ namespace Store.Core.Services.Authorization.Users.Queries
             _userService = userService;
         }
 
-        public async Task<User> Handle(UserGetByIdQuery request, CancellationToken cancellationToken)
+        public async Task<User> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
         {
             var user = await _userService.GetUserAsync(request.Id, cancellationToken);
 
