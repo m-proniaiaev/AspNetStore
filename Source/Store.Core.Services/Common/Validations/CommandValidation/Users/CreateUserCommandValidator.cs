@@ -10,6 +10,7 @@ namespace Store.Core.Services.Common.Validations.CommandValidation.Users
         {
             RuleFor(x => x.Name).ValidateName();
             RuleFor(x => x.Role).NotEmpty();
+            RuleFor(x => x.Name).ValidatePassword();
         }
     }
 }

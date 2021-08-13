@@ -1,11 +1,9 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using Microsoft.IdentityModel.JsonWebTokens;
 using Store.Core.Contracts.Responses;
 using Store.Core.Host.Authorization.JWT;
 using Store.Core.Services.Authorization.BlackList;
@@ -48,7 +46,7 @@ namespace Store.Core.Services.Authorization.Users.Commands
             if (!validationResult)
                 throw new ArgumentException("Username or password is incorrect!");
 
-            var actions = (await _mediator.Send(new GetRoleByIdQuery {Id = user.Role}, cancellationToken)).Actions;
+            var actions = (await _mediator.Send(new GetRoleByIdQuery { Id = user.Role }, cancellationToken)).Actions;
             
             var authClaims = new Claim[]
             {
