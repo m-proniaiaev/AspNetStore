@@ -8,7 +8,6 @@ namespace Store.Core.Services.Authorization.BlackList.Commands
 {
     public class RemoveFromBlackListCommand : BlackListRecord, IRequest
     {
-        public bool Unblock { get; set; }
     }
     
     public class RemoveFromBlackListCommandHandler : IRequestHandler<RemoveFromBlackListCommand>

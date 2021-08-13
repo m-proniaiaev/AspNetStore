@@ -15,16 +15,16 @@ namespace Store.Core.Services.Authorization.BlackList
     
     public class GetBlackListQueryHandler : IRequestHandler<GetBlackListQuery, BlackListRecord>
     {
-        private readonly ICacheService _cacheService;
+        private readonly IBlackListService _blackListService;
 
-        public GetBlackListQueryHandler(ICacheService cacheService)
+        public GetBlackListQueryHandler(IBlackListService blackListService)
         {
-            _cacheService = cacheService;
+            _blackListService = blackListService;
         }
         
         public async Task<BlackListRecord> Handle(GetBlackListQuery request, CancellationToken cancellationToken)
         {
-            return await _cacheService.GetCacheAsync<BlackListRecord>(request.Id.ToString(), cancellationToken);
+            return await _blackListService.FindBlackList(request.Id, cancellationToken);
         }
     }
 }

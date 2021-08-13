@@ -63,7 +63,7 @@ namespace Store.Core.Services.Authorization.Users.Commands
             var blackListed = await _mediator.Send(new GetBlackListQuery { Id = user.Id }, cancellationToken);
 
             if (blackListed != null)
-                await _mediator.Send(new RemoveFromBlackListCommand { Id = user.Id, Unblock = user.IsActive}, cancellationToken);
+                await _mediator.Send(new RemoveFromBlackListCommand { Id = user.Id }, cancellationToken);
             
             return new LoginResult()
             {

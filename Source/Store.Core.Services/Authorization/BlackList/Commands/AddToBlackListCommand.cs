@@ -9,7 +9,6 @@ namespace Store.Core.Services.Authorization.BlackList.Commands
 {
     public class AddToBlackListCommand : BlackListRecord, IRequest
     {
-        public bool Block { get; set; }
     }
     
     public class AddToBlackListCommandHandler : IRequestHandler<AddToBlackListCommand>
