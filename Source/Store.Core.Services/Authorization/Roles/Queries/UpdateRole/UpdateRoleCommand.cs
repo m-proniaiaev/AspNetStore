@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Store.Core.Contracts.Interfaces;
 using Store.Core.Contracts.Models;
+using Store.Core.Host.Authorization.CurrentUser;
 using Store.Core.Services.Authorization.Roles.Queries.CreateRole;
 using Store.Core.Services.Common.Interfaces;
 
@@ -18,11 +19,13 @@ namespace Store.Core.Services.Authorization.Roles.Queries.UpdateRole
     {
         private readonly ICacheService _cacheService;
         private readonly IRoleService _roleService;
+        private readonly ICurrentUserService _currentUser;
 
-        public UpdateRoleCommandHandler(ICacheService cacheService, IRoleService roleService)
+        public UpdateRoleCommandHandler(ICacheService cacheService, IRoleService roleService, ICurrentUserService currentUser)
         {
             _cacheService = cacheService;
             _roleService = roleService;
+            _currentUser = currentUser;
         }
         public async Task<Role> Handle(UpdateRoleCommand request, CancellationToken cancellationToken)
         {
@@ -37,6 +40,8 @@ namespace Store.Core.Services.Authorization.Roles.Queries.UpdateRole
             role.RoleType = request.RoleType;
             role.IsActive = request.IsActive;
             role.Actions = request.Actions;
+            role.Edited = DateTime.Now;
+            role.EditedBy = _currentUser.Id;
 
             await _roleService.UpdateRoleAsync(role, cancellationToken);
 

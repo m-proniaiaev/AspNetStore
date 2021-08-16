@@ -25,18 +25,9 @@ namespace Store.Core.Services.Internal.Sellers
             return await _sellers.Find(x => true).ToListAsync(cts);
         }
 
-        public async Task UpdateSellerAsync(UpdateSellerCommand request, Seller origin, CancellationToken cts)
+        public async Task UpdateSellerAsync(Seller model, CancellationToken cts)
         {
-            var seller = new Seller 
-            {
-                Name = request.Name,
-                RecordType = request.RecordType,
-                Id = origin.Id,
-                CreatedBy = origin.CreatedBy,
-                Created = origin.Created
-            };
-            
-            await _sellers.ReplaceOneAsync(s => s.Id == seller.Id, seller, cancellationToken: cts);
+            await _sellers.ReplaceOneAsync(s => s.Id == model.Id, model, cancellationToken: cts);
         }
 
         public async Task<Seller> GetSellerAsync(Guid id, CancellationToken cts)
@@ -44,17 +35,8 @@ namespace Store.Core.Services.Internal.Sellers
             return await _sellers.Find(x => x.Id == id).FirstOrDefaultAsync(cts);
         }
 
-        public async Task CreateSellerAsync(CreateSellerCommand request, Guid id, CancellationToken cts)
+        public async Task CreateSellerAsync(Seller seller, CancellationToken cts)
         {
-            var seller = new Seller
-            {
-                Id = id,
-                Name = request.Name,
-                RecordType = request.RecordType,
-                Created = DateTime.Now,
-                CreatedBy = Guid.Empty //TODO
-            };
-            
             await _sellers.InsertOneAsync(seller, cancellationToken: cts);
         }
 

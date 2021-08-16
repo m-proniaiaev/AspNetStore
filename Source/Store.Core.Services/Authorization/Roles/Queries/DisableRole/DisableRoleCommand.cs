@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Store.Core.Contracts.Interfaces;
 using Store.Core.Contracts.Models;
+using Store.Core.Host.Authorization.CurrentUser;
 using Store.Core.Services.Common.Interfaces;
 
 namespace Store.Core.Services.Authorization.Roles.Queries.DisableRole
@@ -18,11 +19,13 @@ namespace Store.Core.Services.Authorization.Roles.Queries.DisableRole
         
         private readonly ICacheService _cacheService;
         private readonly IRoleService _roleService;
-
-        public DisableRoleCommandHandler(ICacheService cacheService, IRoleService roleService)
+        private readonly ICurrentUserService _currentUser;
+        
+        public DisableRoleCommandHandler(ICacheService cacheService, IRoleService roleService, ICurrentUserService currentUser)
         {
             _cacheService = cacheService;
             _roleService = roleService;
+            _currentUser = currentUser;
         }
         
         public async Task<Role> Handle(DisableRoleCommand request, CancellationToken cancellationToken)
@@ -34,7 +37,7 @@ namespace Store.Core.Services.Authorization.Roles.Queries.DisableRole
             if (role is null)
                 throw new ArgumentException($"Can't find role {request.Id}");
 
-            await _roleService.DisableRoleAsync(request.Id, cancellationToken);
+            await _roleService.DisableRoleAsync(request.Id, _currentUser.Id, cancellationToken);
 
             var result = await _roleService.GetRoleAsync(request.Id, cancellationToken);
             

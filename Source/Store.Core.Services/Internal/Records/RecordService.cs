@@ -21,21 +21,8 @@ namespace Store.Core.Services.Internal.Records
         public async Task<List<Record>> GetRecordsAsync(CancellationToken cancellationToken) 
             => await _records.Find(record => true).ToListAsync(cancellationToken);
         
-        public async Task AddRecordAsync(CreateRecordCommand request, Guid id, CancellationToken cts)
+        public async Task AddRecordAsync(Record record, CancellationToken cts)
         {
-            var record = new Record
-            {
-                Id = id,
-                Seller = request.Seller,
-                Created = DateTime.Now,
-                CreatedBy = Guid.Empty, //TODO change after adding users
-                Name = request.Name,
-                Price = request.Price,
-                RecordType = request.RecordType,
-                IsSold = false,
-                SoldDate = null
-            };
-            
             await _records.InsertOneAsync(record, cancellationToken: cts);
         }
         public async Task<Record> GetRecordAsync(Guid id, CancellationToken cancellationToken) 
@@ -46,31 +33,19 @@ namespace Store.Core.Services.Internal.Records
            await _records.DeleteOneAsync(record => record.Id == id, cts);
         }
 
-        public async Task UpdateRecordAsync(UpdateRecordCommand request, Record origin, CancellationToken cts)
+        public async Task UpdateRecordAsync(Record record, CancellationToken cts)
         {
-            DateTime? includeSoldDate = request.IsSold ? DateTime.Now : null;
-            
-            var record = new Record
-            {
-                Id = origin.Id,
-                Seller = origin.Seller,
-                Created = origin.Created,
-                CreatedBy = origin.CreatedBy,
-                RecordType = origin.RecordType,
-                Name = request.Name,
-                Price = request.Price,
-                IsSold = request.IsSold,
-                SoldDate = includeSoldDate
-            };
-            
             await _records.ReplaceOneAsync(r => r.Id == record.Id, record, cancellationToken: cts);
         }
 
-        public async Task MarkRecordAsSoldAsync(Guid id, CancellationToken cts)
+        public async Task MarkRecordAsSoldAsync(Guid id, Guid editor, CancellationToken cts)
         {
             var update = Builders<Record>.Update
-                .Set(x =>x.IsSold, true)
-                .Set(x => x.SoldDate, DateTime.Now);
+                .Set(x => x.IsSold, true)
+                .Set(x => x.SoldDate, DateTime.Now)
+                .Set(x => x.Edited, DateTime.Now)
+                .Set(x => x.EditedBy, editor);
+            
             await _records.UpdateOneAsync(r => r.Id == id, update, cancellationToken: cts);
         }
     }

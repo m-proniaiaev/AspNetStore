@@ -11,9 +11,9 @@ namespace Store.Core.Services.Common.Interfaces
     public interface ISellerService
     {
         Task<List<Seller>> GetSellersAsync(CancellationToken cts);
-        Task UpdateSellerAsync(UpdateSellerCommand command, Seller origin, CancellationToken cts);
+        Task UpdateSellerAsync(Seller model, CancellationToken cts);
         Task<Seller> GetSellerAsync(Guid id, CancellationToken cts);
-        Task CreateSellerAsync(CreateSellerCommand request, Guid id, CancellationToken cts);
+        Task CreateSellerAsync(Seller seller, CancellationToken cts);
         Task DeleteSellerAsync(Guid id, CancellationToken cts);
     }
 }

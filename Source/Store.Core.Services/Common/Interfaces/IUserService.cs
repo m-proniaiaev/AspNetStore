@@ -15,6 +15,6 @@ namespace Store.Core.Services.Common.Interfaces
         Task UpdateUserAsync(User user, CancellationToken cts);
         Task ChangeUserPassword(User user, CancellationToken cts);
         Task ChangeUserRole(User user, CancellationToken cts);
-        Task MarkUserAsDisabledAsync(Guid id, CancellationToken cts);
+        Task MarkUserAsDisabledAsync(Guid id, Guid editor, CancellationToken cts);
     }
 }

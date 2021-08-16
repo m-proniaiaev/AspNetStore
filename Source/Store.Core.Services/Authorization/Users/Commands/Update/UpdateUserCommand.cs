@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Store.Core.Contracts.Interfaces;
 using Store.Core.Contracts.Models;
+using Store.Core.Host.Authorization.CurrentUser;
 using Store.Core.Services.Authorization.BlackList;
 using Store.Core.Services.Authorization.BlackList.Commands;
 using Store.Core.Services.Authorization.Roles.Queries.GetRoles;
@@ -25,11 +26,13 @@ namespace Store.Core.Services.Authorization.Users.Commands.Update
     {
         private readonly IUserService _userService;
         private readonly IMediator _mediator;
+        private readonly ICurrentUserService _currentUser;
 
-        public UpdateUserCommandHandler(IUserService userService, IMediator mediator)
+        public UpdateUserCommandHandler(IUserService userService, IMediator mediator, ICurrentUserService currentUser)
         {
             _userService = userService;
             _mediator = mediator;
+            _currentUser = currentUser;
         }
         public async Task<User> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
         {
@@ -55,6 +58,8 @@ namespace Store.Core.Services.Authorization.Users.Commands.Update
             user.Name = request.Name;
             user.IsActive = request.IsActive;
             user.Role = request.Role;
+            user.Edited = DateTime.Now;
+            user.EditedBy = _currentUser.Id;
 
             await _userService.UpdateUserAsync(user, cancellationToken);
 
