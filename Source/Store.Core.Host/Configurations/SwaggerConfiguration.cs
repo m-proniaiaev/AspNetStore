@@ -1,7 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 
-namespace Store.Core.Host.Extensions
+namespace Store.Core.Host.Configurations
 {
     public static class SwaggerConfiguration
     {

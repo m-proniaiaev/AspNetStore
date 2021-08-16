@@ -22,14 +22,14 @@ namespace Store.Core.Services.Authorization.Users.Commands
     public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, User>
     {
         private readonly IUserService _userService;
-        private readonly IHasher _hasher;
+        private readonly IHashService _hashService;
         private readonly IMediator _mediator;
         private readonly ICurrentUserService _currentUser;
 
-        public CreateUserCommandHandler(IUserService userService, IHasher hasher, IMediator mediator, ICurrentUserService currentUser)
+        public CreateUserCommandHandler(IUserService userService, IHashService hashService, IMediator mediator, ICurrentUserService currentUser)
         {
             _userService = userService;
-            _hasher = hasher;
+            _hashService = hashService;
             _mediator = mediator;
             _currentUser = currentUser;
         }
@@ -48,7 +48,7 @@ namespace Store.Core.Services.Authorization.Users.Commands
             if (role == null)
                 throw new ArgumentException("There is no such role!");
 
-            var password = _hasher.Hash(request.Password);
+            var password = _hashService.Hash(request.Password);
 
             if (password.salt == null || password.hash == null)
                 throw new ArgumentException("Can't create user with provided password!");

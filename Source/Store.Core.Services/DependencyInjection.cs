@@ -31,7 +31,7 @@ namespace Store.Core.Services
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IBlackListService, BlackListService>();
             services.AddSingleton<HashingOptions>();
-            services.AddTransient<IHasher, Hasher>();
+            services.AddTransient<IHashService, HashService>();
 
             return services;
         }

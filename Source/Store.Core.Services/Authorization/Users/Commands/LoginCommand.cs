@@ -23,13 +23,13 @@ namespace Store.Core.Services.Authorization.Users.Commands
     public class LoginCommandHandler : IRequestHandler<LoginCommand, LoginResult>
     {
         private readonly IMediator _mediator;
-        private readonly IHasher _hasher;
+        private readonly IHashService _hashService;
         private readonly IAuthManager _authManager;
 
-        public LoginCommandHandler(IMediator mediator, IHasher hasher, IAuthManager authManager)
+        public LoginCommandHandler(IMediator mediator, IHashService hashService, IAuthManager authManager)
         {
             _mediator = mediator;
-            _hasher = hasher;
+            _hashService = hashService;
             _authManager = authManager;
         }
 
@@ -41,7 +41,7 @@ namespace Store.Core.Services.Authorization.Users.Commands
             if (user is null || !user.IsActive)
                 throw new ArgumentException("Username or password is incorrect!");
 
-            var validationResult = _hasher.CheckHash(user.Salt, user.Hash, request.Password);
+            var validationResult = _hashService.CheckHash(user.Salt, user.Hash, request.Password);
             
             if (!validationResult)
                 throw new ArgumentException("Username or password is incorrect!");

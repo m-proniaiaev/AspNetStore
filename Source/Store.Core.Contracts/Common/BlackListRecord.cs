@@ -1,8 +1,7 @@
 using System;
-using Store.Core.Contracts.Interfaces;
 using Store.Core.Contracts.Interfaces.Models;
 
-namespace Store.Core.Contracts.Domain
+namespace Store.Core.Contracts.Common
 {
     public class BlackListRecord : IIdentity
     {

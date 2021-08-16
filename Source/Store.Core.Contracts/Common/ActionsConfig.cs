@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Store.Core.Contracts.Enums;
 
-namespace Store.Core.Contracts.Domain
+namespace Store.Core.Contracts.Common
 {
     public class ActionsConfig
     {

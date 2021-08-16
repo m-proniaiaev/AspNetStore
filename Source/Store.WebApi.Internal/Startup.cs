@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Store.Core.Cache;
 using Store.Core.Database;
 using Store.Core.Host.Authorization;
+using Store.Core.Host.Configurations;
 using Store.Core.Host.Extensions;
 using Store.Core.Services;
 

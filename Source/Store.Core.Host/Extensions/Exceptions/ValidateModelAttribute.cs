@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Newtonsoft.Json.Linq;
+using Store.Core.Contracts.Common;
+using Store.Core.Host.Configurations;
 
 namespace Store.Core.Host.Extensions.Exceptions
 {

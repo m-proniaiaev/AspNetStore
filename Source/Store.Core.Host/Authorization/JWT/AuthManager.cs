@@ -4,6 +4,7 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Store.Core.Contracts.Interfaces.Services;
 
 namespace Store.Core.Host.Authorization.JWT
 {

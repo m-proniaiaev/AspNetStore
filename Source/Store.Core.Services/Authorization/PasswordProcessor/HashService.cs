@@ -5,13 +5,13 @@ using Store.Core.Contracts.Interfaces.Services;
 
 namespace Store.Core.Services.Authorization.PasswordProcessor
 {
-    public class Hasher : IHasher
+    public class HashService : IHashService
     {
         private const int SaltSize = 16; // 128 bit 
         private const int KeySize = 32; // 256 bit
         private readonly HashingOptions _options;
 
-        public Hasher(HashingOptions options)
+        public HashService(HashingOptions options)
         {
             _options = options;
         }

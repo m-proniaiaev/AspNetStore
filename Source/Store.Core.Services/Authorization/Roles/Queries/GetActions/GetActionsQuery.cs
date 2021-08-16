@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.Extensions.Options;
+using Store.Core.Contracts.Common;
 using Store.Core.Contracts.Domain;
 using Store.Core.Contracts.Enums;
 using Store.Core.Contracts.Responses;

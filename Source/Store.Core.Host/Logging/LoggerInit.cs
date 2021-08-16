@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Serilog;
 using Serilog.Events;
 
-namespace Store.Core.Host.Extensions.Logging
+namespace Store.Core.Host.Logging
 {
     public class LoggerInit
     {

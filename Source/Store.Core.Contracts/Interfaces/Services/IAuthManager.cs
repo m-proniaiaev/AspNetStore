@@ -1,7 +1,6 @@
-﻿using System;
-using System.Security.Claims;
+﻿using System.Security.Claims;
 
-namespace Store.Core.Host.Authorization.JWT
+namespace Store.Core.Contracts.Interfaces.Services
 {
     public interface IAuthManager
     {

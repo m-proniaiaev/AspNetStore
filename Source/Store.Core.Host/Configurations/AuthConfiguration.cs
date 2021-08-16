@@ -4,12 +4,13 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Store.Core.Contracts.Interfaces.Services;
 using Store.Core.Host.Authorization.CurrentUser;
 using Store.Core.Host.Authorization.JWT;
 
-namespace Store.Core.Host.Authorization
+namespace Store.Core.Host.Configurations
 {
-    public static class ConfigureAuth
+    public static class AuthConfiguration
     {
         public static IServiceCollection AddStoreAuthorization(this IServiceCollection services, IConfiguration configuration)
         {

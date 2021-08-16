@@ -1,4 +1,4 @@
-namespace Store.Core.Host.Extensions
+namespace Store.Core.Host.Configurations
 {
     public static class HostConstants
     {

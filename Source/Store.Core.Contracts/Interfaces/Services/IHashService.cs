@@ -1,6 +1,6 @@
 namespace Store.Core.Contracts.Interfaces.Services
 {
-    public interface IHasher
+    public interface IHashService
     {
         (string salt, string hash) Hash(string password);
   
