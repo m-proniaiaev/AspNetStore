@@ -2,10 +2,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Store.Core.Contracts.Common;
-using Store.Core.Contracts.Domain;
-using Store.Core.Contracts.Interfaces;
 using Store.Core.Contracts.Interfaces.Services;
-using Store.Core.Services.Authorization.BlackList.Commands;
 
 namespace Store.Core.Services.Authorization.BlackList
 {

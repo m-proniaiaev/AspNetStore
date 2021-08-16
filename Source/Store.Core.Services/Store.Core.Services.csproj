@@ -22,4 +22,10 @@
       <ProjectReference Include="..\Store.Core.Host\Store.Core.Host.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Authorization\Roles\Commands" />
+      <Folder Include="Internal\Records\Commands" />
+      <Folder Include="Internal\Sellers\Commands" />
+    </ItemGroup>
+
 </Project>

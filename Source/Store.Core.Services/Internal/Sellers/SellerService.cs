@@ -6,8 +6,6 @@ using MongoDB.Driver;
 using Store.Core.Contracts.Domain;
 using Store.Core.Contracts.Interfaces.Services;
 using Store.Core.Database.Database;
-using Store.Core.Services.Internal.Sellers.Queries.CreateSeller;
-using Store.Core.Services.Internal.Sellers.Queries.UpdateSellerAsync;
 
 namespace Store.Core.Services.Internal.Sellers
 {

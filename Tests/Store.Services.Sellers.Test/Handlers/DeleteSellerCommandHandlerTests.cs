@@ -5,9 +5,8 @@ using FluentAssertions;
 using MediatR;
 using Moq;
 using Store.Core.Contracts.Domain;
-using Store.Core.Contracts.Interfaces;
 using Store.Core.Contracts.Interfaces.Services;
-using Store.Core.Services.Internal.Sellers.Queries.DeleteSeller;
+using Store.Core.Services.Internal.Sellers.Commands.DeleteSeller;
 using Xunit;
 
 namespace Store.Services.Sellers.Test.Handlers

@@ -1,6 +1,5 @@
 using System;
 using System.Text.Json.Serialization;
-using Store.Core.Contracts.Interfaces;
 using Store.Core.Contracts.Interfaces.Models;
 
 namespace Store.Core.Contracts.Domain

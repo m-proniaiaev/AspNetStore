@@ -6,7 +6,6 @@ using MongoDB.Driver;
 using Store.Core.Contracts.Domain;
 using Store.Core.Contracts.Interfaces.Services;
 using Store.Core.Database.Database;
-using Store.Core.Services.Authorization.Roles.Queries.CreateRole;
 
 namespace Store.Core.Services.Authorization.Roles
 {

@@ -2,7 +2,6 @@ using System;
 using System.Linq;
 using Store.Core.Contracts.Domain;
 using Store.Core.Contracts.Enums;
-using Store.Core.Services.Common;
 
 namespace Store.Core.Services.Internal.Sellers.Queries.GetSellers.Helpers
 {

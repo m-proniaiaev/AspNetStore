@@ -5,10 +5,9 @@ using FluentAssertions;
 using Moq;
 using Store.Core.Contracts.Domain;
 using Store.Core.Contracts.Enums;
-using Store.Core.Contracts.Interfaces;
 using Store.Core.Contracts.Interfaces.Services;
 using Store.Core.Host.Authorization.CurrentUser;
-using Store.Core.Services.Internal.Sellers.Queries.CreateSeller;
+using Store.Core.Services.Internal.Sellers.Commands.CreateSeller;
 using Xunit;
 
 namespace Store.Services.Sellers.Test.Handlers

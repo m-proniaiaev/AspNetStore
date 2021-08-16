@@ -1,13 +1,13 @@
 using System;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.DependencyInjection;
-using System.Linq;
 using Store.Core.Contracts.Interfaces.Services;
 
-namespace Store.Core.Services.Authorization
+namespace Store.Core.Host.Authorization
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
     public class ActionRequiredAttribute : Attribute, IAuthorizationFilter

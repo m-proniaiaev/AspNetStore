@@ -2,7 +2,6 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Store.Core.Contracts.Common;
-using Store.Core.Contracts.Domain;
 
 namespace Store.Core.Contracts.Interfaces.Services
 {

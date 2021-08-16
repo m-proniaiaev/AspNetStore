@@ -6,11 +6,12 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Store.Core.Contracts.Domain;
 using Store.Core.Contracts.Responses;
+using Store.Core.Host.Authorization;
 using Store.Core.Services.Authorization;
-using Store.Core.Services.Internal.Sellers.Queries.CreateSeller;
-using Store.Core.Services.Internal.Sellers.Queries.DeleteSeller;
+using Store.Core.Services.Internal.Sellers.Commands.CreateSeller;
+using Store.Core.Services.Internal.Sellers.Commands.DeleteSeller;
+using Store.Core.Services.Internal.Sellers.Commands.UpdateSeller;
 using Store.Core.Services.Internal.Sellers.Queries.GetSellers;
-using Store.Core.Services.Internal.Sellers.Queries.UpdateSellerAsync;
 
 namespace Store.WebApi.Internal.Controllers
 {

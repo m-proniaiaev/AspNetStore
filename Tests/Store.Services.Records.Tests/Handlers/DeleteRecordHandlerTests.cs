@@ -3,9 +3,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Moq;
-using Store.Core.Contracts.Interfaces;
 using Store.Core.Contracts.Interfaces.Services;
-using Store.Core.Services.Internal.Records.Queries.DeleteRecord;
+using Store.Core.Services.Internal.Records.Commands.DeleteRecord;
 using Xunit;
 using Record = Store.Core.Contracts.Domain.Record;
 

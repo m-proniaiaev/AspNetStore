@@ -2,8 +2,6 @@
 using System.Linq;
 using Store.Core.Contracts.Domain;
 using Store.Core.Contracts.Enums;
-using Store.Core.Services.Authorization.Roles.Queries.GetRoles.Helpers;
-using Store.Core.Services.Common;
 
 namespace Store.Core.Services.Authorization.Users.Queries.Helpers
 {

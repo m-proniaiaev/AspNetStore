@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using Moq;
 using Store.Core.Contracts.Domain;
-using Store.Core.Contracts.Interfaces;
 using Store.Core.Contracts.Interfaces.Services;
 using Store.Core.Services.Internal.Sellers.Queries.GetSellers;
 using Xunit;

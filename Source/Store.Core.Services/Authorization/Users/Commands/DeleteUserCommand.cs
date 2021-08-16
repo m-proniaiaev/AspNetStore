@@ -2,7 +2,6 @@
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using Store.Core.Contracts.Interfaces;
 using Store.Core.Contracts.Interfaces.Models;
 using Store.Core.Contracts.Interfaces.Services;
 
