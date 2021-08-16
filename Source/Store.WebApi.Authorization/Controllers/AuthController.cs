@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Store.Core.Contracts.Responses;
+using Store.Core.Services.Authorization;
 using Store.Core.Services.Authorization.Users.Commands;
 
 namespace Store.WebApi.Authorization.Controllers
@@ -29,7 +30,7 @@ namespace Store.WebApi.Authorization.Controllers
             return Ok(result);
         }
         
-        [Authorize]
+        [ActionRequired("LogOut")]
         [HttpPost("LogOut")]
         [ProducesResponseType(typeof(NoContentResult), StatusCodes.Status200OK)]
         public async Task<ActionResult> LogOut(CancellationToken cancellationToken)
