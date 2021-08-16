@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Store.Core.Contracts.Models;
+using Store.Core.Host.Authorization.CurrentUser;
 using Store.Core.Services.Authorization.Roles.Queries.GetRoles;
 using Store.Core.Services.Authorization.Users.Queries;
 using Store.Core.Services.Common.Interfaces;
@@ -23,12 +24,14 @@ namespace Store.Core.Services.Authorization.Users.Commands
         private readonly IUserService _userService;
         private readonly IHasher _hasher;
         private readonly IMediator _mediator;
+        private readonly ICurrentUserService _currentUser;
 
-        public CreateUserCommandHandler(IUserService userService, IHasher hasher, IMediator mediator)
+        public CreateUserCommandHandler(IUserService userService, IHasher hasher, IMediator mediator, ICurrentUserService currentUser)
         {
             _userService = userService;
             _hasher = hasher;
             _mediator = mediator;
+            _currentUser = currentUser;
         }
         
         public async Task<User> Handle(CreateUserCommand request, CancellationToken cancellationToken)
@@ -61,7 +64,7 @@ namespace Store.Core.Services.Authorization.Users.Commands
                Salt = password.salt,
                Hash = password.hash,
                Created = DateTime.Now,
-               CreatedBy = Guid.Empty //TODO
+               CreatedBy = _currentUser.Id
             };
 
             await _userService.AddUserAsync(user, cancellationToken);

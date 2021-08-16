@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Store.Core.Contracts.Interfaces;
 using Store.Core.Contracts.Models;
+using Store.Core.Host.Authorization.CurrentUser;
 using Store.Core.Services.Common.Interfaces;
 
 namespace Store.Core.Services.Internal.Records.Queries.UpdateRecord
@@ -20,11 +21,13 @@ namespace Store.Core.Services.Internal.Records.Queries.UpdateRecord
     {
         private readonly IRecordService _recordService;
         private readonly ICacheService _cacheService;
+        private readonly ICurrentUserService _currentUser;
 
-        public UpdateRecordCommandHandler(IRecordService recordService, ICacheService cacheService)
+        public UpdateRecordCommandHandler(IRecordService recordService, ICacheService cacheService, ICurrentUserService currentUser)
         {
             _recordService = recordService;
             _cacheService = cacheService;
+            _currentUser = currentUser;
         }
         
         public async Task<Record> Handle(UpdateRecordCommand request, CancellationToken cancellationToken)
@@ -39,7 +42,16 @@ namespace Store.Core.Services.Internal.Records.Queries.UpdateRecord
             if (record.IsSold)
                 throw new ArgumentException("You can not change records which already has been sold!");
 
-            await _recordService.UpdateRecordAsync(request, record, cancellationToken);
+            DateTime? includeSoldDate = request.IsSold ? DateTime.Now : null;
+            
+            record.Name = request.Name;
+            record.Price = request.Price;
+            record.IsSold = request.IsSold;
+            record.SoldDate = includeSoldDate;
+            record.Edited = DateTime.Now;
+            record.EditedBy = _currentUser.Id;
+
+            await _recordService.UpdateRecordAsync(record, cancellationToken);
             
             var result = await _recordService.GetRecordAsync(record.Id, cancellationToken);
             

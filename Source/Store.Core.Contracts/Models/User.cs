@@ -16,5 +16,7 @@ namespace Store.Core.Contracts.Models
         public string Salt { get; set; }
         public DateTime Created { get; set; }
         public Guid CreatedBy { get; set; }
+        public DateTime Edited { get; set; }
+        public Guid EditedBy { get; set; }
     }
 }

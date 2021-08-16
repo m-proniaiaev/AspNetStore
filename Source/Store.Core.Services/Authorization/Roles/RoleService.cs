@@ -34,26 +34,17 @@ namespace Store.Core.Services.Authorization.Roles
             await _roles.ReplaceOneAsync(r => r.Id == model.Id, model, cancellationToken: cts);
         }
         
-        public async Task CreateRoleAsync(CreateRoleCommand request, Guid id, string[] actions, CancellationToken cts)
+        public async Task CreateRoleAsync(Role role, CancellationToken cts)
         {
-            var role = new Role()
-            {
-                Id = id,
-                Name = request.Name,
-                IsActive = request.IsActive,
-                RoleType = request.RoleType,
-                Actions = actions,
-                Created = DateTime.Now,
-                CreatedBy = Guid.Empty //TODO
-            };
-            
             await _roles.InsertOneAsync(role, cancellationToken: cts);
         }
 
-        public async Task DisableRoleAsync(Guid id, CancellationToken cts)
+        public async Task DisableRoleAsync(Guid id, Guid editor, CancellationToken cts)
         {
             var update = Builders<Role>.Update
-                .Set(x => x.IsActive, false);
+                .Set(x => x.IsActive, false)
+                .Set(x => x.Edited, DateTime.Now)
+                .Set(x => x.EditedBy, editor);
 
             await _roles.UpdateOneAsync(role => role.Id == id, update, cancellationToken: cts);
         }

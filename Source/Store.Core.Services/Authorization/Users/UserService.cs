@@ -60,10 +60,12 @@ namespace Store.Core.Services.Authorization.Users
             await _users.UpdateOneAsync(u => u.Id == user.Id, update, cancellationToken: cts);
         }
 
-        public async Task MarkUserAsDisabledAsync(Guid id, CancellationToken cts)
+        public async Task MarkUserAsDisabledAsync(Guid id, Guid editor, CancellationToken cts)
         {
             var update = Builders<User>.Update
-                .Set(x => x.IsActive, false);
+                .Set(x => x.IsActive, false)
+                .Set(x => x.Edited, DateTime.Now)
+                .Set(x => x.EditedBy, editor);
 
             await _users.UpdateOneAsync(user => user.Id == id, update, cancellationToken: cts);
         }

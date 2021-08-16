@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Store.Core.Contracts.Interfaces;
 using Store.Core.Contracts.Models;
+using Store.Core.Host.Authorization.CurrentUser;
 using Store.Core.Services.Common.Interfaces;
 
 namespace Store.Core.Services.Internal.Records.Queries.UpdateRecord
@@ -17,11 +18,13 @@ namespace Store.Core.Services.Internal.Records.Queries.UpdateRecord
     {
         private readonly IRecordService _recordService;
         private readonly ICacheService _cacheService;
+        private readonly ICurrentUserService _currentUser;
 
-        public RecordMarkAsSoldCommandHandler(IRecordService recordService, ICacheService cacheService)
+        public RecordMarkAsSoldCommandHandler(IRecordService recordService, ICacheService cacheService, ICurrentUserService currentUser)
         {
             _recordService = recordService;
             _cacheService = cacheService;
+            _currentUser = currentUser;
         }
         public async Task<Unit> Handle(MarkAsSoldCommand request, CancellationToken cancellationToken)
         {
@@ -35,7 +38,7 @@ namespace Store.Core.Services.Internal.Records.Queries.UpdateRecord
             if (record.IsSold)
                 throw new ArgumentException("This record already has been sold!");
 
-            await _recordService.MarkRecordAsSoldAsync(record.Id, cancellationToken);
+            await _recordService.MarkRecordAsSoldAsync(record.Id,_currentUser.Id, cancellationToken);
             
             var result = await _recordService.GetRecordAsync(record.Id, cancellationToken);
             await _cacheService.AddCacheAsync(result, 

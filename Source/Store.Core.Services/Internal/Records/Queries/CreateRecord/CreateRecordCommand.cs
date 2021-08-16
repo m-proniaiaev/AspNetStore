@@ -6,6 +6,7 @@ using MediatR;
 using Store.Core.Contracts.Enums;
 using Store.Core.Contracts.Interfaces;
 using Store.Core.Contracts.Models;
+using Store.Core.Host.Authorization.CurrentUser;
 using Store.Core.Services.Common.Interfaces;
 using Store.Core.Services.Internal.Sellers.Queries.GetSellers;
 
@@ -24,12 +25,14 @@ namespace Store.Core.Services.Internal.Records.Queries.CreateRecord
         private readonly IRecordService _recordService;
         private readonly ICacheService _cacheService;
         private readonly IMediator _mediator;
+        private readonly ICurrentUserService _currentUser;
 
-        public CreateRecordCommandHandler(IRecordService recordService, ICacheService cacheService, IMediator mediator)
+        public CreateRecordCommandHandler(IRecordService recordService, ICacheService cacheService, IMediator mediator, ICurrentUserService currentUser)
         {
             _recordService = recordService;
             _cacheService = cacheService;
             _mediator = mediator;
+            _currentUser = currentUser;
         }
         
         public async Task<Record> Handle(CreateRecordCommand request, CancellationToken cancellationToken)
@@ -47,7 +50,19 @@ namespace Store.Core.Services.Internal.Records.Queries.CreateRecord
                 throw new ArgumentException($"This seller can't have record with type {request.RecordType}");
                 
             var id = Guid.NewGuid();
-            await _recordService.AddRecordAsync(request, id, cancellationToken);
+            var record = new Record
+            {
+                Id = id,
+                Seller = request.Seller,
+                Created = DateTime.Now,
+                CreatedBy = _currentUser.Id,
+                Name = request.Name,
+                Price = request.Price,
+                RecordType = request.RecordType,
+                IsSold = false,
+                SoldDate = null
+            };
+            await _recordService.AddRecordAsync(record, cancellationToken);
                 
             var result = await _recordService.GetRecordAsync(id, cancellationToken);
             

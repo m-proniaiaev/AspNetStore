@@ -5,6 +5,7 @@ using MediatR;
 using Store.Core.Contracts.Enums;
 using Store.Core.Contracts.Interfaces;
 using Store.Core.Contracts.Models;
+using Store.Core.Host.Authorization.CurrentUser;
 using Store.Core.Services.Common.Interfaces;
 
 namespace Store.Core.Services.Internal.Sellers.Queries.CreateSeller
@@ -19,17 +20,29 @@ namespace Store.Core.Services.Internal.Sellers.Queries.CreateSeller
     {
         private readonly ISellerService _sellerService;
         private readonly ICacheService _cacheService;
+        private readonly ICurrentUserService _currentUser;
 
-        public CreateSellerCommandHandler(ISellerService sellerService, ICacheService cacheService)
+        public CreateSellerCommandHandler(ISellerService sellerService, ICacheService cacheService, ICurrentUserService currentUser)
         {
             _sellerService = sellerService;
             _cacheService = cacheService;
+            _currentUser = currentUser;
         }
         
         public async Task<Seller> Handle(CreateSellerCommand request, CancellationToken cancellationToken)
         {
             var id = Guid.NewGuid();
-            await _sellerService.CreateSellerAsync(request, id, cancellationToken);
+            
+            var seller = new Seller
+            {
+                Id = id,
+                Name = request.Name,
+                RecordType = request.RecordType,
+                Created = DateTime.Now,
+                CreatedBy = _currentUser.Id
+            };
+            
+            await _sellerService.CreateSellerAsync(seller, cancellationToken);
 
             var result = await _sellerService.GetSellerAsync(id, cancellationToken);
             

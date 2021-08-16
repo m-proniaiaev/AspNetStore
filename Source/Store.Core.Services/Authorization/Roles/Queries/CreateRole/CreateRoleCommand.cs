@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Store.Core.Contracts.Enums;
 using Store.Core.Contracts.Models;
+using Store.Core.Host.Authorization.CurrentUser;
 using Store.Core.Services.Authorization.Roles.Queries.GetActions;
 using Store.Core.Services.Common.Interfaces;
 
@@ -22,11 +23,13 @@ namespace Store.Core.Services.Authorization.Roles.Queries.CreateRole
     {
         private readonly IRoleService _roleService;
         private readonly IMediator _mediator;
+        private readonly ICurrentUserService _currentUser;
 
-        public CreateRoleCommandHandler(IRoleService roleService, IMediator mediator)
+        public CreateRoleCommandHandler(IRoleService roleService, IMediator mediator, ICurrentUserService currentUser)
         {
             _roleService = roleService;
             _mediator = mediator;
+            _currentUser = currentUser;
         }
 
         public async Task<Role> Handle(CreateRoleCommand request, CancellationToken cancellationToken)
@@ -38,7 +41,18 @@ namespace Store.Core.Services.Authorization.Roles.Queries.CreateRole
 
             var id = Guid.NewGuid();
             
-            await _roleService.CreateRoleAsync(request, id, actions, cancellationToken);
+            var role = new Role()
+            {
+                Id = id,
+                Name = request.Name,
+                IsActive = request.IsActive,
+                RoleType = request.RoleType,
+                Actions = actions,
+                Created = DateTime.Now,
+                CreatedBy = _currentUser.Id
+            };
+            
+            await _roleService.CreateRoleAsync(role, cancellationToken);
 
             var result = await _roleService.GetRoleAsync(id, cancellationToken);
 

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Store.Core.Contracts.Interfaces;
 using Store.Core.Contracts.Models;
+using Store.Core.Host.Authorization.CurrentUser;
 using Store.Core.Services.Common.Interfaces;
 
 namespace Store.Core.Services.Authorization.Users.Commands.Update
@@ -17,11 +18,13 @@ namespace Store.Core.Services.Authorization.Users.Commands.Update
     {
         private readonly IUserService _userService;
         private readonly IHasher _hasher;
+        private readonly ICurrentUserService _currentUser;
 
-        public ChangeUserPasswordCommandHandler(IUserService userService, IHasher hasher)
+        public ChangeUserPasswordCommandHandler(IUserService userService, IHasher hasher, ICurrentUserService currentUser)
         {
             _userService = userService;
             _hasher = hasher;
+            _currentUser = currentUser;
         }
 
         public async Task<User> Handle(ChangeUserPasswordCommand request, CancellationToken cancellationToken)
@@ -38,6 +41,8 @@ namespace Store.Core.Services.Authorization.Users.Commands.Update
             
             user.Salt = salt;
             user.Hash = hash;
+            user.Edited = DateTime.Now;
+            user.EditedBy = _currentUser.Id;
 
             await _userService.ChangeUserPassword(user, cancellationToken);
             
