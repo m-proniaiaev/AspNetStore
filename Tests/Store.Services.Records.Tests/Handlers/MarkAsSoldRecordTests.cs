@@ -5,6 +5,7 @@ using FluentAssertions;
 using MediatR;
 using Moq;
 using Store.Core.Contracts.Interfaces;
+using Store.Core.Host.Authorization.CurrentUser;
 using Store.Core.Services.Common.Interfaces;
 using Store.Core.Services.Internal.Records.Queries.UpdateRecord;
 using Xunit;
@@ -16,11 +17,13 @@ namespace Store.Services.Records.Tests.Handlers
     {
         private readonly Mock<IRecordService> _recordService;
         private readonly Mock<ICacheService> _cacheService;
+        private readonly Mock<ICurrentUserService> _currentUser;
 
         public MarkAsSoldRecordTests()
         {
             _recordService = new Mock<IRecordService>();
             _cacheService = new Mock<ICacheService>();
+            _currentUser = new Mock<ICurrentUserService>();
         }
 
         [Fact]
@@ -41,7 +44,7 @@ namespace Store.Services.Records.Tests.Handlers
             _cacheService.Setup(x => x.GetCacheAsync<Record>(id.ToString(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(model);
 
-            var handler = new RecordMarkAsSoldCommandHandler(_recordService.Object, _cacheService.Object);
+            var handler = new RecordMarkAsSoldCommandHandler(_recordService.Object, _cacheService.Object, _currentUser.Object);
 
             Func<Task<Unit>> handle = async () => await handler.Handle(request, CancellationToken.None);
 
@@ -52,6 +55,7 @@ namespace Store.Services.Records.Tests.Handlers
         public async Task HandleRequest_ChangesSoldStatus_WhenRequestIsCorrect()
         {
             var id = Guid.NewGuid();
+            var editor = Guid.NewGuid();
             var request = new MarkAsSoldCommand
             {
                 Id = id
@@ -60,24 +64,26 @@ namespace Store.Services.Records.Tests.Handlers
             var model = new Record()
             {
                 Id = id,
-                IsSold = false
+                IsSold = false,
+                EditedBy = editor
             };
 
+            _currentUser.Setup(x => x.Id).Returns(editor);
             _cacheService.Setup(x => x.GetCacheAsync<Record>(id.ToString(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(model);
             _cacheService.Setup(x => x.AddCacheAsync(model, It.IsAny<TimeSpan?>(), It.IsAny<CancellationToken>()));
-            _recordService.Setup(x => x.MarkRecordAsSoldAsync(id, It.IsAny<CancellationToken>()));
+            _recordService.Setup(x => x.MarkRecordAsSoldAsync(id, editor, It.IsAny<CancellationToken>()));
             _recordService.Setup(x => x.GetRecordAsync(id, It.IsAny<CancellationToken>()))
                 .ReturnsAsync(model);
 
-            var handler = new RecordMarkAsSoldCommandHandler(_recordService.Object, _cacheService.Object);
+            var handler = new RecordMarkAsSoldCommandHandler(_recordService.Object, _cacheService.Object, _currentUser.Object);
 
             await handler.Handle(request, CancellationToken.None);
 
            _cacheService.Verify(X=>X.GetCacheAsync<Record>(id.ToString(), It.IsAny<CancellationToken>()), Times.Once);
            _recordService.Verify(x=>x.GetRecordAsync(id, It.IsAny<CancellationToken>()), Times.Once);
            _cacheService.Verify(x=>x.AddCacheAsync(model, It.IsAny<TimeSpan?>(), It.IsAny<CancellationToken>()), Times.Once);
-           _recordService.Verify(x=>x.MarkRecordAsSoldAsync(id, It.IsAny<CancellationToken>()), Times.Once);
+           _recordService.Verify(x=>x.MarkRecordAsSoldAsync(id, editor, It.IsAny<CancellationToken>()), Times.Once);
         }
     }
 }
