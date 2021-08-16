@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using MongoDB.Driver;
-using Store.Core.Contracts.Models;
-using Store.Core.Database.Database;
-using Store.Core.Services.Authorization.Roles.Queries.CreateRole;
-using Store.Core.Services.Common.Interfaces;
+using Store.Core.Contracts.Domain;
+using Store.Core.Contracts.Interfaces.Services;
 
 namespace Store.Core.Services.Authorization.Roles
 {

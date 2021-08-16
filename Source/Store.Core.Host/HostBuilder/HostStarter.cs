@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Serilog;
-using Store.Core.Host.Extensions.Logging;
+using Store.Core.Host.Logging;
 
 namespace Store.Core.Host.HostBuilder
 {

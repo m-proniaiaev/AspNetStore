@@ -4,14 +4,14 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Store.Core.Contracts.Models;
+using Store.Core.Contracts.Domain;
 using Store.Core.Contracts.Responses;
-using Store.Core.Services.Authorization;
-using Store.Core.Services.Internal.Records.Queries.CreateRecord;
-using Store.Core.Services.Internal.Records.Queries.DeleteRecord;
+using Store.Core.Host.Authorization;
+using Store.Core.Services.Internal.Records.Commands.CreateRecord;
+using Store.Core.Services.Internal.Records.Commands.DeleteRecord;
+using Store.Core.Services.Internal.Records.Commands.UpdateRecord;
 using Store.Core.Services.Internal.Records.Queries.GetRecords;
 using Store.Core.Services.Internal.Records.Queries.GetRecords.ById;
-using Store.Core.Services.Internal.Records.Queries.UpdateRecord;
 
 namespace Store.WebApi.Internal.Controllers
 {

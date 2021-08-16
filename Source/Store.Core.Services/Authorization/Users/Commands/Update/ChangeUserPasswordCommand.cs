@@ -2,10 +2,9 @@
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using Store.Core.Contracts.Interfaces;
-using Store.Core.Contracts.Models;
-using Store.Core.Host.Authorization.CurrentUser;
-using Store.Core.Services.Common.Interfaces;
+using Store.Core.Contracts.Domain;
+using Store.Core.Contracts.Interfaces.Models;
+using Store.Core.Contracts.Interfaces.Services;
 
 namespace Store.Core.Services.Authorization.Users.Commands.Update
 {
@@ -17,13 +16,13 @@ namespace Store.Core.Services.Authorization.Users.Commands.Update
     public class ChangeUserPasswordCommandHandler : IRequestHandler<ChangeUserPasswordCommand, User>
     {
         private readonly IUserService _userService;
-        private readonly IHasher _hasher;
+        private readonly IHashService _hashService;
         private readonly ICurrentUserService _currentUser;
 
-        public ChangeUserPasswordCommandHandler(IUserService userService, IHasher hasher, ICurrentUserService currentUser)
+        public ChangeUserPasswordCommandHandler(IUserService userService, IHashService hashService, ICurrentUserService currentUser)
         {
             _userService = userService;
-            _hasher = hasher;
+            _hashService = hashService;
             _currentUser = currentUser;
         }
 
@@ -34,7 +33,7 @@ namespace Store.Core.Services.Authorization.Users.Commands.Update
             if (user == null)
                 throw new ArgumentException("There is no such user!");
             
-            var (salt, hash) = _hasher.Hash(request.Password);
+            var (salt, hash) = _hashService.Hash(request.Password);
             
             if (salt == null || hash == null)
                 throw new ArgumentException("Can't set provided password!");

@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Serilog.Context;
+using Store.Core.Host.Configurations;
 
 namespace Store.Core.Host.Extensions.CorrelationIdMiddleware
 {

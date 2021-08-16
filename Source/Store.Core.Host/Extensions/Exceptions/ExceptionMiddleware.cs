@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
+using Store.Core.Contracts.Common;
+using Store.Core.Host.Configurations;
 
 namespace Store.Core.Host.Extensions.Exceptions
 {

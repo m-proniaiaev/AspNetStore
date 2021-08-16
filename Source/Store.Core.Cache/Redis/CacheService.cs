@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
-using Store.Core.Contracts.Interfaces;
+using Store.Core.Contracts.Interfaces.Models;
+using Store.Core.Contracts.Interfaces.Services;
 
 namespace Store.Core.Cache.Redis
 {

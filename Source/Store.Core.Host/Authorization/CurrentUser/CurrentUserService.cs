@@ -1,6 +1,7 @@
 using System;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
+using Store.Core.Contracts.Interfaces.Services;
 
 namespace Store.Core.Host.Authorization.CurrentUser
 {

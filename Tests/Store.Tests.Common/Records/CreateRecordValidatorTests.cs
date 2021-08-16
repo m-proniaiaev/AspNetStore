@@ -1,7 +1,6 @@
 using FluentValidation.TestHelper;
 using Store.Core.Contracts.Enums;
-using Store.Core.Services.Common.Validations.CommandValidation.Records;
-using Store.Core.Services.Internal.Records.Queries.CreateRecord;
+using Store.Core.Services.Internal.Records.Commands.CreateRecord;
 using Xunit;
 
 namespace Store.Tests.Common.Records

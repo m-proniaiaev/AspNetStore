@@ -3,11 +3,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Moq;
-using Store.Core.Contracts.Interfaces;
-using Store.Core.Contracts.Models;
-using Store.Core.Host.Authorization.CurrentUser;
-using Store.Core.Services.Common.Interfaces;
-using Store.Core.Services.Internal.Sellers.Queries.UpdateSellerAsync;
+using Store.Core.Contracts.Domain;
+using Store.Core.Contracts.Interfaces.Services;
+using Store.Core.Services.Internal.Sellers.Commands.UpdateSeller;
 using Xunit;
 
 namespace Store.Services.Sellers.Test.Handlers

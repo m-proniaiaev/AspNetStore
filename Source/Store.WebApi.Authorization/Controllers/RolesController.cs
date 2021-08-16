@@ -4,15 +4,15 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Store.Core.Contracts.Models;
+using Store.Core.Contracts.Domain;
 using Store.Core.Contracts.Responses;
-using Store.Core.Services.Authorization;
-using Store.Core.Services.Authorization.Roles.Queries.CreateRole;
-using Store.Core.Services.Authorization.Roles.Queries.DeleteRole;
-using Store.Core.Services.Authorization.Roles.Queries.DisableRole;
+using Store.Core.Host.Authorization;
+using Store.Core.Services.Authorization.Roles.Commands.CreateRole;
+using Store.Core.Services.Authorization.Roles.Commands.DeleteRole;
+using Store.Core.Services.Authorization.Roles.Commands.DisableRole;
+using Store.Core.Services.Authorization.Roles.Commands.UpdateRole;
 using Store.Core.Services.Authorization.Roles.Queries.GetActions;
 using Store.Core.Services.Authorization.Roles.Queries.GetRoles;
-using Store.Core.Services.Authorization.Roles.Queries.UpdateRole;
 
 namespace Store.WebApi.Authorization.Controllers
 {

@@ -2,7 +2,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using StackExchange.Redis;
 using Store.Core.Cache.Redis;
-using Store.Core.Contracts.Interfaces;
+using Store.Core.Contracts.Interfaces.Services;
 
 namespace Store.Core.Cache
 {

@@ -1,10 +1,8 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Store.Core.Contracts.Interfaces;
-using Store.Core.Contracts.Models;
-using Store.Core.Services.Authorization.BlackList.Commands;
-using Store.Core.Services.Common.Interfaces;
+using Store.Core.Contracts.Common;
+using Store.Core.Contracts.Interfaces.Services;
 
 namespace Store.Core.Services.Authorization.BlackList
 {
@@ -17,15 +15,15 @@ namespace Store.Core.Services.Authorization.BlackList
             _cacheService = cacheService;
         }
 
-        public async Task AddToBlackList(AddToBlackListCommand command, CancellationToken cancellationToken)
+        public async Task AddToBlackList(Guid id, CancellationToken cancellationToken)
         {
-            await _cacheService.AddCacheAsync(new BlackListRecord { Id = command.Id }, TimeSpan.FromHours(1),
+            await _cacheService.AddCacheAsync(new BlackListRecord { Id = id }, TimeSpan.FromHours(1),
                 cancellationToken);
         }
         
-        public async Task RemoveFromBlackList(RemoveFromBlackListCommand command, CancellationToken cancellationToken)
+        public async Task RemoveFromBlackList(Guid id, CancellationToken cancellationToken)
         {
-            await _cacheService.DeleteCacheAsync<BlackListRecord>(command.Id.ToString(), cancellationToken);
+            await _cacheService.DeleteCacheAsync<BlackListRecord>(id.ToString(), cancellationToken);
         }
 
         public async Task<BlackListRecord> FindBlackList(Guid id, CancellationToken cancellationToken)

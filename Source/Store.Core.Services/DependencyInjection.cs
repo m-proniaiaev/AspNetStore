@@ -2,11 +2,11 @@ using System;
 using System.Linq;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using Store.Core.Contracts.Interfaces.Services;
 using Store.Core.Services.Authorization.BlackList;
 using Store.Core.Services.Authorization.PasswordProcessor;
 using Store.Core.Services.Authorization.Roles;
 using Store.Core.Services.Authorization.Users;
-using Store.Core.Services.Common.Interfaces;
 using Store.Core.Services.Internal.Records;
 using Store.Core.Services.Internal.Sellers;
 
@@ -31,7 +31,7 @@ namespace Store.Core.Services
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IBlackListService, BlackListService>();
             services.AddSingleton<HashingOptions>();
-            services.AddTransient<IHasher, Hasher>();
+            services.AddTransient<IHashService, HashService>();
 
             return services;
         }

@@ -1,5 +1,6 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Store.Core.Contracts.Interfaces.Services;
 using Store.Core.Database.Database;
 
 namespace Store.Core.Database
