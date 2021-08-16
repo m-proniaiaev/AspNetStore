@@ -1,5 +1,5 @@
 using MongoDB.Driver;
-using Store.Core.Contracts.Models;
+using Store.Core.Contracts.Domain;
 
 namespace Store.Core.Database.Database
 {

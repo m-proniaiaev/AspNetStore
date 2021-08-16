@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Store.Core.Contracts.Models;
+using Store.Core.Contracts.Domain;
 using Store.Core.Contracts.Responses;
 using Store.Core.Services.Authorization;
 using Store.Core.Services.Authorization.Roles.Queries.CreateRole;

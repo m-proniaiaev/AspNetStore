@@ -4,11 +4,11 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using Moq;
 using Store.Core.Contracts.Interfaces;
+using Store.Core.Contracts.Interfaces.Services;
 using Store.Core.Host.Authorization.CurrentUser;
-using Store.Core.Services.Common.Interfaces;
 using Store.Core.Services.Internal.Records.Queries.UpdateRecord;
 using Xunit;
-using Record = Store.Core.Contracts.Models.Record;
+using Record = Store.Core.Contracts.Domain.Record;
 
 namespace Store.Services.Records.Tests.Handlers
 {

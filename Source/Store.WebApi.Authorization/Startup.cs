@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Store.Core.Cache;
-using Store.Core.Contracts.Models;
+using Store.Core.Contracts.Domain;
 using Store.Core.Database;
 using Store.Core.Host.Authorization;
 using Store.Core.Host.Extensions;

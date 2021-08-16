@@ -3,11 +3,11 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
+using Store.Core.Contracts.Domain;
 using Store.Core.Contracts.Enums;
-using Store.Core.Contracts.Models;
+using Store.Core.Contracts.Interfaces.Services;
 using Store.Core.Host.Authorization.CurrentUser;
 using Store.Core.Services.Authorization.Roles.Queries.GetActions;
-using Store.Core.Services.Common.Interfaces;
 
 namespace Store.Core.Services.Authorization.Roles.Queries.CreateRole
 {

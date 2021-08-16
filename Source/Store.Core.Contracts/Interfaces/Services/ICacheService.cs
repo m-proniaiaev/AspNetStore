@@ -1,8 +1,9 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Store.Core.Contracts.Interfaces.Models;
 
-namespace Store.Core.Contracts.Interfaces
+namespace Store.Core.Contracts.Interfaces.Services
 {
     public interface ICacheService
     {

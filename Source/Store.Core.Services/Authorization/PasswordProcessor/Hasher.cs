@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 using System.Security.Cryptography;
-using Store.Core.Services.Common.Interfaces;
+using Store.Core.Contracts.Interfaces.Services;
 
 namespace Store.Core.Services.Authorization.PasswordProcessor
 {

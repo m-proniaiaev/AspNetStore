@@ -1,4 +1,4 @@
-namespace Store.Core.Services.Common.Interfaces
+namespace Store.Core.Contracts.Interfaces.Services
 {
     public interface IHasher
     {

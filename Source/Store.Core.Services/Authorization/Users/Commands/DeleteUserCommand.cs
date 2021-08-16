@@ -3,7 +3,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Store.Core.Contracts.Interfaces;
-using Store.Core.Services.Common.Interfaces;
+using Store.Core.Contracts.Interfaces.Models;
+using Store.Core.Contracts.Interfaces.Services;
 
 namespace Store.Core.Services.Authorization.Users.Commands
 {

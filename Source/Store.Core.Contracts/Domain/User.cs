@@ -1,8 +1,9 @@
 using System;
 using System.Text.Json.Serialization;
 using Store.Core.Contracts.Interfaces;
+using Store.Core.Contracts.Interfaces.Models;
 
-namespace Store.Core.Contracts.Models
+namespace Store.Core.Contracts.Domain
 {
     public class User : IIdentity, IAuditable, IEntity
     {

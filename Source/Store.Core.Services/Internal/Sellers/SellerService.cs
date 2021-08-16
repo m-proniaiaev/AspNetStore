@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using MongoDB.Driver;
-using Store.Core.Contracts.Models;
+using Store.Core.Contracts.Domain;
+using Store.Core.Contracts.Interfaces.Services;
 using Store.Core.Database.Database;
-using Store.Core.Services.Common.Interfaces;
 using Store.Core.Services.Internal.Sellers.Queries.CreateSeller;
 using Store.Core.Services.Internal.Sellers.Queries.UpdateSellerAsync;
 

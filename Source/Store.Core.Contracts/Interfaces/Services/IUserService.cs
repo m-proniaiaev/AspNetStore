@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Store.Core.Contracts.Models;
+using Store.Core.Contracts.Domain;
 
-namespace Store.Core.Services.Common.Interfaces
+namespace Store.Core.Contracts.Interfaces.Services
 {
     public interface IUserService
     {

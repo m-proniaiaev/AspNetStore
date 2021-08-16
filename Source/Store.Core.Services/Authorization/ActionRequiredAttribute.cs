@@ -4,8 +4,8 @@ using System.Threading;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.DependencyInjection;
-using Store.Core.Services.Common.Interfaces;
 using System.Linq;
+using Store.Core.Contracts.Interfaces.Services;
 
 namespace Store.Core.Services.Authorization
 {

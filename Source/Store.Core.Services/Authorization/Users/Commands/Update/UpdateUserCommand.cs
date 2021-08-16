@@ -3,14 +3,15 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
+using Store.Core.Contracts.Domain;
 using Store.Core.Contracts.Interfaces;
-using Store.Core.Contracts.Models;
+using Store.Core.Contracts.Interfaces.Models;
+using Store.Core.Contracts.Interfaces.Services;
 using Store.Core.Host.Authorization.CurrentUser;
 using Store.Core.Services.Authorization.BlackList;
 using Store.Core.Services.Authorization.BlackList.Commands;
 using Store.Core.Services.Authorization.Roles.Queries.GetRoles;
 using Store.Core.Services.Authorization.Users.Queries;
-using Store.Core.Services.Common.Interfaces;
 
 namespace Store.Core.Services.Authorization.Users.Commands.Update
 {

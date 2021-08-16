@@ -1,6 +1,6 @@
 using System;
 
-namespace Store.Core.Contracts.Interfaces
+namespace Store.Core.Contracts.Interfaces.Models
 {
     public interface IIdentity
     {

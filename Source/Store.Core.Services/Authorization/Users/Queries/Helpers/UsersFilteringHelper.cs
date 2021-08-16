@@ -1,6 +1,6 @@
 using System;
 using System.Linq;
-using Store.Core.Contracts.Models;
+using Store.Core.Contracts.Domain;
 
 namespace Store.Core.Services.Authorization.Users.Queries.Helpers
 {

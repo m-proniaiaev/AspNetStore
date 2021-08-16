@@ -1,4 +1,4 @@
-namespace Store.Core.Contracts.Interfaces
+namespace Store.Core.Contracts.Interfaces.Models
 {
     public interface IEntity
     {

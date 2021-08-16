@@ -2,8 +2,8 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using Store.Core.Contracts.Models;
-using Store.Core.Services.Common.Interfaces;
+using Store.Core.Contracts.Domain;
+using Store.Core.Contracts.Interfaces.Services;
 
 namespace Store.Core.Services.Authorization.BlackList.Commands
 {
@@ -22,7 +22,7 @@ namespace Store.Core.Services.Authorization.BlackList.Commands
 
         public async Task<Unit> Handle(AddToBlackListCommand request, CancellationToken cancellationToken)
         {
-            await _blackListService.AddToBlackList(request, cancellationToken);
+            await _blackListService.AddToBlackList(request.Id, cancellationToken);
             
             return Unit.Value;
         }

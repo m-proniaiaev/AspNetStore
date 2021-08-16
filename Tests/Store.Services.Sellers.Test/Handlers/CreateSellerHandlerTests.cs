@@ -3,11 +3,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Moq;
+using Store.Core.Contracts.Domain;
 using Store.Core.Contracts.Enums;
 using Store.Core.Contracts.Interfaces;
-using Store.Core.Contracts.Models;
+using Store.Core.Contracts.Interfaces.Services;
 using Store.Core.Host.Authorization.CurrentUser;
-using Store.Core.Services.Common.Interfaces;
 using Store.Core.Services.Internal.Sellers.Queries.CreateSeller;
 using Xunit;
 

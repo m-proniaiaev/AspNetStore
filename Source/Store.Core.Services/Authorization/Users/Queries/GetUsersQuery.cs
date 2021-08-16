@@ -4,9 +4,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Store.Core.Contracts.Enums;
+using Store.Core.Contracts.Interfaces.Services;
 using Store.Core.Contracts.Responses;
 using Store.Core.Services.Authorization.Users.Queries.Helpers;
-using Store.Core.Services.Common.Interfaces;
 
 namespace Store.Core.Services.Authorization.Users.Queries
 {

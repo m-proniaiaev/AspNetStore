@@ -2,11 +2,12 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
+using Store.Core.Contracts.Domain;
 using Store.Core.Contracts.Interfaces;
-using Store.Core.Contracts.Models;
+using Store.Core.Contracts.Interfaces.Models;
+using Store.Core.Contracts.Interfaces.Services;
 using Store.Core.Host.Authorization.CurrentUser;
 using Store.Core.Services.Authorization.Roles.Queries.CreateRole;
-using Store.Core.Services.Common.Interfaces;
 
 namespace Store.Core.Services.Authorization.Roles.Queries.UpdateRole
 {
