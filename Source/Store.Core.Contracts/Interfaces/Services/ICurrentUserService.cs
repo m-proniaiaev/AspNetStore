@@ -1,6 +1,6 @@
 using System;
 
-namespace Store.Core.Host.Authorization.CurrentUser
+namespace Store.Core.Contracts.Interfaces.Services
 {
     public interface ICurrentUserService
     {
