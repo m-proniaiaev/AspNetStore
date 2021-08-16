@@ -31,7 +31,7 @@ namespace Store.WebApi.Authorization
             services.AddStoreAuthorization(Configuration);
             services.AddConfiguredControllers();
             services.Configure<ActionsConfig>(option => Configuration.GetSection(nameof(ActionsConfig)).Bind(option));
-            services.AddStoreSwagger();
+            services.AddStoreSwagger("Authorization");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

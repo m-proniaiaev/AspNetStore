@@ -27,7 +27,7 @@ namespace Store.Core.Services.Authorization
 
             var user = context.HttpContext.User;
 
-            if (!CheckBlackList(context) || !user.Identity.IsAuthenticated)
+            if (!user.Identity.IsAuthenticated || !CheckBlackList(context))
             {
                 context.Result = new UnauthorizedResult();
                 return;

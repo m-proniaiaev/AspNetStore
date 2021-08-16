@@ -23,8 +23,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StoreService", "StoreService", "{0E6AA4A2-2954-4AC6-B235-0378351F3959}"
 ProjectSection(SolutionItems) = preProject
 	Deploy\StoreService\store.run.ps1 = Deploy\StoreService\store.run.ps1
-	Deploy\StoreService\docker-compose.store.yml = Deploy\StoreService\docker-compose.store.yml
 	Deploy\StoreService\store.run.sh = Deploy\StoreService\store.run.sh
+	Deploy\StoreService\docker-compose.store.internal.yml = Deploy\StoreService\docker-compose.store.internal.yml
+	Deploy\StoreService\docker-compose.store.auth.yml = Deploy\StoreService\docker-compose.store.auth.yml
 EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{2A0BF293-EF28-4527-AF9C-22D4AD1B5B03}"

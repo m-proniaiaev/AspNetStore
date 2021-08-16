@@ -5,8 +5,11 @@ For checkout please run {project.git.dir}/Deploy/run.ps1(.sh).
 Then go to:
 http://localhost:1337/swagger/index.html - internal host; sellers and records controllers
 
+http://localhost:1488/swagger/index.html - auth host; roles, users and login controllers
+
 Here I've used: 
 
+    - Auth via JWT
     - Dependency injection (constructor injection)
     - CQRS via Mediator pattern (MediatR)
     - CRUD with MongoDb
@@ -17,10 +20,6 @@ Here I've used:
     - Unit tests are done with Xunit, Moq, Fluent Validations, Fluent Assertions
 
 Plans:
-
-Auth host:
- - User controller
- - Adding auth using OAuth 2.0
 
 External host:
 - Client controller

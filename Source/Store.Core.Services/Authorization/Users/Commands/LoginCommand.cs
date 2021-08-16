@@ -66,7 +66,8 @@ namespace Store.Core.Services.Authorization.Users.Commands
             return new LoginResult()
             {
                 Token = token,
-                IsAuthenticated = true
+                IsAuthenticated = true,
+                Type = "Bearer"
             };
         }
     }

@@ -28,7 +28,7 @@ namespace Store.WebApi.Internal
             services.AddCoreServices();
             services.AddStoreAuthorization(Configuration);
             services.AddConfiguredControllers();
-            services.AddStoreSwagger();
+            services.AddStoreSwagger("Internal");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

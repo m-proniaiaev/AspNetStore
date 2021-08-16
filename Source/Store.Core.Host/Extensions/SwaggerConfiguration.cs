@@ -5,11 +5,11 @@ namespace Store.Core.Host.Extensions
 {
     public static class SwaggerConfiguration
     {
-        public static IServiceCollection AddStoreSwagger(this IServiceCollection services)
+        public static IServiceCollection AddStoreSwagger(this IServiceCollection services, string serviceTag)
         {
             services.AddSwaggerGen(swagger =>
             {
-                swagger.SwaggerDoc("v1", new OpenApiInfo { Title = "Store.WebApi.Authorization", Version = "v1" });
+                swagger.SwaggerDoc("v1", new OpenApiInfo { Title = $"Store.WebApi.{serviceTag}", Version = "v1" });
                 swagger.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
                     Name = "Authorization",
