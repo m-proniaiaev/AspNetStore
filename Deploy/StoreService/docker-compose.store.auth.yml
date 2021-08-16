@@ -1,0 +1,19 @@
+version: '3.7'
+
+networks:
+  default:
+    name: some-store-network
+
+services:
+  aspnet_store_auth:
+    build:
+      context: ../../
+      dockerfile: ./Source/Store.WebApi.Authorization/Dockerfile
+    container_name: aspnet_store_auth
+    hostname: aspnet_store_auth
+    restart: "always"
+    ports:
+      - "1488:80"
+    environment:
+      "DbConfig__ConnectionString": mongodb://aspnet-store-mongo:27017
+      "CacheOptions__Server": aspnet_store_redis:6379

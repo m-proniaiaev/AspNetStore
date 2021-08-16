@@ -9,6 +9,9 @@ namespace Store.Core.Database.Database
     {
         private readonly IMongoCollection<Record> _records;
         private readonly IMongoCollection<Seller> _sellers;
+        private readonly IMongoCollection<Role> _roles;
+        private readonly IMongoCollection<User> _users;
+
         public DbClient(IOptions<DbConfig> recordDbConfig)
         {
             if (recordDbConfig == null)
@@ -16,12 +19,19 @@ namespace Store.Core.Database.Database
             
             var client = new MongoClient(recordDbConfig.Value.ConnectionString);
             var db = client.GetDatabase(recordDbConfig.Value.DbName);
+            
+            if (db is null)
+                throw new InvalidOperationException("Can't connect to db!");
+            
             _records = db.GetCollection<Record>(recordDbConfig.Value.RecordCollectionName);
             _sellers = db.GetCollection<Seller>(recordDbConfig.Value.SellerCollectionName);
+            _roles = db.GetCollection<Role>(recordDbConfig.Value.RolesCollectionName);
+            _users = db.GetCollection<User>(recordDbConfig.Value.UserCollectionName);
         }
 
         public IMongoCollection<Record> GetRecordsCollection() => _records;
         public IMongoCollection<Seller> GetSellersCollection() => _sellers;
-
+        public IMongoCollection<Role> GetRolesCollection() => _roles;
+        public IMongoCollection<User> GetUsersCollection() => _users;
     }
 }

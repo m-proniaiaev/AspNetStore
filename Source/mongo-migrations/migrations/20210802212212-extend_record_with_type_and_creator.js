@@ -3,7 +3,7 @@ module.exports = {
     // TODO write your migration here.
     // See https://github.com/seppevs/migrate-mongo/#creating-a-new-migration-script
     // Example:
-    await db.collection('Records').updateMany({}, {$set: {RecordType: 0}});
+    await db.collection('Records').updateMany({}, {$set: {RecordType: 1}});
     await db.collection('Records').updateMany({}, {$set: {CreatedBy: "00000000-0000-0000-0000-000000000000"}});
   },
 

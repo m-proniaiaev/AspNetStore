@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+      <UserSecretsId>4a240e8e-3bd1-4943-a1ff-2979c590c8e5</UserSecretsId>
+  </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="FluentValidation" Version="10.3.0" />
+      <PackageReference Include="MediatR" Version="9.0.0" />
+      <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Options" Version="5.0.0" />
+      <PackageReference Include="MongoDB.Bson" Version="2.13.1" />
+      <PackageReference Include="MongoDB.Driver" Version="2.13.1" />
+      <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.1.5" />
+      <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.1.5" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Store.Core.Contracts\Store.Core.Contracts.csproj" />
+      <ProjectReference Include="..\Store.Core.Database\Store.Core.Database.csproj" />
+      <ProjectReference Include="..\Store.Core.Host\Store.Core.Host.csproj" />
+    </ItemGroup>
+
+</Project>

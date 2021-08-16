@@ -4,19 +4,19 @@
         <TargetFramework>net5.0</TargetFramework>
       <UserSecretsId>e4761c82-dab4-4819-b726-e09b5cf2699d</UserSecretsId>
       <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-      <RootNamespace>SomeStore</RootNamespace>
+      <RootNamespace>Store.WebApi.Internal</RootNamespace>
   </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
-        <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.1.4" />
+        <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.1.5" />
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.1.5" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Store.Core.Cache\Store.Core.Cache.csproj" />
-      <ProjectReference Include="..\Store.Core\Store.Core.csproj" />
+      <ProjectReference Include="..\Store.Core.Services\Store.Core.Services.csproj" />
       <ProjectReference Include="..\Store.Core.Database\Store.Core.Database.csproj" />
-      <ProjectReference Include="..\Store.Core.Extensions\Store.Core.Extensions.csproj" />
       <ProjectReference Include="..\Store.Core.Host\Store.Core.Host.csproj" />
     </ItemGroup>
 

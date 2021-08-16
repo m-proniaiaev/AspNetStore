@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using MediatR;
 using Moq;
-using Store.Core.Common.Interfaces;
 using Store.Core.Contracts.Enums;
 using Store.Core.Contracts.Interfaces;
 using Store.Core.Contracts.Models;
 using Store.Core.Contracts.Responses;
-using Store.Core.Services.Records.Queries.CreateRecord;
-using Store.Core.Services.Sellers.Queries.GetSellers;
+using Store.Core.Services.Common.Interfaces;
+using Store.Core.Services.Internal.Records.Queries.CreateRecord;
+using Store.Core.Services.Internal.Sellers.Queries.GetSellers;
 using Xunit;
 using Record = Store.Core.Contracts.Models.Record;
 

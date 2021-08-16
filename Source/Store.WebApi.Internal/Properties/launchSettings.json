@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "SomeStore": {
+    "Store.WebApi.Internal": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

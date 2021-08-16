@@ -6,16 +6,17 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Store.Core.Contracts.Models;
 using Store.Core.Contracts.Responses;
-using Store.Core.Services.Records.Queries.CreateRecord;
-using Store.Core.Services.Records.Queries.DeleteRecord;
-using Store.Core.Services.Records.Queries.GetRecords;
-using Store.Core.Services.Records.Queries.GetRecords.ById;
-using Store.Core.Services.Records.Queries.UpdateRecord;
+using Store.Core.Services.Authorization;
+using Store.Core.Services.Internal.Records.Queries.CreateRecord;
+using Store.Core.Services.Internal.Records.Queries.DeleteRecord;
+using Store.Core.Services.Internal.Records.Queries.GetRecords;
+using Store.Core.Services.Internal.Records.Queries.GetRecords.ById;
+using Store.Core.Services.Internal.Records.Queries.UpdateRecord;
 
-namespace SomeStore.Controllers
+namespace Store.WebApi.Internal.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/internal/[controller]")]
     public class RecordsController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -25,6 +26,7 @@ namespace SomeStore.Controllers
             _mediator = mediator;
         }
 
+        [ActionRequired("Records-Get")]
         [HttpGet]
         [ProducesResponseType(typeof(GetRecordsResponse), StatusCodes.Status200OK)]
         public async Task<ActionResult<GetRecordsResponse>> GetRecords([FromQuery] GetRecordsQuery query, CancellationToken cts)
@@ -33,6 +35,7 @@ namespace SomeStore.Controllers
             return Ok(result);
         }
 
+        [ActionRequired( "Record-Get")]
         [HttpGet("getRecord/{id:guid}", Name = "GetRecord")]
         [ProducesResponseType(typeof(Record), StatusCodes.Status200OK)]
         public async Task<ActionResult<Record>> GetRecord([FromRoute] Guid id, CancellationToken cts)
@@ -41,6 +44,7 @@ namespace SomeStore.Controllers
             return Ok(result);
         }
 
+        [ActionRequired("Record-Create")]
         [HttpPost("addRecord")]
         [ProducesResponseType(typeof(Record), StatusCodes.Status201Created)]
         public async Task<ActionResult<Record>> AddRecord([FromBody] CreateRecordCommand command, CancellationToken cts)
@@ -49,6 +53,7 @@ namespace SomeStore.Controllers
             return result;
         }
 
+        [ActionRequired("Record-Update")]
         [HttpPut("updateRecord")]
         [ProducesResponseType(typeof(Record), StatusCodes.Status200OK)]
         public async Task<ActionResult<Record>> UpdateRecord([FromBody] UpdateRecordCommand command, CancellationToken cts)
@@ -57,6 +62,7 @@ namespace SomeStore.Controllers
             return Ok(result);
         }
 
+        [ActionRequired("Record-Sell")]
         [HttpPut("markAsSold/{id:guid}",  Name = "MarkAsSold")]
         [ProducesResponseType(typeof(Unit), StatusCodes.Status204NoContent)]
         public async Task<NoContentResult> RecordMarkAsSold([FromRoute] Guid id, CancellationToken cts)
@@ -65,6 +71,7 @@ namespace SomeStore.Controllers
             return NoContent();
         }
         
+        [ActionRequired("Record-Delete")]
         [HttpDelete("deleteRecord/{id:guid}")]
         [ProducesResponseType(typeof(Unit), StatusCodes.Status204NoContent)]
         public async Task<NoContentResult> DeleteRecord([FromRoute] Guid id, CancellationToken cts)

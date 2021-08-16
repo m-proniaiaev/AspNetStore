@@ -1,11 +1,10 @@
-// In this file you can configure migrate-mongo
 
 const config = {
   mongodb: {
-    // TODO Change (or review) the url to your MongoDB:
+    //MongoDB url:
     url: "mongodb://localhost:27017",
 
-    // TODO Change this to your database name:
+    //database name:
     databaseName: "SomeStore",
 
     options: {

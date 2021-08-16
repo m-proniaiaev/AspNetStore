@@ -4,9 +4,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Moq;
-using Store.Core.Common.Interfaces;
 using Store.Core.Contracts.Responses;
-using Store.Core.Services.Records.Queries.GetRecords;
+using Store.Core.Services.Common.Interfaces;
+using Store.Core.Services.Internal.Records.Queries.GetRecords;
 using Xunit;
 using Record = Store.Core.Contracts.Models.Record;
 
@@ -57,7 +57,7 @@ namespace Store.Services.Records.Tests.Handlers
                 RecordCount = 3
             };
 
-            _recordService.Setup(x => x.GetRecords(It.IsAny<CancellationToken>()))
+            _recordService.Setup(x => x.GetRecordsAsync(It.IsAny<CancellationToken>()))
                 .ReturnsAsync(records);
             
             //Act
@@ -110,7 +110,7 @@ namespace Store.Services.Records.Tests.Handlers
                 RecordCount = 1
             };
 
-            _recordService.Setup(x => x.GetRecords(It.IsAny<CancellationToken>()))
+            _recordService.Setup(x => x.GetRecordsAsync(It.IsAny<CancellationToken>()))
                 .ReturnsAsync(records);
             
             //Act
@@ -148,7 +148,7 @@ namespace Store.Services.Records.Tests.Handlers
                 RecordCount = 0
             };
 
-            _recordService.Setup(x => x.GetRecords(It.IsAny<CancellationToken>()))
+            _recordService.Setup(x => x.GetRecordsAsync(It.IsAny<CancellationToken>()))
                 .ReturnsAsync(records);
             
             //Act

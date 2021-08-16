@@ -4,10 +4,10 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using MediatR;
 using Moq;
-using Store.Core.Common.Interfaces;
 using Store.Core.Contracts.Interfaces;
 using Store.Core.Contracts.Models;
-using Store.Core.Services.Sellers.Queries.DeleteSeller;
+using Store.Core.Services.Common.Interfaces;
+using Store.Core.Services.Internal.Sellers.Queries.DeleteSeller;
 using Xunit;
 
 namespace Store.Services.Sellers.Test.Handlers

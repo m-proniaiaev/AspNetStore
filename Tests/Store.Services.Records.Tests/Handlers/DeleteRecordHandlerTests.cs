@@ -3,9 +3,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Moq;
-using Store.Core.Common.Interfaces;
 using Store.Core.Contracts.Interfaces;
-using Store.Core.Services.Records.Queries.DeleteRecord;
+using Store.Core.Services.Common.Interfaces;
+using Store.Core.Services.Internal.Records.Queries.DeleteRecord;
 using Xunit;
 using Record = Store.Core.Contracts.Models.Record;
 
@@ -41,7 +41,7 @@ namespace Store.Services.Records.Tests.Handlers
                 .ReturnsAsync((Record) null);
             _recordService.Setup(x => x.GetRecordAsync(id, It.IsAny<CancellationToken>()))
                 .ReturnsAsync(expectedRecord);
-            _recordService.Setup(x => x.DeleteRecord(id, It.IsAny<CancellationToken>()));
+            _recordService.Setup(x => x.DeleteRecordAsync(id, It.IsAny<CancellationToken>()));
             _cacheService.Setup(x => x.DeleteCacheAsync<Record>(id.ToString(), CancellationToken.None));
 
             var handle = new DeleteRecordCommandHandler(_recordService.Object, _cacheService.Object);
@@ -51,7 +51,7 @@ namespace Store.Services.Records.Tests.Handlers
             //Assert
             _cacheService.Verify(x=>x.GetCacheAsync<Record>(id.ToString(), It.IsAny<CancellationToken>()), Times.Once);
             _recordService.Verify(x => x.GetRecordAsync(id, It.IsAny<CancellationToken>()), Times.Once);
-            _recordService.Verify(x=>x.DeleteRecord(id, It.IsAny<CancellationToken>()), Times.Once);
+            _recordService.Verify(x=>x.DeleteRecordAsync(id, It.IsAny<CancellationToken>()), Times.Once);
             _cacheService.Verify(x=>x.DeleteCacheAsync<Record>(id.ToString(), CancellationToken.None), Times.Once);
         }
         
@@ -72,7 +72,7 @@ namespace Store.Services.Records.Tests.Handlers
             
             _cacheService.Setup(arg => arg.GetCacheAsync<Record>(id.ToString(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(expectedRecord);
-            _recordService.Setup(x => x.DeleteRecord(id, CancellationToken.None));
+            _recordService.Setup(x => x.DeleteRecordAsync(id, CancellationToken.None));
             _cacheService.Setup(x => x.DeleteCacheAsync<Record>(id.ToString(), CancellationToken.None));
 
             var handle = new DeleteRecordCommandHandler(_recordService.Object, _cacheService.Object);
@@ -82,7 +82,7 @@ namespace Store.Services.Records.Tests.Handlers
             //Assert
             _cacheService.Verify(x=>x.GetCacheAsync<Record>(id.ToString(), It.IsAny<CancellationToken>()), Times.Once);
             _recordService.Verify(x => x.GetRecordAsync(id, CancellationToken.None), Times.Never);
-            _recordService.Verify(x=>x.DeleteRecord(id, CancellationToken.None), Times.Once);
+            _recordService.Verify(x=>x.DeleteRecordAsync(id, CancellationToken.None), Times.Once);
             _cacheService.Verify(x=>x.DeleteCacheAsync<Record>(id.ToString(), CancellationToken.None), Times.Once);
         }
 
@@ -100,7 +100,7 @@ namespace Store.Services.Records.Tests.Handlers
                 .ReturnsAsync((Record) null);
             _recordService.Setup(x => x.GetRecordAsync(id, CancellationToken.None))
                 .ReturnsAsync((Record) null);
-            _recordService.Setup(x => x.DeleteRecord(id, CancellationToken.None));
+            _recordService.Setup(x => x.DeleteRecordAsync(id, CancellationToken.None));
             _cacheService.Setup(x => x.DeleteCacheAsync<Record>(id.ToString(), CancellationToken.None));
             
             var handle = new DeleteRecordCommandHandler(_recordService.Object, _cacheService.Object);
@@ -110,7 +110,7 @@ namespace Store.Services.Records.Tests.Handlers
             
             _cacheService.Verify(x=>x.GetCacheAsync<Record>(id.ToString(), It.IsAny<CancellationToken>()), Times.Once);
             _recordService.Verify(x => x.GetRecordAsync(id, CancellationToken.None), Times.Once);
-            _recordService.Verify(x=>x.DeleteRecord(id, CancellationToken.None), Times.Never);
+            _recordService.Verify(x=>x.DeleteRecordAsync(id, CancellationToken.None), Times.Never);
             _cacheService.Verify(x=>x.DeleteCacheAsync<Record>(id.ToString(), CancellationToken.None), Times.Never);
         }
     }

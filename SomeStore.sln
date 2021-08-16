@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{E6AC06A8-0C71-4869-8CE1-BF9175FA2447}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Core", "Source\Store.Core\Store.Core.csproj", "{19843E21-A39C-4367-BD6E-BF532B7CA20D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Core.Services", "Source\Store.Core.Services\Store.Core.Services.csproj", "{19843E21-A39C-4367-BD6E-BF532B7CA20D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Core.Contracts", "Source\Store.Core.Contracts\Store.Core.Contracts.csproj", "{C3E58898-1ACE-4B56-ABD8-9496ADF7B54B}"
 EndProject
@@ -11,8 +11,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Core.Database", "Source\Store.Core.Database\Store.Core.Database.csproj", "{9D028137-2B73-465E-9BE1-59874FDC25F3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Core.Host", "Source\Store.Core.Host\Store.Core.Host.csproj", "{52B24363-0E73-4773-BC07-790118E57F44}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Core.Extensions", "Source\Store.Core.Extensions\Store.Core.Extensions.csproj", "{E59296CA-79D0-4223-92D6-F25924D3EA1A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Tests.Common", "Tests\Store.Tests.Common\Store.Tests.Common.csproj", "{DB81960E-D531-4F6A-9A2F-E889BF437D41}"
 EndProject
@@ -25,8 +23,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StoreService", "StoreService", "{0E6AA4A2-2954-4AC6-B235-0378351F3959}"
 ProjectSection(SolutionItems) = preProject
 	Deploy\StoreService\store.run.ps1 = Deploy\StoreService\store.run.ps1
-	Deploy\StoreService\docker-compose.store.yml = Deploy\StoreService\docker-compose.store.yml
 	Deploy\StoreService\store.run.sh = Deploy\StoreService\store.run.sh
+	Deploy\StoreService\docker-compose.store.internal.yml = Deploy\StoreService\docker-compose.store.internal.yml
+	Deploy\StoreService\docker-compose.store.auth.yml = Deploy\StoreService\docker-compose.store.auth.yml
 EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{2A0BF293-EF28-4527-AF9C-22D4AD1B5B03}"
@@ -53,6 +52,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.WebApi.Internal", "So
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Services.Sellers.Test", "Tests\Store.Services.Sellers.Test\Store.Services.Sellers.Test.csproj", "{5C64F19A-83F0-413C-974D-0F2337D07924}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.WebApi.Authorization", "Source\Store.WebApi.Authorization\Store.WebApi.Authorization.csproj", "{4171DD15-48B1-4857-B816-7151F60E391A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,10 +76,6 @@ Global
 		{52B24363-0E73-4773-BC07-790118E57F44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52B24363-0E73-4773-BC07-790118E57F44}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52B24363-0E73-4773-BC07-790118E57F44}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E59296CA-79D0-4223-92D6-F25924D3EA1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E59296CA-79D0-4223-92D6-F25924D3EA1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E59296CA-79D0-4223-92D6-F25924D3EA1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E59296CA-79D0-4223-92D6-F25924D3EA1A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DB81960E-D531-4F6A-9A2F-E889BF437D41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DB81960E-D531-4F6A-9A2F-E889BF437D41}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB81960E-D531-4F6A-9A2F-E889BF437D41}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -99,13 +96,16 @@ Global
 		{5C64F19A-83F0-413C-974D-0F2337D07924}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C64F19A-83F0-413C-974D-0F2337D07924}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C64F19A-83F0-413C-974D-0F2337D07924}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4171DD15-48B1-4857-B816-7151F60E391A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4171DD15-48B1-4857-B816-7151F60E391A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4171DD15-48B1-4857-B816-7151F60E391A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4171DD15-48B1-4857-B816-7151F60E391A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{19843E21-A39C-4367-BD6E-BF532B7CA20D} = {E6AC06A8-0C71-4869-8CE1-BF9175FA2447}
 		{C3E58898-1ACE-4B56-ABD8-9496ADF7B54B} = {E6AC06A8-0C71-4869-8CE1-BF9175FA2447}
 		{9D028137-2B73-465E-9BE1-59874FDC25F3} = {E6AC06A8-0C71-4869-8CE1-BF9175FA2447}
 		{52B24363-0E73-4773-BC07-790118E57F44} = {E6AC06A8-0C71-4869-8CE1-BF9175FA2447}
-		{E59296CA-79D0-4223-92D6-F25924D3EA1A} = {E6AC06A8-0C71-4869-8CE1-BF9175FA2447}
 		{DB81960E-D531-4F6A-9A2F-E889BF437D41} = {8F740DB6-3882-43E1-8FA8-EA4609764078}
 		{0E6AA4A2-2954-4AC6-B235-0378351F3959} = {F6323BFB-A8F2-46AA-8784-212C7A9D984C}
 		{2A0BF293-EF28-4527-AF9C-22D4AD1B5B03} = {F6323BFB-A8F2-46AA-8784-212C7A9D984C}
@@ -115,5 +115,6 @@ Global
 		{D5819E25-4EC9-432B-AD97-F706B51923C1} = {8F740DB6-3882-43E1-8FA8-EA4609764078}
 		{28946111-DEC3-45F3-A2FD-2A2B8C1EC7E9} = {6CFE5DA1-25F9-4318-8A94-08ACFCF4D9E7}
 		{5C64F19A-83F0-413C-974D-0F2337D07924} = {8F740DB6-3882-43E1-8FA8-EA4609764078}
+		{4171DD15-48B1-4857-B816-7151F60E391A} = {6CFE5DA1-25F9-4318-8A94-08ACFCF4D9E7}
 	EndGlobalSection
 EndGlobal

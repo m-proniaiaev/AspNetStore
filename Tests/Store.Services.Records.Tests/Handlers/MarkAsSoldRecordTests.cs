@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using MediatR;
 using Moq;
-using Store.Core.Common.Interfaces;
 using Store.Core.Contracts.Interfaces;
-using Store.Core.Services.Records.Queries.UpdateRecord;
+using Store.Core.Services.Common.Interfaces;
+using Store.Core.Services.Internal.Records.Queries.UpdateRecord;
 using Xunit;
 using Record = Store.Core.Contracts.Models.Record;
 
@@ -66,7 +66,7 @@ namespace Store.Services.Records.Tests.Handlers
             _cacheService.Setup(x => x.GetCacheAsync<Record>(id.ToString(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(model);
             _cacheService.Setup(x => x.AddCacheAsync(model, It.IsAny<TimeSpan?>(), It.IsAny<CancellationToken>()));
-            _recordService.Setup(x => x.MarkRecordAsSold(id, It.IsAny<CancellationToken>()));
+            _recordService.Setup(x => x.MarkRecordAsSoldAsync(id, It.IsAny<CancellationToken>()));
             _recordService.Setup(x => x.GetRecordAsync(id, It.IsAny<CancellationToken>()))
                 .ReturnsAsync(model);
 
@@ -77,7 +77,7 @@ namespace Store.Services.Records.Tests.Handlers
            _cacheService.Verify(X=>X.GetCacheAsync<Record>(id.ToString(), It.IsAny<CancellationToken>()), Times.Once);
            _recordService.Verify(x=>x.GetRecordAsync(id, It.IsAny<CancellationToken>()), Times.Once);
            _cacheService.Verify(x=>x.AddCacheAsync(model, It.IsAny<TimeSpan?>(), It.IsAny<CancellationToken>()), Times.Once);
-           _recordService.Verify(x=>x.MarkRecordAsSold(id, It.IsAny<CancellationToken>()), Times.Once);
+           _recordService.Verify(x=>x.MarkRecordAsSoldAsync(id, It.IsAny<CancellationToken>()), Times.Once);
         }
     }
 }
