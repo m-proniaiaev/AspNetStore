@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using MediatR;
 using Store.Core.Contracts.Domain;
 using Store.Core.Contracts.Interfaces.Services;
-using Store.Core.Host.Authorization.CurrentUser;
 using Store.Core.Services.Authorization.Roles.Queries.GetRoles;
 using Store.Core.Services.Authorization.Users.Queries;
 

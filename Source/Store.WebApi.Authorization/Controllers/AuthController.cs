@@ -6,8 +6,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Store.Core.Contracts.Responses;
 using Store.Core.Host.Authorization;
-using Store.Core.Services.Authorization;
-using Store.Core.Services.Authorization.Users.Commands;
 using Store.Core.Services.Authorization.Users.Commands.Login;
 
 namespace Store.WebApi.Authorization.Controllers

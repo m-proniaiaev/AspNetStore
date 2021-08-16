@@ -5,7 +5,6 @@ using MediatR;
 using Store.Core.Contracts.Domain;
 using Store.Core.Contracts.Enums;
 using Store.Core.Contracts.Interfaces.Services;
-using Store.Core.Host.Authorization.CurrentUser;
 
 namespace Store.Core.Services.Internal.Sellers.Commands.CreateSeller
 {

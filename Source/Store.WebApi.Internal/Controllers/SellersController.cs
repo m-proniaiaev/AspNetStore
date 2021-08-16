@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using Store.Core.Contracts.Domain;
 using Store.Core.Contracts.Responses;
 using Store.Core.Host.Authorization;
-using Store.Core.Services.Authorization;
 using Store.Core.Services.Internal.Sellers.Commands.CreateSeller;
 using Store.Core.Services.Internal.Sellers.Commands.DeleteSeller;
 using Store.Core.Services.Internal.Sellers.Commands.UpdateSeller;

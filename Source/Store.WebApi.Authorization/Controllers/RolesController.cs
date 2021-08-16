@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using Store.Core.Contracts.Domain;
 using Store.Core.Contracts.Responses;
 using Store.Core.Host.Authorization;
-using Store.Core.Services.Authorization;
 using Store.Core.Services.Authorization.Roles.Commands.CreateRole;
 using Store.Core.Services.Authorization.Roles.Commands.DeleteRole;
 using Store.Core.Services.Authorization.Roles.Commands.DisableRole;

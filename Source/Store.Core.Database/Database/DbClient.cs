@@ -2,6 +2,7 @@ using System;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using Store.Core.Contracts.Domain;
+using Store.Core.Contracts.Interfaces.Services;
 
 namespace Store.Core.Database.Database
 {

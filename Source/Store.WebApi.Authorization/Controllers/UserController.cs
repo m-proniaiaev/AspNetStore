@@ -8,7 +8,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Store.Core.Contracts.Domain;
 using Store.Core.Host.Authorization;
-using Store.Core.Services.Authorization;
 using Store.Core.Services.Authorization.Users.Commands;
 using Store.Core.Services.Authorization.Users.Commands.CreateUser;
 using Store.Core.Services.Authorization.Users.Commands.Update;

@@ -5,7 +5,6 @@ using FluentAssertions;
 using MediatR;
 using Moq;
 using Store.Core.Contracts.Interfaces.Services;
-using Store.Core.Host.Authorization.CurrentUser;
 using Store.Core.Services.Internal.Records.Commands.UpdateRecord;
 using Xunit;
 using Record = Store.Core.Contracts.Domain.Record;

@@ -2,7 +2,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Store.Core.Contracts.Interfaces.Services;
-using Store.Core.Host.Authorization.CurrentUser;
 using Store.Core.Services.Authorization.BlackList.Commands;
 
 namespace Store.Core.Services.Authorization.Users.Commands.Login

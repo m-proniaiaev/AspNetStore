@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using MongoDB.Driver;
 using Store.Core.Contracts.Domain;
 using Store.Core.Contracts.Interfaces.Services;
-using Store.Core.Database.Database;
 
 namespace Store.Core.Services.Authorization.Users
 {
