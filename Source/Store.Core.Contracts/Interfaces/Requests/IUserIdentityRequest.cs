@@ -1,0 +1,8 @@
+﻿using Store.Core.Contracts.Interfaces.Models;
+
+namespace Store.Core.Contracts.Interfaces.Requests
+{
+    public interface IUserIdentityRequest : IIdentity
+    {
+    }
+}
