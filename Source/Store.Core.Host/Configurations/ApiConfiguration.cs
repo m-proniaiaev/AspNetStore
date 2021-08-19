@@ -11,6 +11,7 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using Store.Core.Contracts.Common;
+using Store.Core.Host.Authorization;
 using Store.Core.Host.Extensions.Exceptions;
 
 namespace Store.Core.Host.Configurations
@@ -29,6 +30,7 @@ namespace Store.Core.Host.Configurations
 
             services.AddControllers(opt =>
             {
+                opt.Filters.Add<IdentityActionFilter>();
                 opt.Filters.Add<ValidateModelAttribute>();
                 opt.Filters.Add(new ProducesResponseTypeAttribute(typeof(ExceptionModel), StatusCodes.Status202Accepted));
                 opt.Filters.Add(new ProducesAttribute("application/json"));

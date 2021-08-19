@@ -4,11 +4,12 @@ using System.Threading.Tasks;
 using MediatR;
 using Store.Core.Contracts.Domain;
 using Store.Core.Contracts.Interfaces.Models;
+using Store.Core.Contracts.Interfaces.Requests;
 using Store.Core.Contracts.Interfaces.Services;
 
 namespace Store.Core.Services.Authorization.Roles.Queries.GetRoles
 {
-    public class GetRoleByIdQuery : IRequest<Role>, IIdentity
+    public class GetRoleByIdQuery : IRequest<Role>, IRoleIdentityRequest
     {
         public Guid Id { get; set; }
     }

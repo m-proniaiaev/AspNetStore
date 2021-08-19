@@ -45,14 +45,17 @@ namespace Store.Core.Services.Authorization.Users.Commands.Login
             if (!validationResult)
                 throw new ArgumentException("Username or password is incorrect!");
 
-            var actions = (await _mediator.Send(new GetRoleByIdQuery { Id = user.Role }, cancellationToken)).Actions;
+            var role = await _mediator.Send(new GetRoleByIdQuery { Id = user.Role }, cancellationToken);
+            var actions = role.Actions;
             
             var authClaims = new Claim[]
             {
                 new(ClaimTypes.Name, request.UserName),
                 new(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new("actions", $"{string.Join(",", actions)}"),
-                new("status", user.IsActive.ToString().ToLower())
+                new("status", user.IsActive.ToString().ToLower()),
+                new("role", role.RoleType.ToString()),
+                new("roleId", role.Id.ToString())
             };
 
             var token = _authManager.GenerateToken(authClaims);
