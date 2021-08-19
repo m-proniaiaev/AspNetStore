@@ -13,6 +13,7 @@ Here I've used:
     - Dependency injection (constructor injection) for services
     - CQRS via Mediator pattern (MediatR)
     - CRUD with MongoDb
+    - Migrations with js and migrate-mongo package
     - Caching and blacklisting with Redis
     - Fluent validation for validating requests models
     - Middleware to handle runtime and validation exceptions
