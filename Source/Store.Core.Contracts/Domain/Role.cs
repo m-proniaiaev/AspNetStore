@@ -13,7 +13,7 @@ namespace Store.Core.Contracts.Domain
         public string[] Actions { get; set; }
         public DateTime Created { get; set; }
         public Guid CreatedBy { get; set; }
-        public DateTime Edited { get; set; }
-        public Guid EditedBy { get; set; }
+        public DateTime? Edited { get; set; }
+        public Guid? EditedBy { get; set; }
     }
 }
