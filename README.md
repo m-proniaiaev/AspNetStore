@@ -1,11 +1,12 @@
 # AspNet Store:
 "Store" is an API project that emulates the computer details accouning system for some web store. It was done using ASP.NET Core with swagger &amp;&amp; MongoDb, Redis, and using common practices.
 For checkout please run {project.git.dir}/Deploy/run.ps1(.sh).
+Then cd to source/migrations and run 'migrate-mongo up' to create default user
 
 Then go to:
-http://localhost:1337/swagger/index.html - internal host; sellers and records controllers
+http://localhost:1488/swagger/index.html - auth host; roles, users and login controllers - Use ' DefaultAdmin / Admin_12345' to login
 
-http://localhost:1488/swagger/index.html - auth host; roles, users and login controllers
+http://localhost:1337/swagger/index.html - internal host; sellers and records controllers
 
 Here I've used: 
 
