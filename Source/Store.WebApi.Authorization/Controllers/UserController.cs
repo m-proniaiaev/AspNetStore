@@ -36,7 +36,7 @@ namespace Store.WebApi.Authorization.Controllers
         }
         
         [ActionRequired("User-Get")]
-        [HttpGet("getUser/{id:guid}")]
+        [HttpGet("{id:guid}")]
         [ProducesResponseType(typeof(User), StatusCodes.Status200OK)]
         public async Task<ActionResult<User>> GetUser([FromRoute] Guid id, CancellationToken cts)
         {
@@ -56,7 +56,7 @@ namespace Store.WebApi.Authorization.Controllers
         }
         
         [ActionRequired("User-Update")]
-        [HttpPut("updateUser")]
+        [HttpPut]
         [ProducesResponseType(typeof(User), StatusCodes.Status200OK)]
         public async Task<ActionResult<User>> UpdateUser([FromBody] UpdateUserCommand command, CancellationToken cts)
         {
@@ -66,7 +66,7 @@ namespace Store.WebApi.Authorization.Controllers
         }
         
         [ActionRequired("User-UpdateRole")]
-        [HttpPut("updateUserRole")]
+        [HttpPut("Role")]
         [ProducesResponseType(typeof(User), StatusCodes.Status200OK)]
         public async Task<ActionResult<User>> UpdateUserRole([FromBody] ChangeUserRoleCommand command, CancellationToken cts)
         {
@@ -76,7 +76,7 @@ namespace Store.WebApi.Authorization.Controllers
         }
         
         [ActionRequired("User-UpdatePassword")]
-        [HttpPut("updateUserPassword")]
+        [HttpPut("Password")]
         [ProducesResponseType(typeof(User), StatusCodes.Status200OK)]
         public async Task<ActionResult<User>> UpdateUserPassword([FromBody] ChangeUserPasswordCommand command, CancellationToken cts)
         {
@@ -96,7 +96,7 @@ namespace Store.WebApi.Authorization.Controllers
         }
         
         [ActionRequired("User-Delete")]
-        [HttpDelete("deleteUser/{id:guid}")]
+        [HttpDelete("{id:guid}")]
         [ProducesResponseType(typeof(NoContentResult), StatusCodes.Status204NoContent)]
         public async Task<ActionResult> Delete([FromRoute] Guid id, CancellationToken cts)
         {

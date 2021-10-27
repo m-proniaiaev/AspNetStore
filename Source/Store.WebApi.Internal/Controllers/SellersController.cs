@@ -35,7 +35,7 @@ namespace Store.WebApi.Internal.Controllers
         }
         
         [ActionRequired( "Seller-Get")]
-        [HttpGet("getSeller/{id:guid}")]
+        [HttpGet("{id:guid}")]
         [ProducesResponseType(typeof(Seller), StatusCodes.Status200OK)]
         public async Task<ActionResult<Seller>> GetSellerById([FromRoute] Guid id ,CancellationToken cts)
         {
@@ -44,7 +44,7 @@ namespace Store.WebApi.Internal.Controllers
         }
 
         [ActionRequired("Seller-Create")]
-        [HttpPost("addSeller")]
+        [HttpPost("Seller")]
         [ProducesResponseType(typeof(Seller), StatusCodes.Status201Created)]
         public async Task<ActionResult<Seller>> CreateSeller([FromBody] CreateSellerCommand request, CancellationToken cts)
         {
@@ -53,7 +53,7 @@ namespace Store.WebApi.Internal.Controllers
         }
 
         [ActionRequired("Seller-Update")]
-        [HttpPut("updateSeller")]
+        [HttpPut("Seller")]
         [ProducesResponseType(typeof(Seller), StatusCodes.Status200OK)]
         public async Task<ActionResult<Seller>> UpdateSeller([FromBody] UpdateSellerCommand request,
             CancellationToken cts)
@@ -63,7 +63,7 @@ namespace Store.WebApi.Internal.Controllers
         }
         
         [ActionRequired("Seller-Delete")]
-        [HttpDelete("deleteSeller/{id:guid}")]
+        [HttpDelete("{id:guid}")]
         [ProducesResponseType(typeof(Unit), StatusCodes.Status204NoContent)]
         public async Task<NoContentResult> DeleteSeller([FromRoute] Guid id,
             CancellationToken cts)

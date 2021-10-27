@@ -36,7 +36,7 @@ namespace Store.WebApi.Internal.Controllers
         }
 
         [ActionRequired( "Record-Get")]
-        [HttpGet("getRecord/{id:guid}", Name = "GetRecord")]
+        [HttpGet("{id:guid}", Name = "GetRecord")]
         [ProducesResponseType(typeof(Record), StatusCodes.Status200OK)]
         public async Task<ActionResult<Record>> GetRecord([FromRoute] Guid id, CancellationToken cts)
         {
@@ -45,7 +45,7 @@ namespace Store.WebApi.Internal.Controllers
         }
 
         [ActionRequired("Record-Create")]
-        [HttpPost("addRecord")]
+        [HttpPost("Record")]
         [ProducesResponseType(typeof(Record), StatusCodes.Status201Created)]
         public async Task<ActionResult<Record>> AddRecord([FromBody] CreateRecordCommand command, CancellationToken cts)
         {
@@ -54,7 +54,7 @@ namespace Store.WebApi.Internal.Controllers
         }
 
         [ActionRequired("Record-Update")]
-        [HttpPut("updateRecord")]
+        [HttpPut("Record")]
         [ProducesResponseType(typeof(Record), StatusCodes.Status200OK)]
         public async Task<ActionResult<Record>> UpdateRecord([FromBody] UpdateRecordCommand command, CancellationToken cts)
         {
@@ -72,7 +72,7 @@ namespace Store.WebApi.Internal.Controllers
         }
         
         [ActionRequired("Record-Delete")]
-        [HttpDelete("deleteRecord/{id:guid}")]
+        [HttpDelete("{id:guid}")]
         [ProducesResponseType(typeof(Unit), StatusCodes.Status204NoContent)]
         public async Task<NoContentResult> DeleteRecord([FromRoute] Guid id, CancellationToken cts)
         {
