@@ -41,10 +41,8 @@ namespace Store.Core.Database.Repositories.RecordRepository
                 .Set(x => x.SoldDate, DateTime.Now)
                 .Set(x => x.Edited, DateTime.Now)
                 .Set(x => x.EditedBy, editor);
-
-            var filter = Builders<Record>.Filter.Eq(r => r.Id, id);
-
-            await _collection.UpdateOneAsync(filter, update, cancellationToken: cts);
+            
+            await _collection.UpdateOneAsync(CreateIdFilter(id), update, cancellationToken: cts);
         }
     }
 }

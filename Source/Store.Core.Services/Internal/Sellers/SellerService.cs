@@ -7,7 +7,6 @@ using MongoDB.Driver;
 using Store.Core.Contracts.Domain;
 using Store.Core.Contracts.Interfaces.Services;
 using Store.Core.Database.Repositories.SellerRepository;
-using Store.Core.Services.Internal.Sellers.Queries;
 
 namespace Store.Core.Services.Internal.Sellers
 {

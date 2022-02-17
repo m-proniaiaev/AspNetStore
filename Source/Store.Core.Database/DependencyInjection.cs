@@ -6,6 +6,7 @@ using Store.Core.Database.Database;
 using Store.Core.Database.Repositories.RecordRepository;
 using Store.Core.Database.Repositories.RoleRepository;
 using Store.Core.Database.Repositories.SellerRepository;
+using Store.Core.Database.Repositories.UserRepository;
 
 namespace Store.Core.Database
 {
@@ -21,9 +22,10 @@ namespace Store.Core.Database
             services.AddSingleton<IMongoClient>(new MongoClient(config.ConnectionString));
             services.AddSingleton<IDbContext, DbContext>();
             
-            services.AddSingleton<ISellerRepository, SellerRepository>();
-            services.AddSingleton<IRecordRepository, RecordRepository>();
-            services.AddSingleton<IRoleRepository, RoleRepository>();
+            services.AddScoped<ISellerRepository, SellerRepository>();
+            services.AddScoped<IRecordRepository, RecordRepository>();
+            services.AddScoped<IRoleRepository, RoleRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
             
             return services;
         }

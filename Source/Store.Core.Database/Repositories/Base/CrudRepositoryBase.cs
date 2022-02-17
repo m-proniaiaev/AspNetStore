@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -50,6 +51,11 @@ namespace Store.Core.Database.Repositories.Base
         protected virtual FilterDefinition<TEntity> ConvertToFilterDefinition(TEntity entity)
         {
             return Builders<TEntity>.Filter.Eq(p => p.Id, entity.Id);
+        }
+        
+        protected virtual FilterDefinition<TEntity> CreateIdFilter(Guid id)
+        {
+            return Builders<TEntity>.Filter.Eq(p => p.Id, id);
         }
     }
 }

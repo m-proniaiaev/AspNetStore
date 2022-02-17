@@ -27,17 +27,21 @@ namespace Store.Core.Services.Authorization.Roles
             var filter = new RoleFilter();
 
             if (_currentUserService.RoleType != RoleType.Administrator)
-                filter.IsActive = true;
+                filter.IsRoleActive = true;
             
             return await _repository.FindManyAsync(filter, cts);
         }
 
         public async Task<Role> GetRoleAsync(Guid id, CancellationToken cts)
         {
-            var filter = new RoleFilter();
+            var filter = new RoleFilter()
+            {
+                Id = id,
+                Limit = 1,
+            };
 
             if (_currentUserService.RoleType != RoleType.Administrator)
-                filter.IsActive = true;
+                filter.IsRoleActive = true;
             
             return (await _repository.FindManyAsync(filter, cts)).FirstOrDefault();
         }

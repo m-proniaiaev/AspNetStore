@@ -27,8 +27,8 @@ namespace Store.Core.Database.Repositories.RoleRepository
             if (roleQuery.Id != Guid.Empty)
                 filter = builder.And(filter, builder.Eq(x => x.Id, query.Id));
 
-            if (roleQuery.IsActive.HasValue)
-                filter = builder.And(filter, builder.Eq(r => r.IsActive, roleQuery.IsActive.Value));
+            if (roleQuery.IsRoleActive.HasValue)
+                filter = builder.And(filter, builder.Eq(r => r.IsActive, roleQuery.IsRoleActive.Value));
 
             return filter;
 
@@ -40,10 +40,8 @@ namespace Store.Core.Database.Repositories.RoleRepository
                 .Set(x => x.IsActive, false)
                 .Set(x => x.Edited, DateTime.Now)
                 .Set(x => x.EditedBy, editor);
-
-            var filter = Builders<Role>.Filter.Eq(role => role.Id, id);
-
-            await _collection.UpdateOneAsync(filter, update, cancellationToken: cts);
+            
+            await _collection.UpdateOneAsync(CreateIdFilter(id), update, cancellationToken: cts);
         }
     }
 }
