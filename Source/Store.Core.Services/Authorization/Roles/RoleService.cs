@@ -1,55 +1,70 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MongoDB.Driver;
 using Store.Core.Contracts.Domain;
+using Store.Core.Contracts.Enums;
 using Store.Core.Contracts.Interfaces.Services;
+using Store.Core.Database.Repositories.RoleRepository;
 
 namespace Store.Core.Services.Authorization.Roles
 {
     public class RoleService : IRoleService
     {
-        private readonly IMongoCollection<Role> _roles;
-
-        public RoleService(IDbClient client)
+        private readonly IRoleRepository _repository;
+        private readonly ICurrentUserService _currentUserService;
+        
+        public RoleService(IRoleRepository repository, ICurrentUserService currentUserService)
         {
-            _roles = client.GetRolesCollection();
+            _repository = repository;
+            _currentUserService = currentUserService;
         }
 
         public async Task<List<Role>> GetRolesAsync(CancellationToken cts)
         {
-            return await _roles.Find(role => true).ToListAsync(cts);
+            var filter = new RoleFilter();
+
+            if (_currentUserService.RoleType != RoleType.Administrator)
+                filter.IsRoleActive = true;
+            
+            return await _repository.FindManyAsync(filter, cts);
         }
 
         public async Task<Role> GetRoleAsync(Guid id, CancellationToken cts)
         {
-            return await _roles.Find(role => role.Id == id).FirstOrDefaultAsync(cts);
+            var filter = new RoleFilter()
+            {
+                Id = id,
+                Limit = 1,
+            };
+
+            if (_currentUserService.RoleType != RoleType.Administrator)
+                filter.IsRoleActive = true;
+            
+            return (await _repository.FindManyAsync(filter, cts)).FirstOrDefault();
         }
         
         public async Task UpdateRoleAsync(Role model, CancellationToken cts)
         {
-            await _roles.ReplaceOneAsync(r => r.Id == model.Id, model, cancellationToken: cts);
+            await _repository.UpdateAsync(model, cts);
         }
         
         public async Task CreateRoleAsync(Role role, CancellationToken cts)
         {
-            await _roles.InsertOneAsync(role, cancellationToken: cts);
+            await _repository.CreateAsync(role, cts);
         }
 
         public async Task DisableRoleAsync(Guid id, Guid editor, CancellationToken cts)
         {
-            var update = Builders<Role>.Update
-                .Set(x => x.IsActive, false)
-                .Set(x => x.Edited, DateTime.Now)
-                .Set(x => x.EditedBy, editor);
-
-            await _roles.UpdateOneAsync(role => role.Id == id, update, cancellationToken: cts);
+            await _repository.DisableAsync(id, editor, cts);
         }
 
         public async Task DeleteRoleAsync(Guid id, CancellationToken cts)
         {
-            await _roles.DeleteOneAsync(role => role.Id == id, cts);
+            var filter = Builders<Role>.Filter.Eq(r => r.Id, id);
+            await _repository.DeleteAsync(filter, cts);
         }
     }
 }
