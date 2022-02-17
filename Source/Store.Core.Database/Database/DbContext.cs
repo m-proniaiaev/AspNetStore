@@ -17,7 +17,7 @@ namespace Store.Core.Database.Database
                 throw new ArgumentException("Can't configure MongoDb!");
 
             _dbConfig = recordDbConfig.Value;
-            _mongoClient = mongoClient;
+            _mongoClient = new MongoClient(_dbConfig.ConnectionString);
         }
 
         public IMongoCollection<Record> RecordsCollection => GetMongoCollection<Record>(_dbConfig.RecordCollectionName);

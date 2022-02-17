@@ -15,11 +15,8 @@ namespace Store.Core.Database
         public static IServiceCollection AddStoreMongo(this IServiceCollection services, IConfiguration configuration)
         {
             var configSection = configuration.GetSection(nameof(DbConfig));
-            DbConfig config = new();
-            configSection.Bind(config);
             
             services.Configure<DbConfig>(option => configSection.Bind(option));
-            services.AddSingleton<IMongoClient>(new MongoClient(config.ConnectionString));
             services.AddSingleton<IDbContext, DbContext>();
             
             services.AddScoped<ISellerRepository, SellerRepository>();
