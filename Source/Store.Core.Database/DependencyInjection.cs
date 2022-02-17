@@ -3,6 +3,8 @@ using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
 using Store.Core.Contracts.Interfaces.Services;
 using Store.Core.Database.Database;
+using Store.Core.Database.Repositories.RecordRepository;
+using Store.Core.Database.Repositories.RoleRepository;
 using Store.Core.Database.Repositories.SellerRepository;
 
 namespace Store.Core.Database
@@ -20,6 +22,8 @@ namespace Store.Core.Database
             services.AddSingleton<IDbContext, DbContext>();
             
             services.AddSingleton<ISellerRepository, SellerRepository>();
+            services.AddSingleton<IRecordRepository, RecordRepository>();
+            services.AddSingleton<IRoleRepository, RoleRepository>();
             
             return services;
         }

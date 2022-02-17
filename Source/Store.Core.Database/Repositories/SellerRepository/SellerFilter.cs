@@ -1,7 +1,7 @@
 using System;
 using Store.Core.Database.Database;
 
-namespace Store.Core.Services.Internal.Sellers.Queries
+namespace Store.Core.Database.Repositories.SellerRepository
 {
     public class SellerFilter : IDbQuery
     {
