@@ -11,7 +11,7 @@ namespace Store.Core.Database.Database
         private readonly IMongoClient _mongoClient;
         private readonly DbConfig _dbConfig;
 
-        public DbContext(IOptions<DbConfig> recordDbConfig, IMongoClient mongoClient)
+        public DbContext(IOptions<DbConfig> recordDbConfig)
         {
             if (recordDbConfig == null)
                 throw new ArgumentException("Can't configure MongoDb!");
