@@ -12,9 +12,9 @@ namespace Store.Core.Services.Authorization.Roles
     {
         private readonly IMongoCollection<Role> _roles;
 
-        public RoleService(IDbClient client)
+        public RoleService(IDbContext context)
         {
-            _roles = client.GetRolesCollection();
+            _roles = context.RolesCollection;
         }
 
         public async Task<List<Role>> GetRolesAsync(CancellationToken cts)

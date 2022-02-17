@@ -12,9 +12,9 @@ namespace Store.Core.Services.Authorization.Users
     {
         private readonly IMongoCollection<User> _users;
 
-        public UserService(IDbClient client)
+        public UserService(IDbContext context)
         {
-            _users = client.GetUsersCollection();
+            _users = context.UsersCollection;
         }
 
         public async Task<List<User>> GetUsersAsync(CancellationToken cts)

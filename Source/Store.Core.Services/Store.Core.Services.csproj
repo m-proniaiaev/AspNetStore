@@ -18,6 +18,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Store.Core.Contracts\Store.Core.Contracts.csproj" />
+      <ProjectReference Include="..\Store.Core.Database\Store.Core.Database.csproj" />
     </ItemGroup>
 
     <ItemGroup>

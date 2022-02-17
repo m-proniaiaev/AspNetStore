@@ -1,45 +1,55 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MongoDB.Driver;
 using Store.Core.Contracts.Domain;
 using Store.Core.Contracts.Interfaces.Services;
+using Store.Core.Database.Repositories.SellerRepository;
+using Store.Core.Services.Internal.Sellers.Queries;
 
 namespace Store.Core.Services.Internal.Sellers
 {
     public class SellerService : ISellerService
     {
-        private readonly IMongoCollection<Seller> _sellers;
+        private readonly ISellerRepository _sellerRepository;
 
-        public SellerService(IDbClient client)
+        public SellerService(ISellerRepository sellerRepository)
         {
-            _sellers = client.GetSellersCollection();
+            _sellerRepository = sellerRepository;
         }
-        
+
         public async Task<List<Seller>> GetSellersAsync(CancellationToken cts)
         {
-            return await _sellers.Find(x => true).ToListAsync(cts);
+            var filter = new SellerFilter();
+            return await _sellerRepository.FindManyAsync(filter, cts);
         }
 
         public async Task UpdateSellerAsync(Seller model, CancellationToken cts)
         {
-            await _sellers.ReplaceOneAsync(s => s.Id == model.Id, model, cancellationToken: cts);
+            await _sellerRepository.UpdateAsync(model, cts);
         }
 
         public async Task<Seller> GetSellerAsync(Guid id, CancellationToken cts)
         {
-            return await _sellers.Find(x => x.Id == id).FirstOrDefaultAsync(cts);
+            var filter = new SellerFilter()
+            {
+                Id = id,
+                Limit = 1
+            };
+            return (await _sellerRepository.FindManyAsync(filter, cts)).FirstOrDefault();
         }
 
         public async Task CreateSellerAsync(Seller seller, CancellationToken cts)
         {
-            await _sellers.InsertOneAsync(seller, cancellationToken: cts);
+            await _sellerRepository.CreateAsync(seller, cts);
         }
 
         public async Task DeleteSellerAsync(Guid id, CancellationToken cts)
         {
-            await _sellers.DeleteOneAsync(x => x.Id == id, cts);
+            var filter = Builders<Seller>.Filter.Eq(s => s.Id, id);
+            await _sellerRepository.DeleteAsync(filter, cts);
         }
     }
 }

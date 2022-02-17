@@ -11,9 +11,9 @@ namespace Store.Core.Services.Internal.Records
     public class RecordService : IRecordService
     {
         private readonly IMongoCollection<Record> _records;
-        public RecordService(IDbClient client)
+        public RecordService(IDbContext context)
         {
-            _records = client.GetRecordsCollection();
+            _records = context.RecordsCollection;
         }
         public async Task<List<Record>> GetRecordsAsync(CancellationToken cancellationToken) 
             => await _records.Find(record => true).ToListAsync(cancellationToken);
